@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+ Nombre de la página: StoreRanksForm
+ Información de la versión: version 1
+ Fecha: 11/10/2017
+ Copyright: Jesús Rey de la Cruz
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Garcomex</title>
+        <meta charset="utf-8" />
+        <h:outputStylesheet library="css" name="main.css"/>
+        <link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
+    </h:head>
+    <h:body class="subpage">
+        <!-- Header -->
+        <header id="header">
+            <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
+            <h:link value="Log out" outcome="/login"></h:link>
+        </header>
+        <div id="main">
+            <section class="wrapper style1">
+                <div class="inner">
+                    <!-- Form -->
+                    <h2>StoreRanks Form</h2>
+                    <h:form>
+                        <div class="row uniform">
+                            
+                            <div class="12u$">
+                            <h:outputText value="StoreRankCode: "/>
+                            <h:inputText maxlength="2" required="true" requiredMessage="StoreRankCode is a required field" 
+                                         validator="alfanumericoValidator" validatorMessage="StoreRankCode is an alphanumeric field" value="#{storeRanksController.storeRanks.storeRankCode}"></h:inputText>
+                            </div>
+                            
+                            <div class="12u$">
+                                <h:outputText value="Description: "/>
+                            <h:inputText maxlength="35" required="true" requiredMessage="Description is a required field" value="#{storeRanksController.storeRanks.description}"></h:inputText>
+                            </div>
+                            
+                            <div class="6u 12u$(xsmall)">
+                            <h:outputText value="TradeCompanyId: "/>
+                            <h:inputText  converterMessage="TradeCompanyId ia s numeric field" value="#{storeRanksController.storeRanks.tradeCompanyId}"></h:inputText>
+                            </div>
+                            <div class="6u$ 12u$(xsmall)">
+                            <h:outputText value="LastUpdateBI: "/>
+                            <h:inputText  converterMessage="LastUpdateBI has an incorrect date format" value="#{storeRanksController.storeRanks.lastUpdateBI}"> }
+                                <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                            </h:inputText>
+                            </div>
+                            
+                            
+                            <div class="12u$">
+                            <ul class="actions">
+                                <li><h:commandButton rendered="#{!storeRanksController.flagUpdate}" value="Add" 
+                                                     class="button" action="#{storeRanksController.insert()}"/></li>
+                                <li><h:commandButton rendered="#{storeRanksController.flagUpdate}" value="Edit"
+                                                     class="button" action="#{storeRanksController.update()}"/></li>
+                                <li><h:commandButton immediate="true" value="Return" 
+                                                     class="button" action="#{storeRanksController.volver()}"/></li>
+                            </ul>
+                        </div>
+                        <h:messages> </h:messages>
+                    </div>
+                </h:form>
+            </div>
+        </section>
+    </div>
+    <!-- Footer -->
+        <footer id="footer">
+            <div class="copyright">
+                <p>&copy; Untitled. All rights reserved. Design: <a href="http://www.csi.uanl.mx/" target="_blank">CSI</a>.</p>
+            </div>
+        </footer>
+    <!-- Scripts -->
+        <h:outputScript library="js" name="jquery.min.js" />
+        <h:outputScript library="js" name="jquery.scrolly.min.js" />
+        <h:outputScript library="js" name="jquery.scrollex.min.js" />
+        <h:outputScript library="js" name="skel.min.js" />
+        <h:outputScript library="js" name="util.js" />
+        <h:outputScript library="js" name="main.js" />
+    </h:body>
+</html>

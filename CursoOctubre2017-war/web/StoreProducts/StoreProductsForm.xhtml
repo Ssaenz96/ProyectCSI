@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Store Products Form</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            
+            <div class="title">
+                <h3 name="title">Store Products</h3>
+            </div>
+            
+            <div class="form-style">
+                               
+            <h:outputText value="Customer Sale Price: "/>
+            <h:inputText required="true" requiredMessage="Customer Sale Price field is necessary" maxlength="10"
+                         value="#{storeProductsController.storeProducts.customerSalePrice}"
+                         validator="numerosValidator" validatorMessage="The field 'Customer Sales Price' only accepted numbers"/>
+            <br/>
+            
+            <h:outputText value="Disabled by: "/>
+            <h:inputText maxlength="50"
+                         value="#{storeProductsController.storeProducts.disableBy}"
+                         validator="letrasValidator" validatorMessage="The field 'Disable by' only accepted letters"/>
+            <br/>
+            
+            <h:outputText value="Disable date: "/>
+            <h:inputText value="#{storeProductsController.storeProducts.disableDate}">
+                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+            </h:inputText>
+            <br/>
+            
+            <h:outputText value="Enable by: "/>
+            <h:inputText required="true" requiredMessage="Enable By field is necessary" maxlength="50"
+                         value="#{storeProductsController.storeProducts.enableBy}"
+                         validator="letrasValidator" validatorMessage="The field 'Enable by' only accepted letters"/>
+            <br/>
+            
+            <h:outputText value="Enable date: "/>
+            <h:inputText required="true" requiredMessage="Enable Date field is necessary" value="#{storeProductsController.storeProducts.enableDate}">
+                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+            </h:inputText>
+            <br/>
+            
+            <h:outputText value="Inventory:  "/>
+            <h:inputText value="#{storeProductsController.storeProducts.inventory}"
+                         validator="numerosValidator" validatorMessage="The field 'Inventory' only accepted numbers"/>
+            <br/>
+            
+            <h:outputText value="Last CSP Changed by: "/>
+            <h:inputText maxlength="50"
+                         value="#{storeProductsController.storeProducts.lastCSPChangeBy}"
+                         validator="letrasValidator" validatorMessage="The field 'Last CSP Change by' only accepted letters"/>
+            <br/>
+            
+            <h:outputText value="Last CSP Change date: "/>
+            <h:inputText value="#{storeProductsController.storeProducts.lastCSPChangeDate}">
+                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+            </h:inputText>
+            <br/>
+            
+            <h:outputText value="Last Changed by: "/>
+            <h:inputText maxlength="50"
+                         value="#{storeProductsController.storeProducts.lastChangeBy}"
+                         validator="letrasValidator" validatorMessage="The field 'Last Change by' only accepted letters"/>
+            <br/>
+            
+            <h:outputText value="Last Change date: "/>
+            <h:inputText value="#{storeProductsController.storeProducts.lastChangeDate}">
+                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+            </h:inputText>
+            <br/>
+            
+            <h:outputText value="Last inventory update: "/>
+            <h:inputText value="#{storeProductsController.storeProducts.lastInventoryUpdate}">
+                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+            </h:inputText>
+            <br/>
+            
+            <h:outputText value="Last Offer Changed by: "/>
+            <h:inputText maxlength="50"
+                         value="#{storeProductsController.storeProducts.lastOfferChangedBy}"
+                         validator="letrasValidator" validatorMessage="The field 'Last Offer Changed by' only accepted letters"/>
+            <br/>
+            
+            <h:outputText value="Last Offer date: "/>
+            <h:inputText value="#{storeProductsController.storeProducts.lastOfferDate}">
+                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+            </h:inputText>
+            <br/>
+            
+            <h:outputText value="Last Update BI: "/>
+            <h:inputText value="#{storeProductsController.storeProducts.lastUpdateBI}">
+                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+            </h:inputText>
+            <br/>
+            
+            <h:outputText value="Maximum:  "/>
+            <h:inputText maxlength="5"
+                         value="#{storeProductsController.storeProducts.maximum}"
+                         validator="numerosValidator" validatorMessage="The field 'Maximum' only accepted numbers"/>
+            <br/>
+            
+            <h:outputText value="Minimum:  "/>
+            <h:inputText maxlength="5"
+                         value="#{storeProductsController.storeProducts.minimum}"
+                         validator="numerosValidator" validatorMessage="The field 'Minimum' only accepted numbers"/>
+            <br/>
+            
+            <h:outputText value="Offer Price: "/>
+            <h:inputText maxlength="10"
+                         value="#{storeProductsController.storeProducts.offerPrice}"
+                         validator="numerosValidator" validatorMessage="The field 'Offer Price' only accepted numbers"/>
+            <br/>
+            
+            <h:outputText value="Recorder point:  "/>
+            <h:inputText required="true" requiredMessage="Reorder Point field is necessary" maxlength="5"
+                         value="#{storeProductsController.storeProducts.recorderPoint}"
+                         validator="numerosValidator" validatorMessage="The field 'Recorder point' only accepted numbers"/>
+            <br/>
+            
+            <h:outputText value="Status: "/>
+            <h:inputText maxlength="2"
+                         value="#{storeProductsController.storeProducts.status}"
+                         validator="numerosValidator" validatorMessage="The field 'Status' only accepted numbers"/>
+            <br/>
+            
+            <h:outputText value="Trade Company ID: "/>
+            <h:inputText value="#{storeProductsController.storeProducts.tradeCompanyId}"
+                         validator="numerosValidator" validatorMessage="The field 'Trade company id' only accepted numbers"/>
+            <br/>
+            
+            <h:outputText value="ProductId "/>
+            <h:selectOneMenu required="true" requiredMessage="ProductId field is necessary"
+                             value="#{storeProductsController.storeProducts.products}">
+                <f:selectItem itemValue="0" itemLabel="Select a product" noSelectionOption="true"/>
+                <f:selectItems value="#{productsController.findAll()}" var="products"
+                               itemValue="#{products}" itemLabel="#{products.productCode}"/>
+            </h:selectOneMenu>
+            <br/>
+            
+            <h:outputText value="StoreId"/>
+            <h:selectOneMenu required="true" requiredMessage="StoreID field is necessary"
+                             value="#{storeProductsController.storeProducts.stores}">
+                <f:selectItem itemValue="0" itemLabel="Select a store" noSelectionOption="true"/>
+                <f:selectItems value="#{storesController.findAll()}" var="stores"
+                               itemValue="#{stores}" itemLabel="#{stores.name}"/>
+            </h:selectOneMenu>
+            <br/>
+            
+            <h:commandButton rendered="#{!storeProductsController.flag}" value="Add" 
+                             class="button"
+                             action="#{storeProductsController.insert()}"/>
+            
+            <h:commandButton rendered="#{storeProductsController.flag}" value="Edit"
+                             class="button"
+                             action="#{storeProductsController.update()}"/>
+            
+            <h:commandButton immediate="true" value="Return" 
+                             class="button"
+                             action="#{storeProductsController.volver()}"/>
+            
+            </div>
+            <h:messages> </h:messages>
+            
+        </h:form>
+    </h:body>
+</html>
+

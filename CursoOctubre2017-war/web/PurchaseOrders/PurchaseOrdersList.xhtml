@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+/**
+ * @author Luis Gerardo García
+ * Clase: Purchase Orders List
+ * Version 1.0
+ * Fecha: 11/10/2017
+ * Copyright
+ */
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+	<title>Garcomex</title>
+	<meta charset="utf-8" />
+        <h:outputStylesheet library="css" name="main.css"/>
+	<link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
+    </h:head>
+    <h:body class="subpage">
+    <!-- Header -->
+    <header id="header">
+        <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
+        <h:link value="Log out" outcome="/login"></h:link>
+    </header>
+    <div id="main">
+        <section class="wrapper style1">
+            <div class="inner">
+                <h2 name="title">Purchase Order Status List</h2>
+                <h:form>
+                    <div class="table-scroll">
+                        <h:dataTable var="x" value="#{purchaseOrdersController.findAll()}" class="table-fill">
+                            
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> PONumber </f:facet>
+                                #{x.PONumber}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Delivery Place </f:facet>
+                                #{x.deliveryPlace}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> PODate </f:facet>
+                                <h:outputText value="#{x.PODate}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> CommDeliveryDate </f:facet>
+                                <h:outputText value="#{x.commDeliveryDate}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> ClousureDate </f:facet>
+                                <h:outputText value="#{x.clousureDate}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Cancel Date </f:facet>
+                                <h:outputText value="#{x.cancelDate}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Clousure Cancel By </f:facet>
+                                #{x.clousureCancelBy}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Total Requested Units </f:facet>
+                                #{x.totalRequestedUnits}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Total Requested Value </f:facet>
+                                #{x.totalRequestedValue}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Total Delivered Units </f:facet>
+                                #{x.totalDeliveredUnits}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Total Delivered Value </f:facet>
+                                #{x.totalDeliveredValue}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> POStatus Id </f:facet>
+                                #{x.purchaseOrderStatus.getpOStatusId()}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Trade Company Id </f:facet>
+                                #{x.tradeCompanyId}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Last Update By </f:facet>
+                                <h:outputText value="#{x.lastUpdateBI}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Store Id </f:facet>
+                                #{x.stores.storeId}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Edit </f:facet>
+                                <h:commandButton class="button" value="Edit" action="#{purchaseOrdersController.prepareUpdate(x)}"/>
+                            </h:column>
+
+                            <h:column>
+                                    <f:facet name="header"> Delete </f:facet>
+                                    <h:commandButton class="button" value="Delete" action="#{purchaseOrdersController.delete(x)}" onclick="if (!confirm('If you delete this row you may lose information from other tables. Are you sure?')) return false;" />
+                            </h:column>
+
+                        </h:dataTable>
+                    </div>
+                    <div class="12u$">
+                        <ul class="actions">
+                            <div class="container">
+                            <li><h:commandButton class="button" value="Add" 
+                                                 action="#{purchaseOrdersController.prepareInsert()}"/></li>
+                            <li><h:commandButton class="button" value="Return" 
+                                                 action="#{purchaseOrdersController.volverHome()}" immediate="true"/></li>
+                            </div>
+                        </ul>
+                    </div>
+                    <h:messages></h:messages>
+                </h:form>
+            </div>
+        </section>
+    </div>
+    <!-- Footer -->
+        <footer id="footer">
+            <div class="copyright">
+                <p>&copy; Untitled. All rights reserved. Design: <a href="http://www.csi.uanl.mx/" target="_blank">CSI</a>.</p>
+            </div>
+        </footer>
+    <!-- Scripts -->
+        <h:outputScript library="js" name="jquery.min.js" />
+        <h:outputScript library="js" name="jquery.scrolly.min.js" />
+        <h:outputScript library="js" name="jquery.scrollex.min.js" />
+        <h:outputScript library="js" name="skel.min.js" />
+        <h:outputScript library="js" name="util.js" />
+        <h:outputScript library="js" name="main.js" />
+    </h:body>
+</html>
+

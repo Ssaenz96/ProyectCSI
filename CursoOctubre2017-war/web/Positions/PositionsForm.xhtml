@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+ Nombre de la página: PositionsForm
+ Información de la versión: version 1
+ Fecha: 11/10/2017
+ Copyright: Jesús Rey de la Cruz
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Positions</title>
+        <h1>Positions</h1>
+    </h:head>
+    <h:body>
+         <h:form>
+        <h:outputText value="PositionCode: "/>
+        <h:inputText maxlength="2" required="true" requiredMessage="PositionCode is required" 
+                     validator="alfanumericoValidator" validatorMessage="PositionCode is an alphanumeric field" value="#{positionsController.positions.positionCode}"></h:inputText>
+        <br/>
+        <h:outputText value="Description: "/>
+        <h:inputText maxlength="35" required="true" requiredMessage="Description is a required field" value="#{positionsController.positions.description}"></h:inputText>
+        <br/>
+        <h:outputText value="TradeCompanyId: "/>
+        <h:inputText  converterMessage="TradeCompanyId is a numeric field" value="#{positionsController.positions.tradeCompanyId}"></h:inputText>
+        <br/>
+        <h:outputText value="LastUpdateBI: "/>
+        <h:inputText  converterMessage="LastUpdateBI has an incorrect date format" value="#{positionsController.positions.lastUpdateBI}"> }
+            <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+        </h:inputText>
+        <br/>
+        
+        <h:commandButton  rendered="#{!positionsController.flagUpdate}" value="Add" action="#{positionsController.insert()}"/>
+        <h:commandButton  rendered="#{positionsController.flagUpdate}" value="Edit" action="#{positionsController.update()}"/>
+        <h:commandButton  immediate="true" value="Return" action="#{positionsController.volver()}"/>
+            <h:messages>
+
+            </h:messages>
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Retails Forms</title>
+    </h:head>
+    <h:body>
+        <div class="title">
+                <h3 name="title">Retails Form</h3>
+            </div>
+        
+        <h:form>
+            <div class="form-style">
+                
+                <h:outputText value="ChannelId: "/>
+                <h:selectOneMenu required="true" requiredMessage="ChannelId is a required field" value="#{retailsController.retails.channels}">
+                <f:selectItem itemValue="0" itemLabel="Select a Channel" noSelectionOption="true"/>
+                <f:selectItems value="#{channelsController.findAll()}" var="channels" itemValue="#{channels}" itemLabel="#{channels.channelCode}"/>
+                </h:selectOneMenu>
+                <br/>
+                
+                <h:outputText value="GroupId: "/>
+                <h:selectOneMenu required="true" requiredMessage="GroupId is a required field" value="#{retailsController.retails.groups}">
+                <f:selectItem itemValue="0" itemLabel="Select a Group" noSelectionOption="true"/>
+                <f:selectItems value="#{groupsController.findAll()}" var="group" itemValue="#{group}" itemLabel="#{group.groupCode}"/>
+                </h:selectOneMenu>
+                <br/>
+                
+                <h:outputText value="RetailCode: "/>
+                <h:inputText validator="alfanumericoValidator" required="true" requiredMessage="RetailCode is a required field" maxlength="3" value="#{retailsController.retails.retailCode}"/><br/>
+                
+                <h:outputText value="Name: "/>
+                <h:inputText validator="letrasValidator" required="true" requiredMessage="Name is a required field" maxlength="35" value="#{retailsController.retails.name}"/><br/>
+                
+                <h:outputText value="Street: "/>
+                <h:inputText required="true" requiredMessage="Street is a required field" maxlength="70" value="#{retailsController.retails.street}"/><br/>
+                
+                <h:outputText value="OutSideNumber: "/>
+                <h:inputText validator="numerosValidator" required="true" requiredMessage="OutsideNumber is a required field" maxlength="6" value="#{retailsController.retails.outSideNumber}"/><br/>
+               
+                <h:outputText value="InsideNumber: "/>
+                <h:inputText validator="numerosValidator" maxlength="6" value="#{retailsController.retails.insideNumber}"/><br/>
+                
+                <h:outputText value="Neighborhood: "/>
+                <h:inputText  maxlength="30" value="#{retailsController.retails.neighborhood}"/><br/>
+                
+                <h:outputText value="CityId: "/>
+                <h:selectOneMenu required="true" requiredMessage="CityId is a required field" value="#{retailsController.retails.cities}">
+                <f:selectItem itemValue="0" itemLabel="Select a City" noSelectionOption="true"/>
+                <f:selectItems value="#{citiesController.findAll()}" var="city" itemValue="#{city}" itemLabel="#{city.name}"/>
+                </h:selectOneMenu>
+                <br/>
+                
+                <h:outputText value="PostalCode: "/>
+                <h:inputText validator="numerosValidator" required="true" requiredMessage="PostalCode is a required field" maxlength="8" value="#{retailsController.retails.postalCode}"/><br/>
+                
+                <h:outputText value="SaleChargePercent: "/>
+                <h:inputText  required="true" requiredMessage="SaleChargePercent is a required field" maxlength="5" value="#{retailsController.retails.saleChargePercent}"/><br/>
+                
+                <h:outputText value="SalePoints: "/>
+                <h:inputText  value="#{retailsController.retails.salePoints}"/><br/>
+                
+                <h:outputText value="EnableDate:"/>
+                <h:inputText required="tue" requiredMessage="EnableDate is a required fiel" value="#{retailsController.retails.enableDate}">
+                <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                </h:inputText>
+                
+                <h:outputText value="EnabledBy: "/>
+                <h:inputText  validator="letrasValidator"  maxlength="50" value="#{retailsController.retails.enabledBy}"/><br/>
+                
+                <h:outputText value="DisableDate:"/>
+                <h:inputText required="tue" requiredMessage="DisableDate is a required fiel" value="#{retailsController.retails.disableDate}">
+                <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                </h:inputText>
+                
+                <h:outputText value="DisabledBy: "/>
+                <h:inputText validator="letrasValidator" maxlength="50" value="#{retailsController.retails.disabledBy}"/><br/>
+                
+                <h:outputText value="TradeCompanyId: "/>
+                <h:inputText  required="true" requiredMessage="TradeCompanyId is a required field" value="#{retailsController.retails.tradeCompanyId}"/><br/>
+               
+                <h:outputText value="LastUpdateBI:"/>
+                <h:inputText value="#{retailsController.retails.lastUpdateBi}">
+                <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                </h:inputText>
+                
+                
+                <h:commandButton rendered="#{!retailsController.flagUpdate}" value="Add" action="#{retailsController.insert()}" class="button"/>
+                <h:commandButton rendered="#{retailsController.flagUpdate}" value="Edit" action="#{retailsController.update()}" class="button"/>
+                <h:commandButton immediate="true" value="Return" class="button" action="#{retailsController.volver()}"/>
+            </div>
+        </h:form>
+    </h:body>
+</html>
+

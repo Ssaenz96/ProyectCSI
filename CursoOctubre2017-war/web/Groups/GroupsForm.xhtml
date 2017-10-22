@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Garcomex</title>
+        <meta charset="utf-8" />
+        <h:outputStylesheet library="css" name="main.css"/>
+        <link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
+    </h:head>
+    <h:body class="subpage">
+    <!-- Header -->
+    <header id="header">
+        <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
+        <h:link value="Log out" outcome="/login"></h:link>
+    </header>
+    <div id="main">
+        <section class="wrapper style1">
+            <div class="inner">
+                <h2 name="title">Groups Form</h2>
+                    <h:form>
+                        <div class="row uniform">
+                            <div class="12u$">
+                                <h:outputText value="Group Code" rendered="#{!groupsController.flagUpdate}"/>
+                                <h:inputText required="true" requiredMessage="The field Group Code is required"
+                                             value="#{groupsController.groups.groupCode}" validator="groupCodeValidator" maxlength="2"
+                                             p:placeholder="Group Code" rendered="#{!groupsController.flagUpdate}"/>
+                            </div>
+                            <div class="12u$">
+                                <h:outputText value="Trade Company Id"/>
+                                <h:inputText value="#{groupsController.groups.tradeCompanyId}" 
+                                             validator="numerosValidator" validatorMessage="The field Trade Company Id must be numeric"
+                                             p:placeholder="Trade Company Id"/>
+                            </div>
+                            <div class="12u$">
+                                <h:outputText value="Description"/>
+                                <h:inputText required="true" requiredMessage="Description field is required"
+                                             value="#{groupsController.groups.description}" maxlength="35"
+                                             p:placeholder="Description"/>
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="User Name"/>
+                                <h:inputText value="#{groupsController.groups.userName}" maxlength="50"
+                                             validator="alfanumericoValidator" p:placeholder="User Name"
+                                             converterMessage="The field User Name must be alphanumeric"/>
+                            </div>
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Password"/>
+                                <h:inputText value="#{groupsController.groups.password}" maxlength="50"
+                                             validator="alfanumericoValidator" p:placeholder="Password"
+                                             converterMessage="The field Password must be alphanumeric"/>
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Download File"/>
+                                <h:inputText value="#{groupsController.groups.download}"
+                                             maxlength="1" p:placeholder="Download File"
+                                             validator="numerosValidator"
+                                             converterMessage="The field Download File muste be numeric"/>
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Last Update BI"/>
+                                <h:inputText converterMessage="Last Update BI has an incorrect date format"
+                                             value="#{groupsController.groups.lastUpdateBI}"
+                                             p:placeholder="dd/MM/yyyy">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>                    
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Alternate User Name"/>
+                                <h:inputText value="#{groupsController.groups.alternateUserName}" 
+                                             maxlength="50" validator="alfanumericoValidator" 
+                                             p:placeholder="Alternate User Name"
+                                             validatorMessage="The field Alternate User Name must be alphanumeric">            
+                                </h:inputText> 
+                            </div>
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Alternate Password"/>
+                                <h:inputText value="#{groupsController.groups.alternatePassword}" maxlength="64"
+                                             validator="alfanumericoValidator" 
+                                             p:placeholder="Alternate Password"
+                                             validatorMessage="The field Alternate Password must be alphanumeric">            
+                                </h:inputText> 
+                            </div>
+                            <div class="12u$">
+                                <h:outputText value="Status"/>
+                                <h:selectOneMenu value="#{groupsController.groups.status}">
+                                    <f:selectItem itemValue="true" itemLabel="Activo" />
+                                    <f:selectItem itemValue="false" itemLabel="Inactivo" />
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="12u$">
+                                <ul class="actions">
+                                    <li><h:commandButton rendered="#{!groupsController.flagUpdate}" value="Add" 
+                                                         class="button" action="#{groupsController.insert()}"/></li>
+                                    <li><h:commandButton rendered="#{groupsController.flagUpdate}" value="Edit"
+                                                         class="button" action="#{groupsController.update()}"/></li>
+                                    <li><h:commandButton immediate="true" value="Return" 
+                                                         class="button" action="#{groupsController.vovler()}"/></li>
+                                </ul>
+                            </div>
+                        <h:messages></h:messages>
+                    </div>
+                </h:form>
+            </div>
+        </section>
+    </div>
+    <!-- Footer -->
+        <footer id="footer">
+            <div class="copyright">
+                <p>&copy; Untitled. All rights reserved. Design: <a href="http://www.csi.uanl.mx/" target="_blank">CSI</a>.</p>
+            </div>
+        </footer>
+    <!-- Scripts -->
+        <h:outputScript library="js" name="jquery.min.js" />
+        <h:outputScript library="js" name="jquery.scrolly.min.js" />
+        <h:outputScript library="js" name="jquery.scrollex.min.js" />
+        <h:outputScript library="js" name="skel.min.js" />
+        <h:outputScript library="js" name="util.js" />
+        <h:outputScript library="js" name="main.js" />
+    </h:body>
+
+</html>
+

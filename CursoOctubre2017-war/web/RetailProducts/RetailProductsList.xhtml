@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--
+ * RetailProductsList
+ * Version 2
+ * Fecha 10/10/2017
+ * @author THANIA LIZETH LÓPEZ MORENO  
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+	<title>Garcomex</title>
+	<meta charset="utf-8" />
+        <h:outputStylesheet library="css" name="main.css"/>
+	<link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
+    </h:head>
+    <h:body class="subpage">
+    <!-- Header -->
+    <header id="header">
+        <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
+        <h:link value="Log out" outcome="/login"></h:link>
+    </header>
+    <div id="main">
+        <section class="wrapper style1">
+            <div class="inner">
+                <h2 name="title">Retail Products List</h2>
+                <h:form>
+                    <div class="table-scroll">
+                        <h:dataTable var="rp" value="#{RetailProductsController.findAll()}" class="table-fill" border="2">
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> RetailProductId </f:facet>
+                                #{rp.retailProductId}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> RetailId </f:facet>
+                                #{rp.retails.retailId}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> ProductId </f:facet>
+                                #{rp.products.productId}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> SKUCode </f:facet>
+                                #{rp.skuCode}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> RetailSalePrice </f:facet>
+                                #{rp.retailSalePrice}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> StartPrice </f:facet>
+                                #{rp.startPrice}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> EnableDate </f:facet>
+                                <h:outputText value="#{rp.enableDate}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> EnabledBy </f:facet>
+                                #{rp.enabledBy}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> SalePriceChangeDate </f:facet>
+                                <h:outputText value="#{rp.salePriceChangeDate}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> PriceChangeBy </f:facet>
+                                #{rp.priceChangeBy}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> DisableDate </f:facet>
+                                <h:outputText value="#{rp.disableDate}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> DisabledBy </f:facet>
+                                #{rp.disabledBy}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> POId </f:facet>
+                                #{rp.purchaseOrders.POId}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> TradeCompanyId </f:facet>
+                                #{rp.tradeCompanyId}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> LastUpdateBi </f:facet>
+                                <h:outputText value="#{rp.lastUpdateBI}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Edit </f:facet>
+                                <h:commandButton class="button" value="Edit" action="#{RetailProductsController.prepareUpdate(rp)}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Delete </f:facet>
+                                <h:commandButton class="button" value="Delete" rendered="#{!RetailProductsController.deleteFlagCheck(rp)}" action="#{RetailProductsController.prepareDelete(rp)}"  />
+                                <h:commandButton class="button" value="Yes" rendered="#{RetailProductsController.deleteFlagCheck(rp)}" action="#{RetailProductsController.delete()}"/>
+                                <h:commandButton class="button" value="No" rendered="#{RetailProductsController.deleteFlagCheck(rp)}" action="#{RetailProductsController.cancelDelete()}"/>
+                            </h:column>
+
+                        </h:dataTable>
+                    </div>
+                    <div class="12u$">
+                        <ul class="actions">
+                            <div class="container">
+                            <li><h:commandButton class="button" value="Add" 
+                                                 action="#{RetailProductsController.prepareInsert()}"/></li>
+                            <li><h:commandButton class="button" value="Return" 
+                                                 action="#{RetailProductsController.volverHome()}" immediate="true"/></li>
+                            </div>
+                        </ul>
+                    </div>
+                    <h:messages></h:messages>
+                </h:form>
+            </div>
+        </section>
+    </div>
+    <!-- Footer -->
+        <footer id="footer">
+            <div class="copyright">
+                <p>&copy; Untitled. All rights reserved. Design: <a href="http://www.csi.uanl.mx/" target="_blank">CSI</a>.</p>
+            </div>
+        </footer>
+    <!-- Scripts -->
+        <h:outputScript library="js" name="jquery.min.js" />
+        <h:outputScript library="js" name="jquery.scrolly.min.js" />
+        <h:outputScript library="js" name="jquery.scrollex.min.js" />
+        <h:outputScript library="js" name="skel.min.js" />
+        <h:outputScript library="js" name="util.js" />
+        <h:outputScript library="js" name="main.js" />
+    </h:body>
+</html>
+

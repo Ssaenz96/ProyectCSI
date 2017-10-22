@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+
+ Nombre de la clase: CitiesForm
+
+ Información de la versión: version 1
+ Fecha: 11/10/2017
+
+ Copyright: Eduardo Alejandro Martínez Melo
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+	<title>Garcomex</title>
+	<meta charset="utf-8" />
+        <h:outputStylesheet library="css" name="main.css"/>
+	<link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
+    </h:head>
+    <h:body class="subpage">
+    <!-- Header -->
+    <header id="header">
+        <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
+        <h:link value="Log out" outcome="/login"></h:link>
+    </header>
+    <div id="main">
+        <section class="wrapper style1">
+            <div class="inner">
+                <!-- Form -->
+                <h2>Cities Form</h2>
+                <h:form>
+                    <div class="row uniform">
+                    <div class="6u 12u$(xsmall)">
+                        <h:outputText value="Code: "/>
+                        <h:inputText required="true" requiredMessage="A code is needed."
+                                     value="#{citiesController.cities.cityCode}" maxlength="3" p:placeholder="Code"/>
+                    </div>
+                    <div class="6u$ 12u$(xsmall)">
+                        <h:outputText value="Name: "/>
+                        <h:inputText required="true" requiredMessage="A name is required."
+                                     value="#{citiesController.cities.name}" maxlength="40" p:placeholder="Name"/>
+                    </div>
+                    <div class="6u 12u$(xsmall)">
+                        <h:outputText value="Population: "/>
+                    <h:inputText value="#{citiesController.cities.population}" maxlength="8" p:placeholder="Population"/>
+                    </div>
+                    <div class="6u$ 12u$(xsmall)">
+                        <h:outputText value="Last update BI: "/>
+                        <h:inputText value="#{citiesController.cities.lastUpdateBi}" p:placeholder="dd/MM/yyyy">
+                            <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                        </h:inputText> 
+                    </div>
+                    <div class="12u$">
+                        <div class="select-wrapper">
+                        <h:outputText value="State: "/>
+                        <h:selectOneMenu required="true" requiredMessage="A state is needed." value="#{citiesController.cities.states}">
+                            <f:selectItem itemValue="0" itemLabel="Select one..." noSelectionOption="true"></f:selectItem>
+                            <f:selectItems value="#{statesController.findAll()}" var="state" itemValue="#{state}" itemLabel="#{state.name}"></f:selectItems>
+                        </h:selectOneMenu>
+                        </div>
+                    </div>
+                    <div class="12u$">
+                        <div class="select-wrapper">
+                        <h:outputText value="Metropolitan zone: "/>
+                        <h:selectOneMenu required="true" requiredMessage="A metropolitan zone is needed" value="#{citiesController.cities.metropolitanZones}">
+                            <f:selectItem itemValue="0" itemLabel="Select one..." noSelectionOption="true"></f:selectItem>
+                            <f:selectItems value="#{metropolitanZonesController.findAll()}" var="metropolitanZone" itemValue="#{metropolitanZone}" itemLabel="#{metropolitanZone.name}"></f:selectItems>
+                        </h:selectOneMenu>
+                        </div>
+                    </div>
+                    <!-- Break -->
+                    <div class="12u$">
+                        <ul class="actions">
+                            <li><h:commandButton rendered="#{!citiesController.flagUpdate}" value="Add" 
+                                                 class="button" action="#{citiesController.insert()}"/></li>
+                            <li><h:commandButton rendered="#{citiesController.flagUpdate}" value="Edit"
+                                                 class="button" action="#{citiesController.update()}"/></li>
+                            <li><h:commandButton immediate="true" value="Return" 
+                                                 class="button" action="#{citiesController.volver()}"/></li>
+                        </ul>
+                    </div>
+                    <h:messages> </h:messages>
+                    </div>
+                </h:form>
+            </div>
+        </section>
+    </div>
+    <!-- Footer -->
+        <footer id="footer">
+            <div class="copyright">
+                <p>&copy; Untitled. All rights reserved. Design: <a href="http://www.csi.uanl.mx/" target="_blank">CSI</a>.</p>
+            </div>
+        </footer>
+    <!-- Scripts -->
+        <h:outputScript library="js" name="jquery.min.js" />
+        <h:outputScript library="js" name="jquery.scrolly.min.js" />
+        <h:outputScript library="js" name="jquery.scrollex.min.js" />
+        <h:outputScript library="js" name="skel.min.js" />
+        <h:outputScript library="js" name="util.js" />
+        <h:outputScript library="js" name="main.js" />
+    </h:body>
+</html>
+

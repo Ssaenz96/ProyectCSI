@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+/**
+ * @author Luis Gerardo García
+ * Clase: Purchase Orders Form
+ * Version 2.0 (correcccion bugs)
+ * Fecha: 19/10/2017
+ * Copyright
+ */
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Garcomex</title>
+        <meta charset="utf-8" />
+        <h:outputStylesheet library="css" name="main.css"/>
+        <link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
+    </h:head>
+    <h:body class="subpage">
+        <!-- Header -->
+        <header id="header">
+            <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
+            <h:link value="Log out" outcome="/login"></h:link>
+        </header>
+        <div id="main">
+            <section class="wrapper style1">
+                <div class="inner">
+                    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+                    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+                    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+                    <script>
+                        $(document).ready(function () {
+                            $(".PODate_datepicker").datepicker({dateFormat: 'dd/mm/yy'});
+                            $(".CommDeliveryDate_datepicker").datepicker({dateFormat: 'dd/mm/yy'});
+                            $(".DeliveryDate_datepicker").datepicker({dateFormat: 'dd/mm/yy'});
+                            $(".ClousureDate_datepicker").datepicker({dateFormat: 'dd/mm/yy'});
+                            $(".CancelDate_datepicker").datepicker({dateFormat: 'dd/mm/yy'});
+                            $(".LastUpdateBI_datepicker").datepicker({dateFormat: 'dd/mm/yy'});
+                        });
+
+                        function ReadAgain() {
+                            document.getElementById('LastUpdateDatepickerId').readOnly = false;
+                            document.getElementById('EnableDateDatepickerId').readOnly = false;
+                            document.getElementById('SalePriceChangeDateDatepickerId').readOnly = false;
+                            document.getElementById('DisableDateDatepickerId').readOnly = false;
+                        }
+                    </script>
+                    <h2>Purchase Orders Form</h2>
+                    <h:form>
+                        <div class="row uniform">
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Purchase Order Number:"/>
+                                <h:inputText maxlength="15" required="true" requiredMessage="A purchase order number is required "
+                                             value="#{purchaseOrdersController.purchaseOrders.PONumber}" p:placeholder="Purchase Order Number"
+                                             validator="numerosValidator" validatorMessage="Purchase order number must contain only numbers"/>
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Delivery Place"/>
+                                <h:inputText converterMessage="Delivery Place is a numeric field" required="true" requiredMessage="A delivery place is required"
+                                             value="#{purchaseOrdersController.purchaseOrders.deliveryPlace}"/>
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Purchase Order Date"/>
+                                <h:inputText converterMessage="Purchase Order Date has an incorrect date format" value="#{purchaseOrdersController.purchaseOrders.PODate}" required="true"
+                                             requiredMessage="A purchase order date is required" p:placeholder="dd/MM/yyyy">
+                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Comm Delivery Date"/>
+                                <h:inputText converterMessage="Comm Delivery Date has an incorrect date format" value="#{purchaseOrdersController.purchaseOrders.commDeliveryDate}" required="true" 
+                                             requiredMessage="A comm delivery date is required" p:placeholder="dd/MM/yyyy">
+                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Delivery Date"/>
+                                <h:inputText converterMessage="Delivery Date has an incorrect date format" value="#{purchaseOrdersController.purchaseOrders.deliveryDate}" p:placeholder="dd/MM/yyyy" >
+                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+
+                            </div>
+                            <div class="3u 12u$(xsmall)">
+                                <h:outputText value="Clousure Date"/>
+                                <h:inputText converterMessage="Clousure Date has an incorrect date format" value="#{purchaseOrdersController.purchaseOrders.clousureDate}" p:placeholder="dd/MM/yyyy">
+                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
+                            <div class="3u 12u$(xsmall)">
+                                <h:outputText value="Cancel Date"/>
+                                <h:inputText converterMessage="Cancel Date has an incorrect date format" value="#{purchaseOrdersController.purchaseOrders.cancelDate}" p:placeholder="dd/MM/yyyy">
+                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
+
+                            <div class="12u$">
+                            <h:outputText value="Clousure Cancel By"/>
+                            <h:inputText maxlength="50" value="#{purchaseOrdersController.purchaseOrders.clousureCancelBy}" p:placeholder="Clousure Cancel By"/>
+
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                            <h:outputText value="Total Requested Units"/>
+                            <h:inputText converterMessage="Total Requested Units is a numeric field" maxlength="17" value="#{purchaseOrdersController.purchaseOrders.totalRequestedUnits}"
+                                         required="true" requiredMessage="A total of requested units is required"/>
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                            <h:outputText value="Total Requested Value"/>
+                            <h:inputText converterMessage="Total Requested Value is a numeric field" maxlength="16" value="#{purchaseOrdersController.purchaseOrders.totalRequestedValue}"/>
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                            <h:outputText value="Total Delivered Units"/>
+                            <h:inputText converterMessage="Total Delivered Units is a numeric field" maxlength="17" value="#{purchaseOrdersController.purchaseOrders.totalDeliveredUnits}"/>
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                            <h:outputText value="Total Delivered Units"/>
+                            <h:inputText converterMessage="Total Delivered Units is a numeric field" maxlength="16" value="#{purchaseOrdersController.purchaseOrders.totalDeliveredValue}"/>
+                            </div>
+                            <div class="12u$">
+                                <div class="select-wrapper">
+                            <h:outputText value="Purchase Order Status Id"/>
+                            <h:selectOneMenu required="true" requiredMessage="A purchase order status id is required" value="#{purchaseOrdersController.purchaseOrders.purchaseOrderStatus}">
+                                <f:selectItem itemValue="0" itemLabel="Select a Purchase Order Status Id" noSelectionOption="true"></f:selectItem>
+                                <f:selectItems value="#{purchaseOrderStatusController.findAll()}" var="purchaseOrderStatus" itemValue="#{purchaseOrderStatus}" itemLabel="#{purchaseOrderStatus.getpOStatusId()}"/>
+                            </h:selectOneMenu>
+                                </div>
+                            </div>
+                            
+                            <div class="12u$">
+                                <div class="select-wrapper">
+                            <h:outputText value="Store Id"/>
+                            <h:selectOneMenu required="true" requiredMessage="A store id is required" value="#{purchaseOrdersController.purchaseOrders.stores}">
+                                <f:selectItem itemValue="0" itemLabel="Select a Store Id" noSelectionOption="true"></f:selectItem>
+                                <f:selectItems value="#{storesController.findAll()}" var="stores" itemValue="#{stores}" itemLabel="#{stores.storeId}"/>
+                            </h:selectOneMenu>
+                                </div>
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                            <h:outputText value="Trade Company Id"/>
+                            <h:inputText converterMessage="Trade Company Id is a numeric field" required="true" requiredMessage="A trade company id is required" value="#{purchaseOrdersController.purchaseOrders.tradeCompanyId}"/>
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                            <h:outputText value="Last Update BI:"/>
+                            <h:inputText converterMessage="Last Update BI has an incorrect date format" value="#{purchaseOrdersController.purchaseOrders.lastUpdateBI}" p:placeholder="dd/MM/yyyy">
+                                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                            </h:inputText>
+                            </div>
+
+                            <div class="12u$">
+                                <ul class="actions">
+                                    <li><h:commandButton rendered="#{!purchaseOrdersController.flagUpdate}" value="Add" 
+                                                         class="button" action="#{purchaseOrdersController.insert()}"/></li>
+                                    <li><h:commandButton rendered="#{purchaseOrdersController.flagUpdate}" value="Edit"
+                                                         class="button" action="#{purchaseOrdersController.update()}"/></li>
+                                    <li><h:commandButton immediate="true" value="Return" 
+                                                         class="button" action="#{purchaseOrdersController.volver()}"/></li>
+                                </ul>
+                            </div>
+
+
+                            <h:messages> </h:messages>
+                        </div>
+                    </h:form>
+                </div>
+            </section>
+        </div>
+        <!-- Footer -->
+         <footer id="footer">
+            <div class="copyright">
+                <p>&copy; Untitled. All rights reserved. Design: <a href="http://www.csi.uanl.mx/" target="_blank">CSI</a>.</p>
+            </div>
+        </footer>
+        <!-- Scripts -->
+        <h:outputScript library="js" name="jquery.min.js" />
+        <h:outputScript library="js" name="jquery.scrolly.min.js" />
+        <h:outputScript library="js" name="jquery.scrollex.min.js" />
+        <h:outputScript library="js" name="skel.min.js" />
+        <h:outputScript library="js" name="util.js" />
+        <h:outputScript library="js" name="main.js" />
+    </h:body>
+</html>
+

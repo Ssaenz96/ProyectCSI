@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
++++++++++++++++++++++++++++++
+Thania Lizeth López Moreno
+Agregar El CCS Saul Saenz Vaca
+Fecha: 18/10/2017
++++++++++++++++++++++++++++++
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Garcomex</title>
+        <meta charset="utf-8" />
+        <h:outputStylesheet library="css" name="main.css"/>
+        <link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
+    </h:head>
+    <h:body class="subpage">
+        <!-- Header -->
+        <header id="header">
+            <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
+            <h:link value="Log out" outcome="/login"></h:link>
+        </header>
+        <div id="main">
+            <section class="wrapper style1">
+                <div class="inner">
+                    <h2 name="title">GSale Structures List</h2>
+                    <h:form>
+                        <div class="table-scroll">
+                            <h:dataTable var="gSaleStructures" value="#{gSaleStructuresController.findAll()}" class="table-fill">
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header"> OwnCode </f:facet>
+                                        #{gSaleStructures.ownCode}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header"> Description </f:facet>
+                                        #{gSaleStructures.description}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header"> SaleGeoStructIdUp </f:facet>
+                                        #{gSaleStructures.saleGeoStructIdUp}
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header"> EnableDate </f:facet>
+                                    <h:outputText value="#{gSaleStructures.enableDate}">
+                                        <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                    </h:outputText>
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header"> EnabledBy </f:facet>
+                                        #{gSaleStructures.enabledBy}
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header"> DisableDate </f:facet>
+                                    <h:outputText value="#{gSaleStructures.disableDate}">
+                                        <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                    </h:outputText>
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header"> DisabledBy </f:facet>
+                                        #{gSaleStructures.disabledBy}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header"> TradeCompanyId </f:facet>
+                                        #{gSaleStructures.tradeCompanyId}
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header"> LastUpdateBI </f:facet>
+                                    <h:outputText value="#{gSaleStructures.lastUpdateBi}">
+                                        <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                    </h:outputText>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header"> Edit </f:facet>
+                                    <h:commandButton class="button" value="Edit" action="#{gSaleStructuresController.prepareUpdate(gSaleStructures)}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header"> Delete </f:facet>
+                                    <h:commandButton class="button" value="Delete" 
+                                                     onclick="if (!confirm('If you delete this row you may lose information from other tables. Are you sure?'))
+                                                                 return false" action="#{gSaleStructuresController.delete(gSaleStructures)}" />
+                                </h:column>
+
+                            </h:dataTable>
+                        </div>
+                        <div class="12u$">
+                            <ul class="actions">
+                                <div class="container">
+                                    <li> <h:commandButton class="button" value="Add" action="#{gSaleStructuresController.prepareInsert()}"/></li>
+                                    <li><h:commandButton class="button" value="Return" action="#{gSaleStructuresController.volverHome()}" immediate="true"/></li>
+                                </div>
+                            </ul>
+                        </div>
+                        <h:messages></h:messages>
+                    </h:form>
+                </div>
+            </section>
+        </div>
+    </h:body>
+
+
+</html>
+

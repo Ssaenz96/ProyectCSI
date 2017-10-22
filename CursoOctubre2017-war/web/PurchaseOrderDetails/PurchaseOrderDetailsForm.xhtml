@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+ * PurchaseOrdenDetailsForm
+ * Version 2
+ * Fecha 11/10/2017
+ * @author THANIA LIZETH LÓPEZ MORENO  
+* Version 3 (Converter messages)
+ * Fecha 19/10/2017
+ * @author Luis Garcia
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>PurchaseOrderDetails Form</title>
+    </h:head>
+    <h:head>
+        <title>PurchaseOrderDetails Form</title>
+        <!--<h:outputStylesheet name="/css/formsCSS.css"/>-->
+    </h:head>
+    <h:body>
+        <h:form>
+
+            <div class="title">
+                <h3 name="title">PurchaseOrderDetails</h3>
+            </div>
+
+            <div class="form-style">
+                <h:outputText value="PurchaseOrder ID: "/>
+                <h:selectOneMenu required="true" requiredMessage="This field is necessary PurchaseOrder ID"
+                                 value="#{purchaseOrderDetailsController.purchaseOrderDetails.purchaseOrders}">
+                    <f:selectItem itemValue="0" itemLabel="Select a PurchaseOrder" noSelectionOption="true"/>
+                    <f:selectItems value="#{purchaseOrdersController.findAll()}" var="po"
+                                   itemValue="#{po}" itemLabel="#{po.POId}"/>
+                </h:selectOneMenu>
+                <br/>
+
+                <h:outputText value="Product ID: "/>
+                <h:selectOneMenu required="true" requiredMessage="This field is necessary Product ID"
+                                 value="#{purchaseOrderDetailsController.purchaseOrderDetails.products}">
+                    <f:selectItem itemValue="0" itemLabel="Select a Product" noSelectionOption="true"/>
+                    <f:selectItems value="#{productsController.findAll()}" var="product"
+                                   itemValue="#{product}" itemLabel="#{product.productId}"/>
+                </h:selectOneMenu>
+                <br/>
+
+                <h:outputText value="RequestedUnits: "/>
+                <h:inputText required="true" requiredMessage="RequestedUnits is a required field"
+                             value="#{purchaseOrderDetailsController.purchaseOrderDetails.requestedUnits}" maxlength="17"/>
+                <br/>
+
+                <h:outputText value="RequestedValue: "/>
+                <h:inputText value="#{purchaseOrderDetailsController.purchaseOrderDetails.requestedValue}" maxlength="15"/>
+                <br/>
+
+
+                <h:outputText value="DeliveredUnits: "/>
+                <h:inputText rendered="true" requiredMessage="RequestedUnits is a required field"
+                            value="#{purchaseOrderDetailsController.purchaseOrderDetails.deliveredUnits}" maxlength="17"/>
+                <br/>
+
+                <h:outputText value="DeliveredValue: "/>
+                <h:inputText value="#{purchaseOrderDetailsController.purchaseOrderDetails.deliveredValue}" maxlength="15"/>
+                <br/>
+
+                <h:outputText value="DeliveryRealDate "/>
+                <h:inputText converterMessage="LastupdateBI must be in the following format. (dd/mm/yyyy)" value="#{purchaseOrderDetailsController.purchaseOrderDetails.deliveryRealDate}">
+                        <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                </h:inputText>
+                <br/>
+                
+                <h:outputText value="TradeCompanyId: "/>
+                <h:inputText value="#{purchaseOrderDetailsController.purchaseOrderDetails.tradeCompanyId}" maxlength="15"/>
+                <br/>
+
+                <h:outputText value="UnitPrice: "/>
+                <h:inputText value="#{purchaseOrderDetailsController.purchaseOrderDetails.unitPrice}" maxlength="15"/>
+                <br/>
+                
+                <h:outputText value="LastUpdateBi "/>
+                <h:inputText converterMessage="LastupdateBI must be in the following format. (dd/mm/yyyy)" value="#{purchaseOrderDetailsController.purchaseOrderDetails.lastUpdateBI}">
+                        <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                </h:inputText>
+                <br/>
+
+
+
+                <h:commandButton rendered="#{!purchaseOrderDetailsController.flagUpdate}" value="Agregar" 
+                                 class="button"
+                                 action="#{purchaseOrderDetailsController.insert()}"/>
+
+                <h:commandButton rendered="#{purchaseOrderDetailsController.flagUpdate}" value="Editar"
+                                 class="button"
+                                 action="#{purchaseOrderDetailsController.update()}"/>
+
+                <h:commandButton immediate="true" value="Regresar" 
+                                 class="button"
+                                 action="#{purchaseOrderDetailsController.volver()}"/>
+
+                </div>
+            <h:messages> </h:messages>
+
+        </h:form>
+    </h:body>
+</html>
+

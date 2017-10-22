@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+PurchaseOrderStatusForm
+11/10/2017
+version 1.0
+Luis Amaury Urbina Molina
+19/10/2017
+version 2.0
+Luis Garcia, validator message en last update
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Purchase Order Status Form</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            
+            <div class="title">
+                <h3 name="title">Origin</h3>
+            </div>
+            
+            <div class="form-style">
+            
+            <h:outputText value="PO Status Code: "/>
+            <h:inputText required="true" requiredMessage="PO Status Code is a require field"
+                         value="#{purchaseOrderStatusController.purchaseOrderStatus.POStatusCode}" maxlength="2"/>
+            
+            <h:outputText value="Description: "/>
+            <h:inputText required="true" requiredMessage="Description is a required field"
+                         value="#{purchaseOrderStatusController.purchaseOrderStatus.description}" maxlength="35"/>
+            
+            <h:outputText value="Last Update BI: "/>
+            <h:inputText converterMessage="LastupdateBI must be in the following format. (dd/mm/yyyy)" value="#{purchaseOrderStatusController.purchaseOrderStatus.lastUpdateBI}">
+                <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+            </h:inputText>
+            <br/>
+            
+            <h:commandButton rendered="#{!purchaseOrderStatusController.flagUpdate}" value="Add"
+                             class="button"
+                             action="#{purchaseOrderStatusController.insert()}"/>
+            
+            <h:commandButton rendered="#{purchaseOrderStatusController.flagUpdate}" value="Edit"
+                             class="button"
+                             action="#{purchaseOrderStatusController.update()}"/>
+            
+            <h:commandButton immediate="true" value="Return"
+                             class="button"
+                             action="PurchaseOrderStatusList"/>
+            
+            </div>
+            
+            <h:messages></h:messages>
+        </h:form>
+        
+    </h:body>
+</html>
+

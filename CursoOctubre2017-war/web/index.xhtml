@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+	<title>Garcomex</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="resources/css/main.css" />
+        <link rel="icon" type="image/x-icon" href="images/logo.ico"/>
+    </h:head>
+    <h:body>
+    <!-- Header -->
+	<header id="header" class="alt">
+            <div class="logo"><h:link outcome="index">Garcomex</h:link></div>
+            <a href="#menu">Menu</a>
+            <h:link value="Log out" outcome="login" onclick="#{groupsController.prepareLogin()}"></h:link>
+            <h:link value="Admin" outcome="Admin/admin"></h:link>
+	</header>
+    <!-- Nav -->
+	<nav id="menu">
+	<ul class="links">
+            <li><h:link value="Channels" outcome="Channels/ChannelsList"/></li>
+            <li><h:link value="Cities" outcome="Cities/CitiesList" rendered="true"/></li>
+            <li><h:link value="Contacts" outcome="Contacts/ContactsList"/></li>
+            <li><h:link value="Employee Types" outcome="EmployeeTypes/EmployeeTypesList"/></li>
+            <li><h:link value="Final Customer Sale Units" outcome="FinalCustomerSaleUnits/FinalCustomerSaleUnitsList"/></li>
+            <li><h:link value="GSale Structure Levels" outcome="GSaleStructureLevels/GSaleStructureLevelsList"/></li>
+            <li><h:link value="GSale Structures" outcome="GSaleStructures/GSaleStructuresList"/></li>
+            <li><h:link value="Groups" outcome="Groups/GroupsList"/></li>
+            <li><h:link value="Metropolitan Zones" outcome="MetropolitanZones/MetropolitanZonesList"/></li>
+            <li><h:link value="Origin" outcome="Origin/OriginList"/></li>
+            <li><h:link value="Positions" outcome="Positions/PositionsList"/></li>
+            <li><h:link value="Product Categories" outcome="ProductCategories/ProductCategoriesList"/></li>
+            <li><h:link value="Product Packages" outcome="ProductPackages/ProductPackagesList"/></li>
+            <li><h:link value="Products" outcome="Products/ProductsList"/></li>
+            <li><h:link value="Program Visits" outcome="ProgramVisits/ProgramVisitsList"/></li>
+            <li><h:link value="Purchase Order Details" outcome="PurchaseOrderDetails/PurchaseOrderDetailsList"/></li>
+            <li><h:link value="Purchase Order Status" outcome="PurchaseOrderStatus/PurchaseOrderStatusList"/></li>
+            <li><h:link value="Purchase Orders" outcome="PurchaseOrders/PurchaseOrdersList"/></li>
+            <li><h:link value="Regions" outcome="Regions/RegionsList"/></li>
+            <li><h:link value="Retail Contacts" outcome="RetailContacts/RetailContactsList"/></li>
+            <li><h:link value="Retail Products" outcome="RetailProducts/RetailProductsList"/></li>
+            <li><h:link value="Retail Sale Units" outcome="RetailSaleUnits/RetailSaleUnitsList"/></li>
+            <li><h:link value="Retails" outcome="Retails/RetailsList"/></li>
+            <li><h:link value="Sellers" outcome="Sellers/SellersList"/></li>
+            <li><h:link value="States" outcome="States/StatesList"/></li>
+            <li><h:link value="Store Contacts" outcome="StoreContacts/StoreContactsList"/></li>
+            <li><h:link value="Store Products" outcome="StoreProducts/StoreProductsList"/></li>
+            <li><h:link value="Store Ranks" outcome="StoreRanks/StoreRanksList"/></li>
+            <li><h:link value="Stores" outcome="Stores/StoresList"/></li>
+            <li><h:link value="Taxes" outcome="Taxes/TaxesList"/></li>
+            <li><h:link value="Trade Marks" outcome="TradeMarks/TradeMarksList"/></li>
+        </ul>
+        </nav>
+        <!-- Banner -->
+            <section id="banner">
+            <div class="inner">
+                <header>
+                    <h1>Welcome to Garcomex</h1>
+                    <p>Mexican company dedicated to the development of beverages to accompany <br />at all times and complements, innovative, socially responsible, constantly evolving.</p>
+                </header>
+                <a href="#main" class="button big scrolly">Learn More</a>
+            </div>
+            </section>
+        <!-- Main -->
+            <div id="main">
+            <!-- Section -->
+                <section class="wrapper style1">
+                <div class="inner">
+                    <!-- 2 Columns -->
+                    <div class="flex flex-2">
+                        <div class="col col1">
+                            <div class="image round fit">
+                                <a href="generic.html" class="link"><img src="images/santaFe.jpg" alt="" /></a>
+                            </div>
+                        </div>
+                        <div class="col col2">
+                            <h3>Coffee - Santa Clara</h3>
+                            <p>In coffee Santa Clara we are convinced that bringing an extraordinary cup of coffee to your table is not enough, we firmly believe in the care of the environment, boosting the economy and improving the quality of life of our coffee growers.</p>
+                            <p>We carry to you our mixes of selected grains of Arabica coffee from the best regions of Mexico. </p>
+                            <a href="#banner" class="button scrolly">Back</a>
+                        </div>
+                    </div>
+                </div>
+                </section>
+            </div>
+        <!-- Footer -->
+            <footer id="footer">
+                <div class="copyright">
+                    <ul class="icons">
+                        <li><a href="https://twitter.com/garcomex?lang=es" target="_blank" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="https://www.facebook.com/garcomex/" target="_blank" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                    </ul>
+                    <p>&copy; Untitled. All rights reserved. Design: <a href="http://www.csi.uanl.mx/" target="_blank">CSI</a>.</p>
+                </div>
+            </footer>
+
+        <!-- Scripts -->
+            <h:outputScript library="js" name="jquery.min.js" />
+            <h:outputScript library="js" name="jquery.scrolly.min.js" />
+            <h:outputScript library="js" name="jquery.scrollex.min.js" />
+            <h:outputScript library="js" name="skel.min.js" />
+            <h:outputScript library="js" name="util.js" />
+            <h:outputScript library="js" name="main.js" />
+    </h:body>
+</html>
+

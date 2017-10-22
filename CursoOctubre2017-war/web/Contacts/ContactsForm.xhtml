@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+Thania Lizeth López Moreno
+
+Agregar el css de Vaca
+Fecha: 18/10/2017
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Garcomex</title>
+        <meta charset="utf-8" />
+        <h:outputStylesheet library="css" name="main.css"/>
+        <link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
+    </h:head>
+    <h:body class="subpage">
+        <!-- Header -->
+        <header id="header">
+            <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
+            <h:link value="Log out" outcome="/login"></h:link>
+        </header>
+        <div id="main">
+            <section class="wrapper style1">
+                <div class="inner">
+                    <!-- Form -->
+                    <h2>Contacts Form</h2>
+                    <h:form>
+                        <div class="row uniform">
+                            <div class="12u$">
+                                <h:outputText value="Name: "/>
+                                <h:inputText required="true" requiredMessage="Name is a required field" 
+                                             validator="letrasValidator" validatorMessage="Name must contain only letters"
+                                             maxlength="40" value="#{contactsController.contacts.name}" p:placeholder="Name"/>
+                            </div>
+                            <div class="12u$"> 
+                                <h:outputText value="Position: "/>
+                                <h:inputText required="true" requiredMessage="Position is a required field" maxlength="35" 
+                                             value="#{contactsController.contacts.position}" p:placeholder="Position"/>
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Phone number: "/>
+                                <h:inputText required="true" requiredMessage="PhoneNumber is a required field" 
+                                             validator="numerosValidator" validatorMessage="PhoneNumber must contain only numbers"
+                                             maxlength="15" value="#{contactsController.contacts.phoneNumber}" p:placeholder="Name"/>
+                            </div>
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Extension: "/>
+                                <h:inputText  maxlength="5" value="#{contactsController.contacts.extension}" p:placeholder="Extension"/>
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Cellphone: "/>
+                                <h:inputText  validator="numerosValidator" validatorMessage="CellPhone must contain only numbers" 
+                                              maxlength="15" value="#{contactsController.contacts.cellphone}" p:placeholder="Cellphone"/>
+                            </div>
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Email: "/>
+                                <h:inputText  validator="correoValidator" validatorMessage="Email has an incorrect format" 
+                                              maxlength="40" value="#{contactsController.contacts.email}" p:placeholder="Email"/>
+                            </div>
+                            <div class="4u 12u$(small)">
+                                <h:outputText value="Skype: "/>
+                                <h:inputText  maxlength="15" value="#{contactsController.contacts.skype}" p:placeholder="Skype"/>
+                            </div>
+                            <div class="4u 12u$(small)">
+                                <h:outputText value="Twitter: "/>
+                                <h:inputText  maxlength="20" value="#{contactsController.contacts.twitter}" p:placeholder="Twitter"/>
+                            </div>
+                            <div class="4u$ 12u$(small)">
+                                <h:outputText value="Facebook: "/>
+                                <h:inputText  maxlength="20" value="#{contactsController.contacts.facebook}" p:placeholder="Facebook"/>
+                            </div>
+                            <div class="12u$">
+                                <h:outputText value="Last Update BI:"/>
+                                <h:inputText converterMessage="LastUpdateBI has an incorrect date format" 
+                                             value="#{contactsController.contacts.lastUpdateBI}" 
+                                             p:placeholder="dd/MM/yyyy">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
+
+                            <div class="12u$">
+                                <ul class="actions">
+                                    <li><h:commandButton rendered="#{!contactsController.flagUpdate}" value="Add" action="#{contactsController.insert()}" class="button"/></li>
+                                    <li><h:commandButton rendered="#{contactsController.flagUpdate}" value="Edit" action="#{contactsController.update()}" class="button"/></li>
+                                    <li><h:commandButton immediate="true" value="Return" class="button" action="#{contactsController.volver()}"/></li>
+                                </ul>
+                            </div>
+                            <h:messages></h:messages>
+                        </div>
+                    </h:form>
+                </div>
+            </section>
+        </div>
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="copyright">
+                <p>&copy; Untitled. All rights reserved. Design: <a href="http://www.csi.uanl.mx/" target="_blank">CSI</a>.</p>
+            </div>
+        </footer>
+        <!-- Scripts -->
+        <h:outputScript library="js" name="jquery.min.js" />
+        <h:outputScript library="js" name="jquery.scrolly.min.js" />
+        <h:outputScript library="js" name="jquery.scrollex.min.js" />
+        <h:outputScript library="js" name="skel.min.js" />
+        <h:outputScript library="js" name="util.js" />
+        <h:outputScript library="js" name="main.js" />
+    </h:body>
+</html>
+

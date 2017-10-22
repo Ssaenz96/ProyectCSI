@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <!--* Version 1 
+        * Fecha 10/10/2017
+        * @author Carlos A 
+    
+    +++++++++++++++++++++++++++++
+    Thania Lizeth López Moreno
+    Agregar El CCS Saul Saenz Vaca
+    Fecha: 18/10/2017
+    +++++++++++++++++++++++++++++
+    -->
+    <h:head>
+        <title>Garcomex</title>
+        <meta charset="utf-8" />
+        <h:outputStylesheet library="css" name="main.css"/>
+        <link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
+    </h:head>
+    <h:body class="subpage">
+        <!-- Header -->
+        <header id="header">
+            <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
+            <h:link value="Log out" outcome="/login"></h:link>
+        </header>
+        <div id="main">
+            <section class="wrapper style1">
+                <div class="inner">
+                    <h2 name="title">Products List</h2>
+                    <h:form>
+                        <div class="table-scroll">
+                            <h:dataTable var="products" value="#{productsController.findAll()}" class="table-fill">
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">ProdStructureId</f:facet>
+                                        #{products.prodStructureId}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">ProductCode</f:facet>
+                                        #{products.productCode}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">ProductBarcode</f:facet>
+                                        #{products.productBarcode}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">Description</f:facet>
+                                        #{products.description}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">ProductionCost</f:facet>
+                                        #{products.productionCost}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">ProdCategoryId</f:facet>
+                                        #{products.productCategories.description}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">TaxId</f:facet>
+                                        #{products.taxes.description}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">OriginId</f:facet>
+                                        #{products.origin.description}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">CustomerSUId</f:facet>
+                                        #{products.finalCustomerSaleUnits.description}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">RetailSUId</f:facet>
+                                        #{products.retailSaleUnits.description}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">ConverterFactorPackage</f:facet>
+                                        #{products.convertFactorPackage}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">PackageQuantity</f:facet>
+                                        #{products.packageQuantity}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">ConverterFactor</f:facet>
+                                        #{products.convertFactor}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">ConverterFactorUnit</f:facet>
+                                        #{products.convertFactorUnit}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">ProductPackId</f:facet>
+                                        #{products.productPackages.description}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">EnableDate</f:facet>
+                                    <h:outputText value="#{products.enableDate}">
+                                        <f:convertDateTime type="date" pattern="dd/MM/yyyy"></f:convertDateTime>
+                                    </h:outputText>
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">EnabledBy</f:facet>
+                                        #{products.enabledBy}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">LastChangeDate</f:facet>
+                                    <h:outputText value="#{products.lastChangeDate}">
+                                        <f:convertDateTime type="date" pattern="dd/MM/yyyy"></f:convertDateTime>
+                                    </h:outputText>
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">LastChangedBy</f:facet>
+                                        #{products.lastChangedBy}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">DisableDate</f:facet>
+                                    <h:outputText value="#{products.disableDate}">
+                                        <f:convertDateTime type="date" pattern="dd/MM/yyyy"></f:convertDateTime>
+                                    </h:outputText>
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">DisabledBy</f:facet>
+                                        #{products.disabledBy}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">TradeCompanyId</f:facet>
+                                        #{products.description}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">TradeMarkId</f:facet>
+                                        #{products.tradeMarks.description}
+                                </h:column>
+
+                                <h:column class="table-information">
+                                    <f:facet name="header" class="text-header">LastUpdateBI</f:facet>
+                                    <h:outputText value="#{products.lastUpdateBI}">
+                                        <f:convertDateTime type="date" pattern="dd/MM/yyyy"></f:convertDateTime>
+                                    </h:outputText>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header"> Edit </f:facet>
+                                    <h:commandButton class="button" value="Edit" action="#{productsController.prepareUpdate(products)}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header"> Delete </f:facet>
+                                    <h:commandButton class="button" value="Delete" action="#{productsController.delete(retailContacts)}" onclick="if (!confirm('If you delete this row you may lose information from other tables. Are you sure?')) return false;" />
+                                </h:column>
+
+                            </h:dataTable>
+                        </div>
+                        <div class="12u$">
+                            <ul class="actions">
+                                <div class="container">
+                                    <li> <h:commandButton class="button" value="Add" action="#{productsController.prepareInsert()}"/></li>
+                                    <li><h:commandButton class="button" value="Return" action="#{productsController.volverHome()}" immediate="true"/></li>
+                                </div>
+                            </ul>
+                        </div>
+                        <h:messages></h:messages>
+                    </h:form>
+                </div>
+            </section>
+        </div>
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="copyright">
+                <p>&copy; Untitled. All rights reserved. Design: <a href="http://www.csi.uanl.mx/" target="_blank">CSI</a>.</p>
+            </div>
+        </footer>
+        <!-- Scripts -->
+        <h:outputScript library="js" name="jquery.min.js" />
+        <h:outputScript library="js" name="jquery.scrolly.min.js" />
+        <h:outputScript library="js" name="jquery.scrollex.min.js" />
+        <h:outputScript library="js" name="skel.min.js" />
+        <h:outputScript library="js" name="util.js" />
+        <h:outputScript library="js" name="main.js" />
+    </h:body>
+</html>
+

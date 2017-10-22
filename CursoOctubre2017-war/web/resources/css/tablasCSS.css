@@ -1,0 +1,175 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16/10/2017, 10:00:09 AM
+    Author     : Luis Amaury
+*/
+
+/* Table */
+
+
+
+.table-title{
+
+    font-family: "Century Gothic";
+    text-align: center;
+    font-size: 50px;
+
+}
+.table-fill {
+    overflow: auto;
+    font-family: "Century Gothic";               
+    width: 100%;
+    max-height: 320px;
+}
+
+table {
+    margin: 0 0 2em 0;
+
+}
+
+table tbody tr {
+    border: solid 1px;
+    border-left: 0;
+    border-right: 0;
+}
+
+table td {
+    padding: 0.75em 0.75em;
+    color: gray;
+}
+
+table th {
+    font-size: 1.5em;
+    font-weight: 700;
+    padding: 0 0.75em 0.75em 0.75em;
+    text-align: center;
+}
+
+table thead {
+    border-bottom: solid 2px;
+}
+
+table tfoot {
+    border-top: solid 2px;
+}
+
+table.alt {
+    border-collapse: separate;
+}
+
+table.alt tbody tr td {
+    border: solid 1px;
+    border-left-width: 0;
+    border-top-width: 0;
+}
+
+table.alt tbody tr td:first-child {
+    border-left-width: 1px;
+}
+
+table.alt tbody tr:first-child td {
+    border-top-width: 1px;
+}
+
+table.alt thead {
+    border-bottom: 0;
+}
+
+table.alt tfoot {
+    border-top: 0;
+}
+
+table tbody tr {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+table tbody tr:nth-child(2n + 1) {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+table th {
+    color: #000;
+}
+
+table thead {
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+table tfoot {
+    border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+table.alt tbody tr td {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Buttons */
+.button {
+    
+    border: none;
+    color: white;
+    padding: auto ;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: "Century Gothic";
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.button {
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+}
+
+.button:hover {background-color: #e7e7e7;}
+
+.container{
+    margin: 0 auto;
+    width: 400px;
+    position: relative;
+    left: 10%;
+}
+.container .button{
+    padding: 10px 18px;
+    background-color: #4aa3df;
+    color: white;
+    font-size: 20px;
+    border: 2px solid #4aa3df;
+}
+
+.container .button:hover {
+    
+}
+
+/*Metodos para scroll de la tabla*/
+
+.table-scroll {
+    height:300px;
+    overflow:auto;  
+    margin-top:20px;
+}
+
+.wrapper{
+    position: relative;
+}
+
+.table-fill .table-information .text-header {
+    position:absolute;   
+    top:-20px;
+    z-index:2;
+    height:20px;
+    width:35%;
+    border:3px solid red;
+}

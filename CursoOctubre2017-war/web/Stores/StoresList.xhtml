@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+ * StoresList
+ * Version 2
+ * Fecha 10/10/2017
+ * @author THANIA LIZETH LÓPEZ MORENO  
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+	<title>Garcomex</title>
+	<meta charset="utf-8" />
+        <h:outputStylesheet library="css" name="main.css"/>
+	<link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
+    </h:head>
+    <h:body class="subpage">
+    <!-- Header -->
+    <header id="header">
+        <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
+        <h:link value="Log out" outcome="/login"></h:link>
+    </header>
+    <div id="main">
+        <section class="wrapper style1">
+            <div class="inner">
+                <h2 name="title">Stores List</h2>
+                <h:form>
+                    <div class="table-scroll">
+                        <h:dataTable var="store" value="#{storesController.findAll()}" class="table-fill" border="2">
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> RetailId </f:facet>
+                                #{store.retails.retailId}
+                            </h:column>
+
+                             <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> StoreCode </f:facet>
+                                #{store.storeCode}
+                            </h:column>
+
+                             <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Name </f:facet>
+                                #{store.name}
+                            </h:column>
+
+                             <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Street </f:facet>
+                                #{store.street}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> OutsideNumber </f:facet>
+                                #{store.outsideNumber}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> InsideNumber </f:facet>
+                                #{store.insideNumber}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Neighborhood </f:facet>
+                                #{store.neighborhood}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> CityId </f:facet>
+                                #{store.cities.cityId}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> PostalCode </f:facet>
+                                #{store.postalCode}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> StoreRankId </f:facet>
+                                #{store.storeRanks.storeRankId}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> SellerId </f:facet>
+                                #{store.sellers.sellerId}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> DemostratorId </f:facet>
+                                #{store.demostratorId}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> ProgVisitId </f:facet>
+                                #{store.programVisits.progVisitId}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> SaleStructId </f:facet>
+                               #{store.GSaleStructures.GSaleStructId}
+                            </h:column>
+
+                           <h:column>
+                                <f:facet name="header"> EnableDate </f:facet>
+                                <h:outputText value="#{store.enableDate}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> EnabledBy </f:facet>
+                                #{store.enabledBy}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> DisableData </f:facet>
+                                <h:outputText value="#{store.disableDate}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> DisabledBy </f:facet>
+                                #{store.disabledBy}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> LastChangeDate </f:facet>
+                                <h:outputText value="#{store.lastChangeDate}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> ChangedBy </f:facet>
+                                #{store.changedBy}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> TradeCompanyId </f:facet>
+                                #{store.tradeCompanyId}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> LastUpdateBi </f:facet>
+                                <h:outputText value="#{store.lastUpdateBI}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Edit </f:facet>
+                                <h:commandButton class="button" value="Edit" action="#{storesController.prepareUpdate(store)}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Delete </f:facet>
+                                <h:commandButton class="button" value="Delete" rendered="#{!storesController.deleteFlagCheck(store)}" action="#{storesController.delete(store)}" onclick="if (!confirm('If you delete this row you may lose information from other tables. Are you sure?')) return false;"  />
+                            </h:column>
+
+                        </h:dataTable>
+                    </div>
+                    <div class="12u$">
+                        <ul class="actions">
+                            <div class="container">
+                            <li><h:commandButton class="button" value="Add" 
+                                                 action="#{storesController.prepareInsert()}"/></li>
+                            <li><h:commandButton class="button" value="Return" 
+                                                 action="#{storesController.volverHome()}" immediate="true"/></li>
+                            </div>
+                        </ul>
+                    </div>
+                    <h:messages></h:messages>
+                </h:form>
+            </div>
+        </section>
+    </div>
+    <!-- Footer -->
+        <footer id="footer">
+            <div class="copyright">
+                <p>&copy; Untitled. All rights reserved. Design: <a href="http://www.csi.uanl.mx/" target="_blank">CSI</a>.</p>
+            </div>
+        </footer>
+    <!-- Scripts -->
+        <h:outputScript library="js" name="jquery.min.js" />
+        <h:outputScript library="js" name="jquery.scrolly.min.js" />
+        <h:outputScript library="js" name="jquery.scrollex.min.js" />
+        <h:outputScript library="js" name="skel.min.js" />
+        <h:outputScript library="js" name="util.js" />
+        <h:outputScript library="js" name="main.js" />
+    </h:body>
+    
+</html>

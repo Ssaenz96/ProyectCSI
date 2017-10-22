@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+	<title>Garcomex</title>
+	<meta charset="utf-8" />
+        <h:outputStylesheet library="css" name="main.css"/>
+	<link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
+    </h:head>
+    <h:body class="subpage">
+    <!-- Header -->
+    <header id="header">
+        <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
+        <h:link value="Log out" outcome="/login"></h:link>
+    </header>
+    <div id="main">
+        <section class="wrapper style1">
+            <div class="inner">
+                <h2 name="title">Retail List</h2>
+                <h:form>
+                    <div class="table-scroll">
+                        <h:dataTable var="Retails" value="#{retailsController.findAll()}" class="table-fill">
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Channel Id </f:facet>
+                                #{Retails.channels.channelId}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Group Id </f:facet>
+                                #{Retails.groups.groupId}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Retail Code </f:facet>
+                                #{Retails.retailCode}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Name </f:facet>
+                                #{Retails.name}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Street </f:facet>
+                                #{Retails.street}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Out Side Number </f:facet>
+                                #{Retails.outSideNumber}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Inside Number </f:facet>
+                                #{Retails.insideNumber}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Neighborhood </f:facet>
+                                #{Retails.neighborhood}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> CityId </f:facet>
+                                #{Retails.cities.cityId}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Postal Code </f:facet>
+                                #{Retails.postalCode}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Sale Charge Percent </f:facet>
+                                #{Retails.saleChargePercent}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Sale Points </f:facet>
+                                #{Retails.salePoints}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> EnableDate </f:facet>
+                                <h:outputText value="#{Retails.enableDate}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> EnabledBy </f:facet>
+                                #{Retails.enabledBy}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Last Change Date </f:facet>
+                                <h:outputText value="#{Retails.lastChangeDate}">
+                                    <f:convertDateTime type="both" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Last Changed By </f:facet>
+                                #{Retails.lastChangedBy}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Disable Date </f:facet>
+                                <h:outputText value="#{Retails.disableDate}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> DisabledBy </f:facet>
+                                #{Retails.disabledBy}
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> TradeCompanyId </f:facet>
+                                #{Retails.tradeCompanyId}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> LastUpdateBi </f:facet>
+                                <h:outputText value="#{Retails.lastUpdateBi}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Edit </f:facet>
+                                <h:commandButton class="button" value="Edit" action="#{retailsController.prepareUpdate(Retails)}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Delete </f:facet>
+                                <h:commandButton class="button" value="Delete" action="#{retailsController.delete(Retails)}" onclick="if (!confirm('If you delete this row you may lose information from other tables. Are you sure?')) return false;"/>
+                                
+                            </h:column>
+
+                        </h:dataTable>
+                    </div>
+                    <div class="12u$">
+                        <ul class="actions">
+                            <div class="container">
+                            <li><h:commandButton class="button" value="Add" 
+                                                 action="#{retailsController.prepareInsert()}"/></li>
+                            <li><h:commandButton class="button" value="Return" 
+                                                 action="#{retailsController.volverHome()}" immediate="true"/></li>
+                            </div>
+                        </ul>
+                    </div>
+                    <h:messages></h:messages>
+                </h:form>
+            </div>
+        </section>
+    </div>
+    <!-- Footer -->
+        <footer id="footer">
+            <div class="copyright">
+                <p>&copy; Untitled. All rights reserved. Design: <a href="http://www.csi.uanl.mx/" target="_blank">CSI</a>.</p>
+            </div>
+        </footer>
+    <!-- Scripts -->
+        <h:outputScript library="js" name="jquery.min.js" />
+        <h:outputScript library="js" name="jquery.scrolly.min.js" />
+        <h:outputScript library="js" name="jquery.scrollex.min.js" />
+        <h:outputScript library="js" name="skel.min.js" />
+        <h:outputScript library="js" name="util.js" />
+        <h:outputScript library="js" name="main.js" />
+    </h:body>
+</html>
+

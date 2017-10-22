@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+	<title>Garcomex</title>
+	<meta charset="utf-8" />
+        <h:outputStylesheet library="css" name="main.css"/>
+	<link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
+    </h:head>
+    <h:body class="subpage">
+    <!-- Header -->
+    <header id="header">
+        <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
+        <h:link value="Log out" outcome="/login"></h:link>
+    </header>
+    <div id="main">
+        <section class="wrapper style1">
+            <div class="inner">
+                <h2 name="title">Store Products List</h2>
+                <h:form>
+                    <div class="table-scroll">
+                        <h:dataTable var="storeProducts" value="#{storeProductsController.findAll()}" class="table-fill">
+
+                            <h:column>
+                                <f:facet name="header"> Customer Sale Price</f:facet>
+                                #{storeProducts.customerSalePrice}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Disable By </f:facet>
+                                #{storeProducts.disableBy}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Disable Date </f:facet>
+                                <h:outputText value = "#{storeProducts.disableDate}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Enable By </f:facet>
+                                #{storeProducts.enableBy}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Enable Date </f:facet>
+                                <h:outputText value = "#{storeProducts.enableDate}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Inventory </f:facet>
+                                #{storeProducts.inventory}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Last CSP Change By </f:facet>
+                                #{storeProducts.lastCSPChangeBy}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Last CSP Change Date </f:facet>
+                                <h:outputText value = "#{storeProducts.lastCSPChangeDate}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Last Change By </f:facet>
+                                #{storeProducts.lastChangeBy}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Last Change Date </f:facet>
+                                <h:outputText value = "#{storeProducts.lastChangeDate}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Last Inventory Update </f:facet>
+                                <h:outputText value = "#{storeProducts.lastInventoryUpdate}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Last Offer Changed By </f:facet>
+                                #{storeProducts.lastOfferChangedBy}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Last Offer Date </f:facet>
+                                <h:outputText value = "#{storeProducts.lastOfferDate}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Last Update BI </f:facet>
+                                <h:outputText value = "#{storeProducts.lastUpdateBI}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Maximum </f:facet>
+                                #{storeProducts.maximum}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Minimum </f:facet>
+                                #{storeProducts.minimum}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Offer Price </f:facet>
+                                #{storeProducts.offerPrice}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Recorder Point </f:facet>
+                                #{storeProducts.recorderPoint}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Status </f:facet>
+                                #{storeProducts.status}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Trade Company Id </f:facet>
+                                #{storeProducts.tradeCompanyId}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Product Id </f:facet>
+                                #{storeProducts.products.productCode}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Store Id </f:facet>
+                                #{storeProducts.stores.name}
+                            </h:column>
+
+
+                            <h:column>
+                                <f:facet name="header"> Edit </f:facet>
+                                <h:commandButton class="button" value="Edit" action="#{storeProductsController.prepareUpdate(storeProducts)}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header"> Delete </f:facet>
+                                <h:commandButton class="button" value="Delete" rendered="#{!storeProductsController.deleteFlagCheck(storeProducts)}" action="#{storeProductsController.prepareDelete(storeProducts)}"  />
+                                <h:commandButton class="button" value="Yes" rendered="#{storeProductsController.deleteFlagCheck(storeProducts)}" action="#{storeProductsController.delete()}"/>
+                                <h:commandButton class="button" value="No" rendered="#{storeProductsController.deleteFlagCheck(storeProducts)}" action="#{storeProductsController.cancelDelete()}"/>
+                            </h:column>
+
+                        </h:dataTable>
+                    </div>
+                    <div class="12u$">
+                        <ul class="actions">
+                            <div class="container">
+                            <li><h:commandButton class="button" value="Add" 
+                                                 action="#{storeProductsController.prepareInsert()}"/></li>
+                            <li><h:commandButton class="button" value="Return" 
+                                                 action="#{storeProductsController.volverHome()}" immediate="true"/></li>
+                            </div>
+                        </ul>
+                    </div>
+                    <h:messages></h:messages>
+                </h:form>
+            </div>
+        </section>
+    </div>
+    <!-- Footer -->
+        <footer id="footer">
+            <div class="copyright">
+                <p>&copy; Untitled. All rights reserved. Design: <a href="http://www.csi.uanl.mx/" target="_blank">CSI</a>.</p>
+            </div>
+        </footer>
+    <!-- Scripts -->
+        <h:outputScript library="js" name="jquery.min.js" />
+        <h:outputScript library="js" name="jquery.scrolly.min.js" />
+        <h:outputScript library="js" name="jquery.scrollex.min.js" />
+        <h:outputScript library="js" name="skel.min.js" />
+        <h:outputScript library="js" name="util.js" />
+        <h:outputScript library="js" name="main.js" />
+    </h:body>
+</html>
+

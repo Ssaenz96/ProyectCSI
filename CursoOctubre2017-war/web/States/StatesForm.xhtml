@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+/**
+ * @author Luis Gerardo García
+ * Clase: States Form
+ * Version 2.0 (Se agregó el datepicker)
+ * Fecha: 11/10/2017
+ * Copyright
+ */
+-->
+<!--
+ Nombre de la página: StatesForm
+ Información de la versión: version 3 (Correción de bugs)
+ Fecha: 11/10/2017
+ Copyright: Jesús Rey de la Cruz
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Garcomex</title>
+        <h:outputStylesheet name="/css/formsCSS.css"/>
+        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+        <script> 
+          $(document).ready(function() {
+          $(".lastUpdateBI_datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+            });
+        </script>
+    </h:head>
+    <h:body> 
+        <h:form>
+            
+            <div class="title">
+                <h3 name="title">Formulario States</h3>
+            </div>
+            
+            <div class="form-style">
+            <h:outputText value="State Code:"/>
+            <h:inputText maxlength="2" required="true" requiredMessage="State Code is required"
+                         value="#{statesController.states.stateCode}" 
+                         validator="iniciaConLetraValidator" validatorMessage="State Code must start with a letter"/>
+            <br/>
+                             
+            <h:outputText value="Name"/>
+            <h:inputText maxlength="35" required="true" requiredMessage="Name is required"
+                         value="#{statesController.states.name}" 
+                         validator="letrasValidator" validatorMessage="Name must only contain letters"/>
+            
+            <br/>
+            <h:outputText value="Region Id"/>
+            <h:selectOneMenu value="#{statesController.states.region}">
+                <f:selectItem itemValue="0" itemLabel="Seleccione un Region Id" noSelectionOption="true"></f:selectItem>
+                <f:selectItems value="#{regionsController.findAll()}" var="regions" itemValue="#{regions}" itemLabel="#{regions.regionId}"/>
+            </h:selectOneMenu>
+            
+            <h:outputText value="Last Update By:"/>
+            <h:inputText id="LastUpdateDatepickerId" onclick="this.readOnly = true;" styleClass="lastUpdateBI_datepicker" converterMessage="LastUpdateBI has an incorrect date format" value="#{statesController.states.lastUpdateBI}" >                                       
+                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+            </h:inputText>
+
+            <h:commandButton rendered="#{!statesController.flagUpdate}" value="Add" 
+                             class="button" onclick="document.getElementById('LastUpdateDatepickerId').readOnly = false;"
+                             action="#{statesController.insert()}"/>
+            
+            <h:commandButton rendered="#{statesController.flagUpdate}" value="Edit"
+                             class="button"
+                             action="#{statesController.update()}"/>
+            
+            <h:commandButton immediate="true" value="Return" 
+                             class="button"
+                             action="#{statesController.volver()}"/>
+            
+            </div>
+            <h:messages> </h:messages>
+            
+       </h:form>
+    </h:body>
+</html>
+

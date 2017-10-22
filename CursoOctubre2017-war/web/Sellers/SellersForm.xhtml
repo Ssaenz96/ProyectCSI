@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+ * Version 1.0
+ *
+ * 13/10/2017
+ *
+ * Sellers Form
+ *
+ * @author Gerardo Cardenas
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Sellers Form</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <div class="form-style">
+                <h:outputText value="PayRollNumber: "/>
+                <h:inputText value="#{sellersController.sellers.payRollNumber}" maxlength="10" validator="alfanumericoValidator" validatorMessage="PayRollNumber is an alphanumeric field"
+                             required="true" requiredMessage="PayRollNumber is a required field"/><br/>
+                <h:outputText value="Name"/>
+                <h:inputText value="#{sellersController.sellers.name}" maxlength="35" validator="letrasValidator" validatorMessage="Name must contain only letters"
+                             required="true" requiredMessage="Name is a required field"/><br/>
+                <h:outputText value="PositionId: "/>
+                <h:selectOneMenu required="true" requiredMessage="Position ID is a required field" value="#{sellersController.sellers.positions}">
+                    <f:selectItem itemValue="0" itemLabel="Select one position" noSelectionOption="true"></f:selectItem>
+                    <f:selectItems value="#{positionsController.findAll()}" var="position" itemValue="#{position}" itemLabel="#{position.positionId}"/>
+                </h:selectOneMenu><br/>
+                <h:outputText value="EmpTypeId: "/>
+                <h:selectOneMenu value="#{sellersController.sellers.employeeTypes}" required="true" requiredMessage="EmpTypeId is a required field">
+                    <f:selectItem itemValue="0" itemLabel="Select one EmpType" noSelectionOption="true"></f:selectItem>
+                    <f:selectItems value="#{employeeTypesController.findAll()}" var="emp" itemValue="#{emp}" itemLabel="#{emp.employeeTypeId}"/>
+                </h:selectOneMenu><br/>
+                <h:outputText value="EnableDate: "/>
+                <h:inputText converterMessage="EnableDate has an incorrect date format" value="#{sellersController.sellers.enableDate}">
+                    <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                </h:inputText><br/>
+                <h:outputText value="EnabledBy: "/>
+                <h:inputText validator="letrasValidator" validatorMessage="EnableBy must contain only letters" value="#{sellersController.sellers.enableBy}" maxlength="50"/><br/>
+                <h:outputText value="LastChangeDate: "/>
+                <h:inputText converterMessage="LastChange has an incorrect date format" value="#{sellersController.sellers.lastChangeDate}"><br/>
+                    <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                </h:inputText>
+                <h:outputText value="LastChangeBy "/>
+                <h:inputText validator="letrasValidator" validatorMessage="LastChangeBy must contain only letters" value="#{sellersController.sellers.lastChangeBy}" maxlength="50"/><br/>
+                <h:outputText value="DisableDate: "/>
+                <h:inputText converterMessage="DisableDate has an incorrect date format" value="#{sellersController.sellers.disableDate}">
+                    <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                </h:inputText><br/>
+                <h:outputText value="DisabledBy: "/>
+                <h:inputText validator="letrasValidator" validatorMessage="DisableBy must contain only letters" value="#{sellersController.sellers.enableBy}" maxlength="50"/><br/>
+                <h:outputText value="SellerIdUp: "/>
+                <h:inputText value="#{sellersController.sellers.sellerIdUp}" validator="numerosValidator" validatorMessage="SellerIdUp only contains numbers"/><br/>
+                <h:outputText value="GSaleStructId: "/>
+                <h:selectOneMenu value="#{sellersController.sellers.GSaleStructures}" required="true" requiredMessage="GSaleStructId is a required field">
+                    <f:selectItem itemValue="0" itemLabel="Select one GSaleStructId" noSelectionOption="true"></f:selectItem>
+                    <f:selectItems value="#{gSaleStructuresController.findAll()}" var="g" itemValue="#{g}" itemLabel="#{g.GSaleStructId}"/>
+                </h:selectOneMenu><br/>
+                <h:outputText value="TradeCompanyId: "/>
+                <h:inputText converterMessage="TradeCompanyId must be a numeric field" value="#{sellersController.sellers.tradeCompanyId}" validator="numerosValidator" validatorMessage="TradeCompanyId only contains numbers"/><br/>
+                <h:outputText value="LastUpdateBI"/>
+                <h:inputText converterMessage="LastUpdateBI has an incorrect date format" value="#{sellersController.sellers.lastUpdateBI}">
+                    <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                </h:inputText><br/>
+                <h:commandButton rendered="#{!sellersController.flagUpdate}" value="Add" action="#{sellersController.insert()}" class="button"/>
+                <h:commandButton rendered="#{sellersController.flagUpdate}" value="Edit" action="#{sellersController.update()}" class="button"/>
+                <h:commandButton immediate="true" value="Return" class="button" action="#{sellersController.volver()}"/>
+            </div>
+        </h:form>
+    </h:body>
+</html>
+
