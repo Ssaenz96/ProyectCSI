@@ -31,7 +31,7 @@ Fecha: 18/10/2017
                             <h:dataTable var="gSaleStructures" value="#{gSaleStructuresController.findAll()}" class="table-fill">
 
                                 <h:column class="table-information">
-                                    <f:facet name="header" class="text-header"> OwnCode </f:facet>
+                                    <f:facet name="header" class="text-header"> Own Code </f:facet>
                                         #{gSaleStructures.ownCode}
                                 </h:column>
 
@@ -41,41 +41,41 @@ Fecha: 18/10/2017
                                 </h:column>
 
                                 <h:column class="table-information">
-                                    <f:facet name="header" class="text-header"> SaleGeoStructIdUp </f:facet>
+                                    <f:facet name="header" class="text-header"> Sale Geo Struct Id Up </f:facet>
                                         #{gSaleStructures.saleGeoStructIdUp}
                                 </h:column>
 
                                 <h:column>
-                                    <f:facet name="header"> EnableDate </f:facet>
+                                    <f:facet name="header"> Enable Date </f:facet>
                                     <h:outputText value="#{gSaleStructures.enableDate}">
                                         <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                     </h:outputText>
                                 </h:column>
 
                                 <h:column class="table-information">
-                                    <f:facet name="header" class="text-header"> EnabledBy </f:facet>
+                                    <f:facet name="header" class="text-header"> Enabled By </f:facet>
                                         #{gSaleStructures.enabledBy}
                                 </h:column>
 
                                 <h:column>
-                                    <f:facet name="header"> DisableDate </f:facet>
+                                    <f:facet name="header"> Disable Date </f:facet>
                                     <h:outputText value="#{gSaleStructures.disableDate}">
                                         <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                     </h:outputText>
                                 </h:column>
 
                                 <h:column class="table-information">
-                                    <f:facet name="header" class="text-header"> DisabledBy </f:facet>
+                                    <f:facet name="header" class="text-header"> Disabled By </f:facet>
                                         #{gSaleStructures.disabledBy}
                                 </h:column>
 
                                 <h:column class="table-information">
-                                    <f:facet name="header" class="text-header"> TradeCompanyId </f:facet>
+                                    <f:facet name="header" class="text-header"> Trade Company Id </f:facet>
                                         #{gSaleStructures.tradeCompanyId}
                                 </h:column>
 
                                 <h:column>
-                                    <f:facet name="header"> LastUpdateBI </f:facet>
+                                    <f:facet name="header"> Last Update BI </f:facet>
                                     <h:outputText value="#{gSaleStructures.lastUpdateBi}">
                                         <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                     </h:outputText>

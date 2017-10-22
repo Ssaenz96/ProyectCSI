@@ -39,7 +39,7 @@ Fecha: 18/10/2017
                             <h:dataTable var="citie" value="#{citiesController.findAll()}" class="table-fill">
 
                                 <h:column class="table-information">
-                                    <f:facet name="header" class="text-header"> City code </f:facet>
+                                    <f:facet name="header" class="text-header"> City Code </f:facet>
                                         #{citie.cityCode}
                                 </h:column>
 
@@ -54,7 +54,7 @@ Fecha: 18/10/2017
                                 </h:column>
 
                                 <h:column class="table-information">
-                                    <f:facet name="header" class="text-header"> Metro zone ID </f:facet>
+                                    <f:facet name="header" class="text-header"> Metro Zone ID </f:facet>
                                         #{citie.metropolitanZones.metroZoneId}
                                 </h:column>
 
@@ -64,7 +64,7 @@ Fecha: 18/10/2017
                                 </h:column>
 
                                 <h:column>
-                                    <f:facet name="header"> Last update BI </f:facet>
+                                    <f:facet name="header"> Last Update BI </f:facet>
                                     <h:outputText value="#{citie.lastUpdateBi}">
                                         <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                     </h:outputText>

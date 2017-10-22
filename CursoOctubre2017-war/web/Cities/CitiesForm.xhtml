@@ -35,12 +35,12 @@
                     <div class="row uniform">
                     <div class="6u 12u$(xsmall)">
                         <h:outputText value="Code: "/>
-                        <h:inputText required="true" requiredMessage="A code is needed."
+                        <h:inputText required="true" requiredMessage="Code is a required field"
                                      value="#{citiesController.cities.cityCode}" maxlength="3" p:placeholder="Code"/>
                     </div>
                     <div class="6u$ 12u$(xsmall)">
                         <h:outputText value="Name: "/>
-                        <h:inputText required="true" requiredMessage="A name is required."
+                        <h:inputText required="true" requiredMessage="Name is a required field"
                                      value="#{citiesController.cities.name}" maxlength="40" p:placeholder="Name"/>
                     </div>
                     <div class="6u 12u$(xsmall)">
@@ -48,7 +48,7 @@
                     <h:inputText value="#{citiesController.cities.population}" maxlength="8" p:placeholder="Population"/>
                     </div>
                     <div class="6u$ 12u$(xsmall)">
-                        <h:outputText value="Last update BI: "/>
+                        <h:outputText value="Last Update BI: "/>
                         <h:inputText value="#{citiesController.cities.lastUpdateBi}" p:placeholder="dd/MM/yyyy">
                             <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
                         </h:inputText> 
@@ -56,7 +56,7 @@
                     <div class="12u$">
                         <div class="select-wrapper">
                         <h:outputText value="State: "/>
-                        <h:selectOneMenu required="true" requiredMessage="A state is needed." value="#{citiesController.cities.states}">
+                        <h:selectOneMenu required="true" requiredMessage="State is a required field" value="#{citiesController.cities.states}">
                             <f:selectItem itemValue="0" itemLabel="Select one..." noSelectionOption="true"></f:selectItem>
                             <f:selectItems value="#{statesController.findAll()}" var="state" itemValue="#{state}" itemLabel="#{state.name}"></f:selectItems>
                         </h:selectOneMenu>
@@ -64,8 +64,8 @@
                     </div>
                     <div class="12u$">
                         <div class="select-wrapper">
-                        <h:outputText value="Metropolitan zone: "/>
-                        <h:selectOneMenu required="true" requiredMessage="A metropolitan zone is needed" value="#{citiesController.cities.metropolitanZones}">
+                        <h:outputText value="Metropolitan Zone: "/>
+                        <h:selectOneMenu required="true" requiredMessage="Metropolitan Zone is a required message" value="#{citiesController.cities.metropolitanZones}">
                             <f:selectItem itemValue="0" itemLabel="Select one..." noSelectionOption="true"></f:selectItem>
                             <f:selectItems value="#{metropolitanZonesController.findAll()}" var="metropolitanZone" itemValue="#{metropolitanZone}" itemLabel="#{metropolitanZone.name}"></f:selectItems>
                         </h:selectOneMenu>

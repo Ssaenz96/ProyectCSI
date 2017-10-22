@@ -36,7 +36,7 @@ Fecha: 18/10/2017
                             <h:dataTable var="positions" value="#{positionsController.findAll()}" class="table-fill">
 
                                 <h:column class="table-information">
-                                    <f:facet name="header" class="text-header">PositionCode</f:facet>
+                                    <f:facet name="header" class="text-header">Position Code</f:facet>
                                         #{positions.positionCode}
                                 </h:column>
 
@@ -46,12 +46,12 @@ Fecha: 18/10/2017
                                 </h:column>
 
                                 <h:column class="table-information">
-                                    <f:facet name="header" class="text-header">TradeCompanyId</f:facet>
+                                    <f:facet name="header" class="text-header">Trade Company Id</f:facet>
                                         #{positions.tradeCompanyId}
                                 </h:column>
 
                                 <h:column>
-                                    <f:facet name="header">LastUpdateBI</f:facet>
+                                    <f:facet name="header">Last Update BI</f:facet>
                                     <h:outputText value="#{positions.lastUpdateBI}">
                                         <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                     </h:outputText>

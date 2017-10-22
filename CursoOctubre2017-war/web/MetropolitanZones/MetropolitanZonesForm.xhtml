@@ -33,7 +33,7 @@
                             <div class="12u$">
                                 <h:outputText value="MetroZoneCode: "/>
                                 <h:inputText maxlength="2" required="true" 
-                                             requiredMessage="MetroZoneCode field is required" 
+                                             requiredMessage="MetroZoneCode field is a required field" 
                                              value="#{metropolitanZonesController.metropolitanZones.metroZoneCode}"
                                              p:placeholder="Metro Zone Code">
                                 </h:inputText>
@@ -42,7 +42,7 @@
                             <div class="12u$">
                                 <h:outputText value="Name: "/>
                                 <h:inputText maxlength="50" required="true" 
-                                             requiredMessage="Name field is required" 
+                                             requiredMessage="Name field is a required field" 
                                              value="#{metropolitanZonesController.metropolitanZones.name}"
                                              p:placeholder="Name">
                                 </h:inputText>
@@ -50,7 +50,7 @@
 
                             <div class="12u$">
                                 <h:outputText value="LastUpdateBI: "/>
-                                <h:inputText  converterMessage="LastUpdateBI must be follow the next format(dd/MM/yyyy)" 
+                                <h:inputText  converterMessage="LastUpdateBI has an incorrect date format" 
                                               value="#{metropolitanZonesController.metropolitanZones.lastUpdateBI}"
                                               p:placeholder="dd/MM/yyyy">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>

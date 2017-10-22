@@ -8,58 +8,96 @@ Luis Amaury Urbina Molina
 -->
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-        <title>Product Categories Form</title>
-        <h:outputStylesheet name="/css/formsCSS.css"/>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Garcomex</title>
+        <meta charset="utf-8" />
+        <h:outputStylesheet library="css" name="main.css"/>
+        <link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
     </h:head>
-    <h:body>
-        <h:form>
-            
-            <div class="title">
-                <h3 name="title">Product Categories</h3>
-            </div>
-            <div class="form-style">
-            <h:outputText value="Product Category Code: "/>
-            <h:inputText required="true" requiredMessage="Product Category Code is a required field"
-                         value="#{productCategoriesController.productCategories.prodCategoryCode}" maxlength="3"/>
-            <br/>
-            
-            
-            <h:outputText value="Description: "/>
-            <h:inputText required="true" requiredMessage="Description is a required field"
-                         value="#{productCategoriesController.productCategories.description}" maxlength="35"/>
-            <br/>
-                             
-            <h:outputText value="Trade Company ID: "/>
-            <h:inputText converterMessage="TradeCompanyId is a numeric field" 
-                         requiredMessage="Trade Company ID is a required field"
-                         value="#{productCategoriesController.productCategories.tradeCompanyId}" 
-                         validator="numerosValidator" validatorMessage="The field Trade Company Id only accept numbers..."/>
-            <br/>
-            
-            <h:outputText value =" Last Update BI: "/>
-            <h:inputText converterMessage="LastUpdateBI has an incorrect date format" value="#{productCategoriesController.productCategories.lastUpdateBI}">
-                <f:convertDateTime type="date" pattern="dd/MM/yyyy" />
-            </h:inputText>
-            <br/>
 
-            <h:commandButton rendered="#{!productCategoriesController.flagUpdate}" value="Add" 
-                             class="button"
-                             action="#{productCategoriesController.insert()}"/>
-            
-            <h:commandButton rendered="#{productCategoriesController.flagUpdate}" value="Edit"
-                             class="button"
-                             action="#{productCategoriesController.update()}"/>
-            
-            <h:commandButton immediate="true" value="Return" 
-                             class="button"
-                             action="ProductCategoriesList"/>
-            
+    <h:body class="subpage">
+        <!-- Header -->
+        <header id="header">
+            <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
+            <h:link value="Log out" outcome="/login"></h:link>
+        </header>
+        <div id="main">
+            <section class="wrapper style1">
+                <div class="inner">
+                    <!-- Form -->
+                    <h2>Product Categories Form</h2>
+                    <h:form>
+
+                        <div class="row uniform">
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Product Category Code: "/>
+                                <h:inputText required="true" requiredMessage="Product Category Code is a required field"
+                                             p:placeholder="Product Category Code"
+                                             value="#{productCategoriesController.productCategories.prodCategoryCode}" maxlength="3"/>
+                            </div>
+
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Description: "/>
+                                <h:inputText required="true" requiredMessage="Description is a required field"
+                                             p:placeholder="Description"
+                                             value="#{productCategoriesController.productCategories.description}" maxlength="35"/>
+                            </div>
+
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Trade Company Id: "/>
+                                <h:inputText converterMessage="TradeCompanyId must be a numeric field" 
+                                             requiredMessage="Trade Company ID is a required field"
+                                             p:placeholder="Trade Company Id"
+                                             value="#{productCategoriesController.productCategories.tradeCompanyId}" 
+                                             validator="numerosValidator" validatorMessage="The field Trade Company Id only accept numbers..."/>
+                            </div>
+
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value =" Last Update BI: "/>
+                                <h:inputText converterMessage="LastUpdateBI has an incorrect date format" 
+                                             p:placeholder="dd/MM/yyyy"
+                                             value="#{productCategoriesController.productCategories.lastUpdateBI}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+                                </h:inputText>
+                            </div>
+
+                            <!-- Break -->
+                            <div class="12u$">
+                                <ul class="actions">
+                                    <li><h:commandButton rendered="#{!productCategoriesController.flagUpdate}" value="Add" 
+                                                         class="button"
+                                                         action="#{productCategoriesController.insert()}"/></li>
+
+                                    <li><h:commandButton rendered="#{productCategoriesController.flagUpdate}" value="Edit"
+                                                         class="button"
+                                                         action="#{productCategoriesController.update()}"/></li>
+
+                                    <li><h:commandButton immediate="true" value="Return" 
+                                                         class="button"
+                                                         action="ProductCategoriesList"/></li>
+                                </ul>
+                            </div>
+                            <h:messages> </h:messages>
+                        </div>
+                    </h:form>
+                </div>
+            </section>
+        </div>
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="copyright">
+                <p>&copy; Untitled. All rights reserved. Design: <a href="http://www.csi.uanl.mx/" target="_blank">CSI</a>.</p>
             </div>
-            <h:messages> </h:messages>
-            
-        </h:form>
+        </footer>
+        <!-- Scripts -->
+        <h:outputScript library="js" name="jquery.min.js" />
+        <h:outputScript library="js" name="jquery.scrolly.min.js" />
+        <h:outputScript library="js" name="jquery.scrollex.min.js" />
+        <h:outputScript library="js" name="skel.min.js" />
+        <h:outputScript library="js" name="util.js" />
+        <h:outputScript library="js" name="main.js" />
     </h:body>
 </html>
 

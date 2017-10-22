@@ -24,19 +24,19 @@
                         <div class="row uniform">
                             <div class="12u$">
                                 <h:outputText value="Group Code" rendered="#{!groupsController.flagUpdate}"/>
-                                <h:inputText required="true" requiredMessage="The field Group Code is required"
+                                <h:inputText required="true" requiredMessage="Group Code is a required field"
                                              value="#{groupsController.groups.groupCode}" validator="groupCodeValidator" maxlength="2"
                                              p:placeholder="Group Code" rendered="#{!groupsController.flagUpdate}"/>
                             </div>
                             <div class="12u$">
                                 <h:outputText value="Trade Company Id"/>
                                 <h:inputText value="#{groupsController.groups.tradeCompanyId}" 
-                                             validator="numerosValidator" validatorMessage="The field Trade Company Id must be numeric"
+                                             converterMessage="Trade Company Id must be a numeric field"
                                              p:placeholder="Trade Company Id"/>
                             </div>
                             <div class="12u$">
                                 <h:outputText value="Description"/>
-                                <h:inputText required="true" requiredMessage="Description field is required"
+                                <h:inputText required="true" requiredMessage="Description is a required field"
                                              value="#{groupsController.groups.description}" maxlength="35"
                                              p:placeholder="Description"/>
                             </div>
@@ -44,20 +44,20 @@
                                 <h:outputText value="User Name"/>
                                 <h:inputText value="#{groupsController.groups.userName}" maxlength="50"
                                              validator="alfanumericoValidator" p:placeholder="User Name"
-                                             converterMessage="The field User Name must be alphanumeric"/>
+                                             validatorMessage="User Name must be an alphanumeric field"/>
                             </div>
                             <div class="6u$ 12u$(xsmall)">
                                 <h:outputText value="Password"/>
                                 <h:inputText value="#{groupsController.groups.password}" maxlength="50"
                                              validator="alfanumericoValidator" p:placeholder="Password"
-                                             converterMessage="The field Password must be alphanumeric"/>
+                                             validatorMessage="Password must be an alphanumeric field"/>
                             </div>
                             <div class="6u 12u$(xsmall)">
                                 <h:outputText value="Download File"/>
                                 <h:inputText value="#{groupsController.groups.download}"
                                              maxlength="1" p:placeholder="Download File"
                                              validator="numerosValidator"
-                                             converterMessage="The field Download File muste be numeric"/>
+                                             validatorMessage="The field Download File muste be numeric"/>
                             </div>
                             <div class="6u 12u$(xsmall)">
                                 <h:outputText value="Last Update BI"/>
@@ -72,7 +72,7 @@
                                 <h:inputText value="#{groupsController.groups.alternateUserName}" 
                                              maxlength="50" validator="alfanumericoValidator" 
                                              p:placeholder="Alternate User Name"
-                                             validatorMessage="The field Alternate User Name must be alphanumeric">            
+                                             validatorMessage="Alternate User Name must be an alphanumeric field">            
                                 </h:inputText> 
                             </div>
                             <div class="6u$ 12u$(xsmall)">
@@ -80,7 +80,7 @@
                                 <h:inputText value="#{groupsController.groups.alternatePassword}" maxlength="64"
                                              validator="alfanumericoValidator" 
                                              p:placeholder="Alternate Password"
-                                             validatorMessage="The field Alternate Password must be alphanumeric">            
+                                             validatorMessage="Alternate Password must be an alphanumeric field">            
                                 </h:inputText> 
                             </div>
                             <div class="12u$">

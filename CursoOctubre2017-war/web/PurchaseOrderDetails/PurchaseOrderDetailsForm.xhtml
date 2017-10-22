@@ -11,97 +11,146 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
-        <title>PurchaseOrderDetails Form</title>
+        <title>Garcomex</title>
+        <meta charset="utf-8" />
+        <h:outputStylesheet library="css" name="main.css"/>
+        <link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
     </h:head>
-    <h:head>
-        <title>PurchaseOrderDetails Form</title>
-        <!--<h:outputStylesheet name="/css/formsCSS.css"/>-->
-    </h:head>
-    <h:body>
-        <h:form>
 
-            <div class="title">
-                <h3 name="title">PurchaseOrderDetails</h3>
-            </div>
+    <h:body class="subpage">
+        <!-- Header -->
+        <header id="header">
+            <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
+            <h:link value="Log out" outcome="/login"></h:link>
+        </header>
 
-            <div class="form-style">
-                <h:outputText value="PurchaseOrder ID: "/>
-                <h:selectOneMenu required="true" requiredMessage="This field is necessary PurchaseOrder ID"
-                                 value="#{purchaseOrderDetailsController.purchaseOrderDetails.purchaseOrders}">
-                    <f:selectItem itemValue="0" itemLabel="Select a PurchaseOrder" noSelectionOption="true"/>
-                    <f:selectItems value="#{purchaseOrdersController.findAll()}" var="po"
-                                   itemValue="#{po}" itemLabel="#{po.POId}"/>
-                </h:selectOneMenu>
-                <br/>
+        <div id="main">
+            <section class="wrapper style1">
+                <div class="inner">
+                    <!-- Form -->
+                    <h2>Purchase Order Details Form</h2>
+                    <h:form>
+                        <div class="row uniform">
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="PurchaseOrder ID: "/>
+                                <h:selectOneMenu required="true" requiredMessage="PurchaseOrder ID is a required field"
+                                                 value="#{purchaseOrderDetailsController.purchaseOrderDetails.purchaseOrders}">
+                                    <f:selectItem itemValue="0" itemLabel="Select a PurchaseOrder" noSelectionOption="true"/>
+                                    <f:selectItems value="#{purchaseOrdersController.findAll()}" var="po"
+                                                   itemValue="#{po}" itemLabel="#{po.POId}"/>
+                                </h:selectOneMenu>
+                            </div>
 
-                <h:outputText value="Product ID: "/>
-                <h:selectOneMenu required="true" requiredMessage="This field is necessary Product ID"
-                                 value="#{purchaseOrderDetailsController.purchaseOrderDetails.products}">
-                    <f:selectItem itemValue="0" itemLabel="Select a Product" noSelectionOption="true"/>
-                    <f:selectItems value="#{productsController.findAll()}" var="product"
-                                   itemValue="#{product}" itemLabel="#{product.productId}"/>
-                </h:selectOneMenu>
-                <br/>
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Product ID: "/>
+                                <h:selectOneMenu required="true" requiredMessage="Product ID is a required field"
+                                                 value="#{purchaseOrderDetailsController.purchaseOrderDetails.products}">
+                                    <f:selectItem itemValue="0" itemLabel="Select a Product" noSelectionOption="true"/>
+                                    <f:selectItems value="#{productsController.findAll()}" var="product"
+                                                   itemValue="#{product}" itemLabel="#{product.productId}"/>
+                                </h:selectOneMenu>
+                            </div>
 
-                <h:outputText value="RequestedUnits: "/>
-                <h:inputText required="true" requiredMessage="RequestedUnits is a required field"
-                             value="#{purchaseOrderDetailsController.purchaseOrderDetails.requestedUnits}" maxlength="17"/>
-                <br/>
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="RequestedUnits: "/>
+                                <h:inputText required="true" requiredMessage="RequestedUnits is a required field"
+                                             p:placeholder="Requested Units"
+                                             value="#{purchaseOrderDetailsController.purchaseOrderDetails.requestedUnits}" maxlength="17"/>
+                            </div>
 
-                <h:outputText value="RequestedValue: "/>
-                <h:inputText value="#{purchaseOrderDetailsController.purchaseOrderDetails.requestedValue}" maxlength="15"/>
-                <br/>
+                            <div class="6u$ 12u$(xsmall)">    
+                                <h:outputText value="Requested Value: "/>
+                                <h:inputText p:placeholder="Requested Value" converterMessage="Requested Value must be a numeric field"
+                                             value="#{purchaseOrderDetailsController.purchaseOrderDetails.requestedValue}" maxlength="15"/>
+                            </div>
 
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Delivered Units: "/>
+                                <h:inputText rendered="true" requiredMessage="Delivered Units is a required field"
+                                             p:placeholder="Delivered Units" converterMessage="Delivered Units must be a numeric field"
+                                             value="#{purchaseOrderDetailsController.purchaseOrderDetails.deliveredUnits}" maxlength="17"/>
+                            </div>
 
-                <h:outputText value="DeliveredUnits: "/>
-                <h:inputText rendered="true" requiredMessage="RequestedUnits is a required field"
-                            value="#{purchaseOrderDetailsController.purchaseOrderDetails.deliveredUnits}" maxlength="17"/>
-                <br/>
+                            <div class="6u$ 12u$">
+                                <h:outputText value="Delivered Value: "/>
+                                <h:inputText value="#{purchaseOrderDetailsController.purchaseOrderDetails.deliveredValue}" 
+                                             p:placeholder="Delivered Value" converterMessage="Delivered Value must be a numeric field"
+                                             maxlength="15"/>
+                            </div>
 
-                <h:outputText value="DeliveredValue: "/>
-                <h:inputText value="#{purchaseOrderDetailsController.purchaseOrderDetails.deliveredValue}" maxlength="15"/>
-                <br/>
+                            <div class="6u$ 12u$">
+                                <h:outputText value="Delivery Real Date "/>
+                                <h:inputText converterMessage="Delivery Real Date has an incorrect date format" 
+                                             p:placeholder="dd/MM/yyyy"
+                                             value="#{purchaseOrderDetailsController.purchaseOrderDetails.deliveryRealDate}">
+                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
 
-                <h:outputText value="DeliveryRealDate "/>
-                <h:inputText converterMessage="LastupdateBI must be in the following format. (dd/mm/yyyy)" value="#{purchaseOrderDetailsController.purchaseOrderDetails.deliveryRealDate}">
-                        <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-                </h:inputText>
-                <br/>
-                
-                <h:outputText value="TradeCompanyId: "/>
-                <h:inputText value="#{purchaseOrderDetailsController.purchaseOrderDetails.tradeCompanyId}" maxlength="15"/>
-                <br/>
+                            <div class="6u$ 12u$">
+                                <h:outputText value="Trade Company Id: "/>
+                                <h:inputText value="#{purchaseOrderDetailsController.purchaseOrderDetails.tradeCompanyId}" 
+                                             p:placeholder="Trade Company Id" converterMessage="Trade Company Id must be a numeric field"
+                                             maxlength="15"/>
+                            </div>
 
-                <h:outputText value="UnitPrice: "/>
-                <h:inputText value="#{purchaseOrderDetailsController.purchaseOrderDetails.unitPrice}" maxlength="15"/>
-                <br/>
-                
-                <h:outputText value="LastUpdateBi "/>
-                <h:inputText converterMessage="LastupdateBI must be in the following format. (dd/mm/yyyy)" value="#{purchaseOrderDetailsController.purchaseOrderDetails.lastUpdateBI}">
-                        <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-                </h:inputText>
-                <br/>
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Unit Price: "/>
+                                <h:inputText value="#{purchaseOrderDetailsController.purchaseOrderDetails.unitPrice}" 
+                                             p:placeholder="Unit Price" converterMessage="Unit Price must be a numeric field"
+                                             maxlength="15"/>
+                            </div>
 
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Last Update Bi "/>
+                                <h:inputText converterMessage="Last Update BI has an incorrect date format" 
+                                             p:placeholder="dd/MM/yyyy"
+                                             value="#{purchaseOrderDetailsController.purchaseOrderDetails.lastUpdateBI}">
+                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
 
+                            <!-- Break -->
+                            <div class="12u$">
+                                <ul class="actions">
 
-                <h:commandButton rendered="#{!purchaseOrderDetailsController.flagUpdate}" value="Agregar" 
-                                 class="button"
-                                 action="#{purchaseOrderDetailsController.insert()}"/>
+                                    <li><h:commandButton rendered="#{!purchaseOrderDetailsController.flagUpdate}" value="Add" 
+                                                         class="button"
+                                                         action="#{purchaseOrderDetailsController.insert()}"/></li>
 
-                <h:commandButton rendered="#{purchaseOrderDetailsController.flagUpdate}" value="Editar"
-                                 class="button"
-                                 action="#{purchaseOrderDetailsController.update()}"/>
+                                    <li><h:commandButton rendered="#{purchaseOrderDetailsController.flagUpdate}" value="Edit"
+                                                         class="button"
+                                                         action="#{purchaseOrderDetailsController.update()}"/></li>
 
-                <h:commandButton immediate="true" value="Regresar" 
-                                 class="button"
-                                 action="#{purchaseOrderDetailsController.volver()}"/>
-
+                                    <li> <h:commandButton immediate="true" value="Return" 
+                                                          class="button"
+                                                          action="#{purchaseOrderDetailsController.volver()}"/></li>
+                                </ul>
+                            </div>
+                            <h:messages> </h:messages>
+                        </div>
+                    </h:form>
                 </div>
-            <h:messages> </h:messages>
+            </section>
+        </div>
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="copyright">
+                <p>&copy; Untitled. All rights reserved. Design: <a href="http://www.csi.uanl.mx/" target="_blank">CSI</a>.</p>
+            </div>
+        </footer>
+        <!-- Scripts -->
+        <h:outputScript library="js" name="jquery.min.js" />
+        <h:outputScript library="js" name="jquery.scrolly.min.js" />
+        <h:outputScript library="js" name="jquery.scrollex.min.js" />
+        <h:outputScript library="js" name="skel.min.js" />
+        <h:outputScript library="js" name="util.js" />
+        <h:outputScript library="js" name="main.js" />
 
-        </h:form>
+
     </h:body>
 </html>
 

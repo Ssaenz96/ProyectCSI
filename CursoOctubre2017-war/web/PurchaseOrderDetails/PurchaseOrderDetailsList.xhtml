@@ -31,59 +31,59 @@
                         <h:dataTable var="pod" value="#{purchaseOrderDetailsController.findAll()}" class="table-fill" border="2">
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> PODetailId </f:facet>
+                                <f:facet name="header" class="text-header"> PO DetailId </f:facet>
                                     #{pod.getpODetailId()}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> POId </f:facet>
+                                <f:facet name="header" class="text-header"> PO Id </f:facet>
                                     #{pod.purchaseOrders.POId}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> ProductId </f:facet>
+                                <f:facet name="header" class="text-header"> Product Id </f:facet>
                                     #{pod.products.productId}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> RequestedUnits </f:facet>
+                                <f:facet name="header" class="text-header"> Requested Units </f:facet>
                                     #{pod.requestedUnits}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> RequestedValue </f:facet>
+                                <f:facet name="header" class="text-header"> Requested Value </f:facet>
                                     #{pod.requestedValue}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> DeliveredUnits </f:facet>
+                                <f:facet name="header" class="text-header"> Delivered Units </f:facet>
                                     #{pod.deliveredUnits}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> DeliveredValue </f:facet>
+                                <f:facet name="header" class="text-header"> Delivered Value </f:facet>
                                     #{pod.deliveredValue}
                             </h:column>
 
                             <h:column>
-                                <f:facet name="header"> DeliveryRealDate </f:facet>
+                                <f:facet name="header"> Delivery Real Date </f:facet>
                                 <h:outputText value="#{pod.deliveryRealDate}">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                 </h:outputText>
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> TradeCompanyId </f:facet>
+                                <f:facet name="header" class="text-header"> Trade Company Id </f:facet>
                                     #{pod.tradeCompanyId}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> UnitPrice </f:facet>
+                                <f:facet name="header" class="text-header"> Unit Price </f:facet>
                                     #{pod.unitPrice}
                             </h:column>
 
                             <h:column>
-                                <f:facet name="header"> LastUpdateBi </f:facet>
+                                <f:facet name="header"> Last Update Bi </f:facet>
                                 <h:outputText value="#{pod.lastUpdateBI}">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                 </h:outputText>

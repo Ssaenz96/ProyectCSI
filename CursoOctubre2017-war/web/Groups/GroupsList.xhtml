@@ -37,17 +37,17 @@
                         <div class="table-scroll">
                             <h:dataTable var="groups" value="#{groupsController.findAll()}" class="table-fill">                
                                 <h:column class="table-information">
-                                    <f:facet name="header" class="text-header">GroupCode</f:facet>
+                                    <f:facet name="header" class="text-header">Group Code</f:facet>
                                         #{groups.groupCode}
                                 </h:column>
 
                                 <h:column class="table-information">
-                                    <f:facet name="header" class="text-header">TradeCompanyId</f:facet>
+                                    <f:facet name="header" class="text-header">Trade Company Id</f:facet>
                                         #{groups.tradeCompanyId}
                                 </h:column>
 
                                 <h:column class="table-information">
-                                    <f:facet name="header" class="text-header">DownloadFile</f:facet>
+                                    <f:facet name="header" class="text-header">Download File</f:facet>
                                         #{groups.download}
                                 </h:column>
 
@@ -62,19 +62,19 @@
                                 </h:column>
 
                                 <h:column class="table-information">
-                                    <f:facet name="header" class="text-header">LastUpdateBI</f:facet>
+                                    <f:facet name="header" class="text-header">Last Update BI</f:facet>
                                     <h:outputText value="#{groups.lastUpdateBI}">
                                         <f:convertDateTime type="date" pattern="dd/MM/yyyy"></f:convertDateTime>
                                     </h:outputText>
                                 </h:column>
 
                                 <h:column class="table-information">
-                                    <f:facet name="header" class="text-header">AlternateUserName</f:facet>
+                                    <f:facet name="header" class="text-header">Alternate UserName</f:facet>
                                         #{groups.alternateUserName}
                                 </h:column>
 
                                 <h:column class="table-information">
-                                    <f:facet name="header" class="text-header">AlternatePassword</f:facet>
+                                    <f:facet name="header" class="text-header">Alternate Password</f:facet>
                                         #{groups.alternatePassword}
                                 </h:column>
 

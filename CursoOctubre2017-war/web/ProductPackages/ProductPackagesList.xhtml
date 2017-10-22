@@ -36,7 +36,7 @@
                             <h:dataTable var="productPackages" value="#{productPackagesController.findAll()}" class="table-fill">
 
                                 <h:column class="table-information">
-                                    <f:facet name="header" class="text-header">ProductPackCode</f:facet>
+                                    <f:facet name="header" class="text-header">Product Pack Code</f:facet>
                                         #{productPackages.productPackCode}
                                 </h:column>
 
@@ -51,12 +51,12 @@
                                 </h:column>
 
                                 <h:column class="table-information">
-                                    <f:facet name="header" class="text-header">TradeCompanyId</f:facet>
+                                    <f:facet name="header" class="text-header">Trade Company Id</f:facet>
                                         #{productPackages.tradeCompanyId}
                                 </h:column>
 
                                 <h:column class="table-information">
-                                    <f:facet name="header" class="text-header">LastUpdateBI</f:facet>
+                                    <f:facet name="header" class="text-header">Last Update BI</f:facet>
                                     <h:outputText value="#{productPackages.lastUpdateBI}">
                                         <f:convertDateTime type="date" pattern="dd/MM/yyyy"></f:convertDateTime>
                                     </h:outputText>

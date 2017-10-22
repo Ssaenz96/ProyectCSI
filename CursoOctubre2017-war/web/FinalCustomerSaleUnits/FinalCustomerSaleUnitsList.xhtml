@@ -33,7 +33,7 @@ Fecha: 18/10/2017
                             <h:dataTable var="finalCustomerSaleUnits" value="#{finalCustomerSaleUnitsController.findAll()}" class="table-fill">
 
                                 <h:column class="table-information">
-                                    <f:facet name="header" class="text-header"> CustomerSUCode </f:facet>
+                                    <f:facet name="header" class="text-header"> Customer SU Code </f:facet>
                                         #{finalCustomerSaleUnits.customerSUCode}
                                 </h:column>
 
@@ -48,7 +48,7 @@ Fecha: 18/10/2017
                                 </h:column>
 
                                 <h:column>
-                                    <f:facet name="header"> LastUpdateBi </f:facet>
+                                    <f:facet name="header"> Last Update BI </f:facet>
                                     <h:outputText value="#{finalCustomerSaleUnits.lastUpdateBI}">
                                         <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                     </h:outputText>

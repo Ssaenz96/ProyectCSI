@@ -40,7 +40,7 @@ Fecha: 18/10/2017
                                 <h:outputText value="GSale Struct Level: " />
                                 <h:inputText required="true" requiredMessage="GSale Struct Level is a required field" 
                                              value="#{gSaleStructureLevelsController.GSaleStructureLevels.GSaleStructLevel}"
-                                             validator="alfanumericoValidator" validatorMessage="GSaleStructLeven is an alphanumeric field" 
+                                             validator="alfanumericoValidator" validatorMessage="GSaleStructLeven must be an alphanumeric field" 
                                              maxlength="2" p:placeholder="GSale Struct Level"/>
                             </div>
                             <div class="12u$">
@@ -51,7 +51,7 @@ Fecha: 18/10/2017
                             </div>
                             <div class="6u 12u$(xsmall)">
                                 <h:outputText  value="Trade Company Id: "/>
-                                <h:inputText  converterMessage="Trade Company Id ia s numeric field"  
+                                <h:inputText  converterMessage="Trade Company Id must be a numeric field"  
                                               value="#{gSaleStructureLevelsController.GSaleStructureLevels.tradeCompanyId}"
                                               p:placeholder="Trade Company Id"/>
                             </div>
@@ -66,9 +66,9 @@ Fecha: 18/10/2017
                             <!-- Break -->
                             <div class="12u$">
                                 <ul class="actions">
-                                    <li><h:commandButton rendered="#{!gSaleStructureLevelsController.flagUpdate}" value="Agregar" action="#{gSaleStructureLevelsController.insert()}" class="button"/></li>
-                                    <li><h:commandButton rendered="#{gSaleStructureLevelsController.flagUpdate}" value="Editar" action="#{gSaleStructureLevelsController.update()}" class="button"/></li>
-                                    <li><h:commandButton immediate="true" value="Regresar" class="button" action="#{gSaleStructureLevelsController.volver()}"/></li>
+                                    <li><h:commandButton rendered="#{!gSaleStructureLevelsController.flagUpdate}" value="Add" action="#{gSaleStructureLevelsController.insert()}" class="button"/></li>
+                                    <li><h:commandButton rendered="#{gSaleStructureLevelsController.flagUpdate}" value="Edit" action="#{gSaleStructureLevelsController.update()}" class="button"/></li>
+                                    <li><h:commandButton immediate="true" value="Return" class="button" action="#{gSaleStructureLevelsController.volver()}"/></li>
                                 </ul>
                             </div>
                             <h:messages></h:messages>

@@ -37,7 +37,7 @@ Fecha: 18/10/2017
                         <div class="row uniform">
                             <div class="12u$">
                                 <h:outputText value="Employee Type Code: "/>
-                                <h:inputText validator="alfanumericoValidator" validatorMessage="Employee Type Code is an alphanumeric field" 
+                                <h:inputText validator="alfanumericoValidator" validatorMessage="Employee Type Code must be an alphanumeric field" 
                                              maxlength="2" required="true" requiredMessage="Employee Type Code is a required field" 
                                              value="#{employeeTypesController.employeeTypes.empTypeCode}" p:placeholder="Employee Type Code"/>
                             </div>
@@ -48,7 +48,7 @@ Fecha: 18/10/2017
                             </div>
                             <div class="6u 12u$(xsmall)">
                                 <h:outputText value="Trade Company Id: "/>
-                                <h:inputText  converterMessage="Trade Company Id is a numeric field" 
+                                <h:inputText  converterMessage="Trade Company Id must be a numeric field" 
                                               value="#{employeeTypesController.employeeTypes.tradeCompanyId}" 
                                               p:placeholder="Trade Company Id"/>
                             </div>

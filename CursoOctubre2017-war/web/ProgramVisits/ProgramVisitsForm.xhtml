@@ -11,74 +11,74 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
-	<title>Garcomex</title>
-	<meta charset="utf-8" />
+        <title>Garcomex</title>
+        <meta charset="utf-8" />
         <h:outputStylesheet library="css" name="main.css"/>
-	<link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
+        <link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
     </h:head>
-    
+
     <h:body class="subpage">
-    <!-- Header -->
-    <header id="header">
-        <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
-        <h:link value="Log out" outcome="/login"></h:link>
-    </header>
-    <div id="main">
-        <section class="wrapper style1">
-            <div class="inner">
-                <!-- Form -->
-                <h2>Program Visits Form</h2>
-                <h:form>    
-                    <div class="row uniform">
-                        <div class="6u$ 12u$(xsmall)">
-                            <h:outputText value="Prog Visit Code: "/>
-                            <h:inputText maxlength="2" required="true" p:placeholder="Prog Visit Code"
-                                requiredMessage="ProgVisitCode is requiered" 
-                                value="#{programVisitsController.programVisits.profVisitCode}"
-                                validator="alfanumericoValidator" converterMessage="Prog Visit Code is an alphanumeric field"
-                                validatorMessage="Prog Visit Code is an alphanumeric field"/>
+        <!-- Header -->
+        <header id="header">
+            <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
+            <h:link value="Log out" outcome="/login"></h:link>
+        </header>
+        <div id="main">
+            <section class="wrapper style1">
+                <div class="inner">
+                    <!-- Form -->
+                    <h2>Program Visits Form</h2>
+                    <h:form>    
+                        <div class="row uniform">
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Prog Visit Code: "/>
+                                <h:inputText maxlength="2" required="true" p:placeholder="Prog Visit Code"
+                                             requiredMessage="ProgVisitCode is a requiered field" 
+                                             value="#{programVisitsController.programVisits.profVisitCode}"
+                                             validator="alfanumericoValidator" validatorMessage="Prog Visit Code must be an alphanumeric field"/>
+                            </div>
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Description: "/>
+                                <h:inputText maxlength="35" required="true" requiredMessage="Description is a requiered field"  p:placeholder="Description"
+                                             value="#{programVisitsController.programVisits.description}"/>
+                            </div>
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Trade Company Id: "/>
+                                <h:inputText p:placeholder="Trade Company Id"  converterMessage="Trade Company Id must be a numeric field" 
+                                             maxlength="1" value="#{programVisitsController.programVisits.tradeCompanyBI}"/>
+                            </div>
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Last Update BI: "/>
+                                <h:inputText  converterMessage="Last Update BI has an incorrect date format" value="#{programVisitsController.programVisits.lastUpdateBI}" p:placeholder="dd/MM/yyyy"> 
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
+                            <!-- Break -->
+                            <div class="12u$">
+                                <ul class="actions">
+                                    <li><h:commandButton  rendered="#{!programVisitsController.flagUpdate}" value="Add" 
+                                                          class="button" action="#{programVisitsController.insert()}"/></li>
+
+                                    <li><h:commandButton  rendered="#{programVisitsController.flagUpdate}" value="Edit" 
+                                                          class="button" action="#{programVisitsController.update()}"/></li>
+
+                                    <li><h:commandButton  immediate="true" value="Return" 
+                                                          class="button" action="#{programVisitsController.volver()}"/></li>
+                                </ul>
+                            </div>
+                            <h:messages> </h:messages>
                         </div>
-                        <div class="12u$">
-                            <h:outputText value="Description: "/>
-                            <h:inputText maxlength="35" required="true" requiredMessage="Description is requiered"  p:placeholder="Description"
-                                        value="#{programVisitsController.programVisits.description}"/>
-                        </div>
-                        <div class="6u$ 12u$(xsmall)">
-                            <h:outputText value="Trade Company Id: "/>
-                            <h:inputText p:placeholder="Trade Company Id"  converterMessage="Trade Company Id must be a numeric field" 
-                                         validator="numerosValidator" validatorMessage="The field Trade Company Id must be numeric"
-                                         maxlength="1" value="#{programVisitsController.programVisits.tradeCompanyBI}"/>
-                        </div>
-                        <div class="6u$ 12u$(xsmall)">
-                            <h:outputText value="LastUpdateBI: "/>
-                            <h:inputText  converterMessage="LastUpdateBI has an incorrect date format" value="#{programVisitsController.programVisits.lastUpdateBI}" p:placeholder="dd/MM/yyyy"> 
-                                <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-                            </h:inputText>
-                        </div>
-                        <!-- Break -->
-                        <div class="12u$">
-                            <ul class="actions">
-                                <h:commandButton  rendered="#{!programVisitsController.flagUpdate}" value="Add" 
-                                                  class="button" action="#{programVisitsController.insert()}"/>
-                                  <h:commandButton  rendered="#{programVisitsController.flagUpdate}" value="Edit" 
-                                                  class="button" action="#{programVisitsController.update()}"/>
-                                  <h:commandButton  immediate="true" value="Return" 
-                                                   class="button" action="#{programVisitsController.volver()}"/>
-                            </ul>
-                        </div>
-                        <h:messages> </h:messages>
-                    </div>
-                </h:form>
-            </div>
-        </section>
-    </div>    
-<!-- Footer -->
+                    </h:form>
+                </div>
+            </section>
+        </div>    
+        <!-- Footer -->
         <footer id="footer">
             <div class="copyright">
                 <p>&copy; Untitled. All rights reserved. Design: <a href="http://www.csi.uanl.mx/" target="_blank">CSI</a>.</p>
             </div>
         </footer>
-    <!-- Scripts -->
+        <!-- Scripts -->
         <h:outputScript library="js" name="jquery.min.js" />
         <h:outputScript library="js" name="jquery.scrolly.min.js" />
         <h:outputScript library="js" name="jquery.scrollex.min.js" />
@@ -88,6 +88,5 @@
     </h:body>
 
 </html>            
-                                   
-                
-                
+
+

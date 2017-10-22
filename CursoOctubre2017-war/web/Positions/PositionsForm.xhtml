@@ -8,25 +8,34 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>Positions</title>
         <h1>Positions</h1>
     </h:head>
     <h:body>
          <h:form>
-        <h:outputText value="PositionCode: "/>
-        <h:inputText maxlength="2" required="true" requiredMessage="PositionCode is required" 
-                     validator="alfanumericoValidator" validatorMessage="PositionCode is an alphanumeric field" value="#{positionsController.positions.positionCode}"></h:inputText>
+        <h:outputText value="Position Code: "/>
+        <h:inputText maxlength="2" required="true" requiredMessage="PositionCode is a required field" 
+                     validator="alfanumericoValidator" validatorMessage="PositionCode is an alphanumeric field" 
+                     p:placeholder="Position Code"
+                     value="#{positionsController.positions.positionCode}"></h:inputText>
         <br/>
         <h:outputText value="Description: "/>
-        <h:inputText maxlength="35" required="true" requiredMessage="Description is a required field" value="#{positionsController.positions.description}"></h:inputText>
+        <h:inputText maxlength="35" required="true" requiredMessage="Description is a required field" 
+                     p:placeholder="Description"
+                     value="#{positionsController.positions.description}"></h:inputText>
         <br/>
-        <h:outputText value="TradeCompanyId: "/>
-        <h:inputText  converterMessage="TradeCompanyId is a numeric field" value="#{positionsController.positions.tradeCompanyId}"></h:inputText>
+        <h:outputText value="Trade Company Id: "/>
+        <h:inputText  converterMessage="TradeCompanyId must be a numeric field" 
+                      p:placeholder="Trade Company Id"
+                      value="#{positionsController.positions.tradeCompanyId}"></h:inputText>
         <br/>
-        <h:outputText value="LastUpdateBI: "/>
-        <h:inputText  converterMessage="LastUpdateBI has an incorrect date format" value="#{positionsController.positions.lastUpdateBI}"> }
+        <h:outputText value="Last Update BI: "/>
+        <h:inputText  converterMessage="LastUpdateBI has an incorrect date format" 
+                      p:placeholder="dd/MM/yyyy"
+                      value="#{positionsController.positions.lastUpdateBI}"> }
             <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
         </h:inputText>
         <br/>
