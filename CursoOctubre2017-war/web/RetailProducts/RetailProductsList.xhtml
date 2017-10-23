@@ -31,18 +31,18 @@
                     <div class="table-scroll">
                         <h:dataTable var="rp" value="#{RetailProductsController.findAll()}" class="table-fill" border="2">
 
-                            <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> RetailProductId </f:facet>
+                            <!--<h:column class="table-information">
+                                <f:facet name="header" class="text-header"> Retail Product </f:facet>
                                 #{rp.retailProductId}
-                            </h:column>
+                            </h:column>-->
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> RetailId </f:facet>
+                                <f:facet name="header" class="text-header"> Retail </f:facet>
                                 #{rp.retails.retailId}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> ProductId </f:facet>
+                                <f:facet name="header" class="text-header"> Product </f:facet>
                                 #{rp.products.productId}
                             </h:column>
 
@@ -52,63 +52,63 @@
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> RetailSalePrice </f:facet>
+                                <f:facet name="header" class="text-header"> Retail Sale Price </f:facet>
                                 #{rp.retailSalePrice}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> StartPrice </f:facet>
+                                <f:facet name="header" class="text-header"> Start Price </f:facet>
                                 #{rp.startPrice}
                             </h:column>
 
                             <h:column>
-                                <f:facet name="header"> EnableDate </f:facet>
+                                <f:facet name="header"> Enable Date </f:facet>
                                 <h:outputText value="#{rp.enableDate}">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                 </h:outputText>
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> EnabledBy </f:facet>
+                                <f:facet name="header" class="text-header"> Enabled By </f:facet>
                                 #{rp.enabledBy}
                             </h:column>
 
                             <h:column>
-                                <f:facet name="header"> SalePriceChangeDate </f:facet>
+                                <f:facet name="header"> Sale Price Change Date </f:facet>
                                 <h:outputText value="#{rp.salePriceChangeDate}">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                 </h:outputText>
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> PriceChangeBy </f:facet>
+                                <f:facet name="header" class="text-header"> Price Change By </f:facet>
                                 #{rp.priceChangeBy}
                             </h:column>
 
                             <h:column>
-                                <f:facet name="header"> DisableDate </f:facet>
+                                <f:facet name="header"> Disable Date </f:facet>
                                 <h:outputText value="#{rp.disableDate}">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                 </h:outputText>
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> DisabledBy </f:facet>
+                                <f:facet name="header" class="text-header"> Disabled By </f:facet>
                                 #{rp.disabledBy}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> POId </f:facet>
-                                #{rp.purchaseOrders.POId}
+                                <f:facet name="header" class="text-header"> PO </f:facet>
+                                #{rp.purchaseOrders.PONumber}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> TradeCompanyId </f:facet>
+                                <f:facet name="header" class="text-header"> Trade Company Id </f:facet>
                                 #{rp.tradeCompanyId}
                             </h:column>
 
                             <h:column>
-                                <f:facet name="header"> LastUpdateBi </f:facet>
+                                <f:facet name="header"> Last Update BI </f:facet>
                                 <h:outputText value="#{rp.lastUpdateBI}">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                 </h:outputText>

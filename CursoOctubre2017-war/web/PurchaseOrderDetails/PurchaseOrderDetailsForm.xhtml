@@ -34,29 +34,30 @@
                     <h2>Purchase Order Details Form</h2>
                     <h:form>
                         <div class="row uniform">
-                            <div class="6u$ 12u$(xsmall)">
-                                <h:outputText value="PurchaseOrder ID: "/>
-                                <h:selectOneMenu required="true" requiredMessage="PurchaseOrder ID is a required field"
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Purchase Order: "/>
+                                <h:selectOneMenu required="true" requiredMessage="Purchase Order is a required field"
                                                  value="#{purchaseOrderDetailsController.purchaseOrderDetails.purchaseOrders}">
                                     <f:selectItem itemValue="0" itemLabel="Select a PurchaseOrder" noSelectionOption="true"/>
                                     <f:selectItems value="#{purchaseOrdersController.findAll()}" var="po"
-                                                   itemValue="#{po}" itemLabel="#{po.POId}"/>
+                                                   itemValue="#{po}" itemLabel="#{po.PONumber}"/>
                                 </h:selectOneMenu>
                             </div>
 
                             <div class="6u$ 12u$(xsmall)">
-                                <h:outputText value="Product ID: "/>
-                                <h:selectOneMenu required="true" requiredMessage="Product ID is a required field"
+                                <h:outputText value="Product: "/>
+                                <h:selectOneMenu required="true" requiredMessage="Product is a required field"
                                                  value="#{purchaseOrderDetailsController.purchaseOrderDetails.products}">
                                     <f:selectItem itemValue="0" itemLabel="Select a Product" noSelectionOption="true"/>
                                     <f:selectItems value="#{productsController.findAll()}" var="product"
-                                                   itemValue="#{product}" itemLabel="#{product.productId}"/>
+                                                   itemValue="#{product}" itemLabel="#{product.description}"/>
                                 </h:selectOneMenu>
                             </div>
 
-                            <div class="6u$ 12u$(xsmall)">
-                                <h:outputText value="RequestedUnits: "/>
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Requested Units: "/>
                                 <h:inputText required="true" requiredMessage="RequestedUnits is a required field"
+                                             converterMessage="Requested Units must be a numeric field"
                                              p:placeholder="Requested Units"
                                              value="#{purchaseOrderDetailsController.purchaseOrderDetails.requestedUnits}" maxlength="17"/>
                             </div>
@@ -67,7 +68,7 @@
                                              value="#{purchaseOrderDetailsController.purchaseOrderDetails.requestedValue}" maxlength="15"/>
                             </div>
 
-                            <div class="6u$ 12u$(xsmall)">
+                            <div class="6u 12u$(xsmall)">
                                 <h:outputText value="Delivered Units: "/>
                                 <h:inputText rendered="true" requiredMessage="Delivered Units is a required field"
                                              p:placeholder="Delivered Units" converterMessage="Delivered Units must be a numeric field"
@@ -81,32 +82,34 @@
                                              maxlength="15"/>
                             </div>
 
-                            <div class="6u$ 12u$">
-                                <h:outputText value="Delivery Real Date "/>
-                                <h:inputText converterMessage="Delivery Real Date has an incorrect date format" 
-                                             p:placeholder="dd/MM/yyyy"
-                                             value="#{purchaseOrderDetailsController.purchaseOrderDetails.deliveryRealDate}">
-                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-                                </h:inputText>
-                            </div>
-
-                            <div class="6u$ 12u$">
-                                <h:outputText value="Trade Company Id: "/>
-                                <h:inputText value="#{purchaseOrderDetailsController.purchaseOrderDetails.tradeCompanyId}" 
-                                             p:placeholder="Trade Company Id" converterMessage="Trade Company Id must be a numeric field"
-                                             maxlength="15"/>
-                            </div>
-
-                            <div class="6u$ 12u$(xsmall)">
+                            <div class="6u 12u$(xsmall)">
                                 <h:outputText value="Unit Price: "/>
                                 <h:inputText value="#{purchaseOrderDetailsController.purchaseOrderDetails.unitPrice}" 
                                              p:placeholder="Unit Price" converterMessage="Unit Price must be a numeric field"
                                              maxlength="15"/>
                             </div>
 
+                            <div class="6u$ 12u$">
+                                <h:outputText value="Delivery Real Date "/>
+                                <h:inputText converterMessage="Delivery Real Date must be in dd/MM/yyyy format" 
+                                             p:placeholder="dd/MM/yyyy"
+                                             value="#{purchaseOrderDetailsController.purchaseOrderDetails.deliveryRealDate}">
+                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Trade Company Id: "/>
+                                <h:inputText value="#{purchaseOrderDetailsController.purchaseOrderDetails.tradeCompanyId}" 
+                                             p:placeholder="Trade Company Id" converterMessage="Trade Company Id must be a numeric field"
+                                             maxlength="15"/>
+                            </div>
+
+
+
                             <div class="6u$ 12u$(xsmall)">
                                 <h:outputText value="Last Update Bi "/>
-                                <h:inputText converterMessage="Last Update BI has an incorrect date format" 
+                                <h:inputText converterMessage="Last Update BI must be in dd/MM/yyyy format" 
                                              p:placeholder="dd/MM/yyyy"
                                              value="#{purchaseOrderDetailsController.purchaseOrderDetails.lastUpdateBI}">
                                     <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>

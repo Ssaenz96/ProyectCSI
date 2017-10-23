@@ -25,12 +25,12 @@
             <section class="wrapper style1">
                 <div class="inner">
                     <!-- Form -->
-                    <h2>StoreRanks Form</h2>
+                    <h2>Store Ranks Form</h2>
                     <h:form>
                         <div class="row uniform">
                             
                             <div class="12u$">
-                            <h:outputText value="StoreRankCode: "/>
+                            <h:outputText value="Store Rank Code: "/>
                             <h:inputText maxlength="2" required="true" requiredMessage="StoreRankCode is a required field" 
                                          validator="alfanumericoValidator" validatorMessage="StoreRankCode is an alphanumeric field" value="#{storeRanksController.storeRanks.storeRankCode}"></h:inputText>
                             </div>
@@ -41,12 +41,12 @@
                             </div>
                             
                             <div class="6u 12u$(xsmall)">
-                            <h:outputText value="TradeCompanyId: "/>
-                            <h:inputText  converterMessage="TradeCompanyId ia s numeric field" value="#{storeRanksController.storeRanks.tradeCompanyId}"></h:inputText>
+                            <h:outputText value="Trade Company Id: "/>
+                            <h:inputText  converterMessage="Trade Company Id ia s numeric field" value="#{storeRanksController.storeRanks.tradeCompanyId}"></h:inputText>
                             </div>
                             <div class="6u$ 12u$(xsmall)">
-                            <h:outputText value="LastUpdateBI: "/>
-                            <h:inputText  converterMessage="LastUpdateBI has an incorrect date format" value="#{storeRanksController.storeRanks.lastUpdateBI}"> }
+                            <h:outputText value="Last Update BI: "/>
+                            <h:inputText  converterMessage="Last Update BI must be in dd/MM/yyyy format" value="#{storeRanksController.storeRanks.lastUpdateBI}"> }
                                 <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
                             </h:inputText>
                             </div>

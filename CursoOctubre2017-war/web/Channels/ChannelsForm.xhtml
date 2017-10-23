@@ -40,11 +40,11 @@
                 <h2>Channels Form</h2>
                 <h:form>
                     <div class="row uniform">
-                        <div class="6u$ 12u$(xsmall)">
+                        <div class="6u 12u$(xsmall)">
                             <h:outputText value="Channel Code: "/>
-                            <h:inputText required="true" requiredMessage="A code is required"  p:placeholder="Channel Code"
+                            <h:inputText required="true" requiredMessage="Code is a required field"  p:placeholder="Channel Code"
                                          value="#{channelsController.channels.channelCode}" maxlength="2"
-                                         validator="alfanumericoValidator" validatorMessage="Channel Code must only contain alphanumeric characters"/>
+                                         validator="alfanumericoValidator" validatorMessage="Channel Code must be an alphanumeric field"/>
                         </div>
                         <div class="6u$ 12u$(xsmall)">
                             <h:outputText value="Trade Company Id: "/>
@@ -54,19 +54,19 @@
                         <!-- Break -->
                         <div class="12u$">
                             <h:outputText value="Description: "/>
-                            <h:inputText required="true" requiredMessage="Description required"  p:placeholder="Description"
+                            <h:inputText required="true" requiredMessage="Description is a required field"  p:placeholder="Description"
                                          value="#{channelsController.channels.description}" maxlength="35"/>
                         </div>
                         <!-- Break -->
                         <div class="6u 12u$(xsmall)">
                             <h:outputText value="Updated date: "/>
-                            <h:inputText converterMessage="Updated date has an incorrect date format" value="#{channelsController.channels.updateDate}"  p:placeholder="dd/MM/yyy">
+                            <h:inputText converterMessage="Updated Date must be in dd/MM/yyyy format" value="#{channelsController.channels.updateDate}"  p:placeholder="dd/MM/yyy">
                                 <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
                             </h:inputText>
                         </div>
                         <div class="6u$ 12u$(xsmall)">
                             <h:outputText value="Last Update BI: "/>
-                            <h:inputText converterMessage="LastUpdateBI has an incorrect date format" value="#{channelsController.channels.lastUpdateBI}"  p:placeholder="dd/MM/yyyy">
+                            <h:inputText converterMessage="Last Update BI must be in dd/MM/yyyy format" value="#{channelsController.channels.lastUpdateBI}"  p:placeholder="dd/MM/yyyy">
                                 <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
                             </h:inputText>
                         </div>

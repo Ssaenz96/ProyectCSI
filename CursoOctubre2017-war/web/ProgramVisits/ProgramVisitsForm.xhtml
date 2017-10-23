@@ -30,26 +30,26 @@
                     <h2>Program Visits Form</h2>
                     <h:form>    
                         <div class="row uniform">
-                            <div class="6u$ 12u$(xsmall)">
+                            <div class="12u$ 12u$(xsmall)">
                                 <h:outputText value="Prog Visit Code: "/>
                                 <h:inputText maxlength="2" required="true" p:placeholder="Prog Visit Code"
-                                             requiredMessage="ProgVisitCode is a requiered field" 
+                                             requiredMessage="Prog Visit Code is a requiered field" 
                                              value="#{programVisitsController.programVisits.profVisitCode}"
                                              validator="alfanumericoValidator" validatorMessage="Prog Visit Code must be an alphanumeric field"/>
                             </div>
-                            <div class="6u$ 12u$(xsmall)">
+                            <div class="12u$ 12u$(xsmall)">
                                 <h:outputText value="Description: "/>
                                 <h:inputText maxlength="35" required="true" requiredMessage="Description is a requiered field"  p:placeholder="Description"
                                              value="#{programVisitsController.programVisits.description}"/>
                             </div>
-                            <div class="6u$ 12u$(xsmall)">
+                            <div class="6u 12u$(xsmall)">
                                 <h:outputText value="Trade Company Id: "/>
                                 <h:inputText p:placeholder="Trade Company Id"  converterMessage="Trade Company Id must be a numeric field" 
                                              maxlength="1" value="#{programVisitsController.programVisits.tradeCompanyBI}"/>
                             </div>
                             <div class="6u$ 12u$(xsmall)">
                                 <h:outputText value="Last Update BI: "/>
-                                <h:inputText  converterMessage="Last Update BI has an incorrect date format" value="#{programVisitsController.programVisits.lastUpdateBI}" p:placeholder="dd/MM/yyyy"> 
+                                <h:inputText  converterMessage="Last Update BI must be in dd/MM/yyy format" value="#{programVisitsController.programVisits.lastUpdateBI}" p:placeholder="dd/MM/yyyy"> 
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
                                 </h:inputText>
                             </div>

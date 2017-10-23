@@ -42,14 +42,15 @@
              <div class="6u 12u$(xsmall)">
             <h:outputText value="Region Code:"/>
             <h:inputText maxlength="5" required="true" 
-                         requiredMessage="Region Code is required"
+                         requiredMessage="Region Code is a required field"
+                         validator="alfanumericoValidator" validatorMessage="Region Code must be an alphanumeric field"
                          value="#{regionsController.regions.regionCode}" 
                          p:placeholder="Region Code"
                          />
              </div>
                 <div class="6u 12u$(xsmall)">
             <h:outputText value="Last Update By:"/>
-            <h:inputText converterMessage="Last Update BI has an incorrect date format" value="#{regionsController.regions.lastUpdateBI}"  p:placeholder="dd/MM/yyy">
+            <h:inputText converterMessage="Last Update BI must be in dd/MM/yyyy format" value="#{regionsController.regions.lastUpdateBI}"  p:placeholder="dd/MM/yyy">
                 <f:convertDateTime  type="date" pattern="dd/MM/yyyy" 
                                     timeZone="UTC"/>
             </h:inputText>
@@ -57,7 +58,7 @@
                    <div class="12u$">          
             <h:outputText value="Description"/>
             <h:inputText maxlength="50" required="true"
-                         requiredMessage="Description is required"
+                         requiredMessage="Description is a required field"
                          value="#{regionsController.regions.description}" p:placeholder="Description"/>
                    </div>
              

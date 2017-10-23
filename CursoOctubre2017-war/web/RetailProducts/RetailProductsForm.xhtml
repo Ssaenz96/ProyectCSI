@@ -21,21 +21,7 @@
         <meta charset="utf-8" />
         <h:outputStylesheet library="css" name="main.css"/>
         <link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
-        <script>
-            $(document).ready(function () {
-                $(".lastUpdateBI_datepicker").datepicker({dateFormat: 'dd/mm/yy'});
-                $(".enableDate_datepicker").datepicker({dateFormat: 'dd/mm/yy'});
-                $(".salePriceChangeDate_datepicker").datepicker({dateFormat: 'dd/mm/yy'});
-                $(".disableDate_datepicker").datepicker({dateFormat: 'dd/mm/yy'});
-            });
 
-            function ReadAgain() {
-                document.getElementById('LastUpdateDatepickerId').readOnly = false;
-                document.getElementById('EnableDateDatepickerId').readOnly = false;
-                document.getElementById('SalePriceChangeDateDatepickerId').readOnly = false;
-                document.getElementById('DisableDateDatepickerId').readOnly = false;
-            }
-        </script>
 
     </h:head>
     <h:body class="subpage">
@@ -53,41 +39,52 @@
                         <div class="row uniform">
                             <div class="12u$">
                                 <div class="select-wrapper">
-                                    <h:outputText value="Retail ID: "/>
+                                    <h:outputText value="Retail: "/>
                                     <h:selectOneMenu required="true" requiredMessage="Retail ID is a required field" value="#{RetailProductsController.retailProducts.retails}">
                                         <f:selectItem itemValue="0" itemLabel="Select a Retail" noSelectionOption="true"/>
-                                        <f:selectItems value="#{retailsController.findAll()}" var="retails" itemValue="#{retails}" itemLabel="#{retails.retailId}"/>
+                                        <f:selectItems value="#{retailsController.findAll()}" var="retails" itemValue="#{retails}" itemLabel="#{retails.name}"/>
                                     </h:selectOneMenu>
                                 </div>
                             </div>
-                            
+
                             <div class="12u$">
                                 <div class="select-wrapper">
-                                    <h:outputText value="Product ID: "/>
-                                    <h:selectOneMenu required="true" requiredMessage="Product ID is a required field" value="#{RetailProductsController.retailProducts.products}">
+                                    <h:outputText value="Product: "/>
+                                    <h:selectOneMenu required="true" requiredMessage="Product is a required field" value="#{RetailProductsController.retailProducts.products}">
                                         <f:selectItem itemValue="0" itemLabel="Select a Product" noSelectionOption="true"/>
-                                        <f:selectItems value="#{productsController.findAll()}" var="product" itemValue="#{product}" itemLabel="#{product.productId}"/>
+                                        <f:selectItems value="#{productsController.findAll()}" var="product" itemValue="#{product}" itemLabel="#{product.productCode}"/>
                                     </h:selectOneMenu>
                                 </div>
                             </div>
-                            
+
+                            <div class="12u$">
+                                <h:outputText value="PO: "/>
+                                <div class="select-wrapper">
+                                    <h:selectOneMenu value="#{RetailProductsController.retailProducts.purchaseOrders}">
+                                        <f:selectItem itemValue="0" itemLabel="Select a Purchase Order" noSelectionOption="true"/>
+                                        <f:selectItems value="#{purchaseOrdersController.findAll()}" var="po"
+                                                       itemValue="#{po}" itemLabel="#{po.PONumber}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                            </div>
+
                             <div class="12u$">
                                 <h:outputText  value="SKU Code: "/>
                                 <h:inputText required="true" validator="SKUCodeValidator" requiredMessage="SKU Code is a required field" value="#{RetailProductsController.retailProducts.skuCode}" maxlength="8" p:placeholder="SKU Code"/>
                             </div>
-                            
+
                             <div class="6u">
                                 <h:outputText value="Retail Sale Price: "/>
-                                <h:inputText converterMessage="Retail Sale Price is a numeric field" required="true" requiredMessage="RetailSalePrice is a required field"
-                                             value="#{RetailProductsController.retailProducts.retailSalePrice}" maxlength="7" p:placeholder="0.0"/>
+                                <h:inputText converterMessage="Retail Sale Price must be a numeric field" required="true" requiredMessage="RetailSalePrice is a required field"
+                                             value="#{RetailProductsController.retailProducts.retailSalePrice}" maxlength="7" p:placeholder="Retail Sale Price"/>
                             </div>
                             <div class="6u">
                                 <h:outputText value="Start Price: "/>
-                                <h:inputText converterMessage="Start Price is a numeric field" value="#{RetailProductsController.retailProducts.startPrice}" maxlength="7" p:placeholder="0.0"/>
+                                <h:inputText converterMessage="Start Price must be a numeric field" value="#{RetailProductsController.retailProducts.startPrice}" maxlength="7" p:placeholder="Start Price"/>
                             </div>
                             <div class="6u">
                                 <h:outputText value="Enable Date: "/>
-                                <h:inputText converterMessage="Enable Date has an incorrect date format" id="EnableDateDatepickerId" onclick="this.readOnly = true;" styleClass="enableDate_datepicker" value="#{RetailProductsController.retailProducts.enableDate}" p:placeholder="dd/MM/yyy">
+                                <h:inputText converterMessage="Enable Date must be in dd/MM/yyyy format" id="EnableDateDatepickerId" onclick="this.readOnly = true;" styleClass="enableDate_datepicker" value="#{RetailProductsController.retailProducts.enableDate}" p:placeholder="dd/MM/yyy">
                                     <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
                                 </h:inputText>
                             </div>
@@ -97,7 +94,7 @@
                             </div>
                             <div class="6u">
                                 <h:outputText value="Sale Price Change Date:"/>
-                                <h:inputText converterMessage="Sale Price Change Date has an incorrect date format" id="SalePriceChangeDateDatepickerId" onclick="this.readOnly = true;" styleClass="salePriceChangeDate_datepicker" value="#{RetailProductsController.retailProducts.salePriceChangeDate}" p:placeholder="dd/MM/yyy">
+                                <h:inputText converterMessage="Sale Price Change Date must be in dd/MM/yyyy format" id="SalePriceChangeDateDatepickerId" onclick="this.readOnly = true;" styleClass="salePriceChangeDate_datepicker" value="#{RetailProductsController.retailProducts.salePriceChangeDate}" p:placeholder="dd/MM/yyy">
                                     <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
                                 </h:inputText>
                             </div>
@@ -107,7 +104,7 @@
                             </div>
                             <div class="6u">
                                 <h:outputText value="Disable Date: "/>
-                                <h:inputText converterMessage="Disable Date has an incorrect date format" id="DisableDateDatepickerId" onclick="this.readOnly = true;" styleClass="disableDate_datepicker" value="#{RetailProductsController.retailProducts.disableDate}" p:placeholder="dd/MM/yyy">
+                                <h:inputText converterMessage="Disable Date must be in dd/MM/yyyy format" id="DisableDateDatepickerId" onclick="this.readOnly = true;" styleClass="disableDate_datepicker" value="#{RetailProductsController.retailProducts.disableDate}" p:placeholder="dd/MM/yyy">
                                     <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
                                 </h:inputText>
                             </div>
@@ -115,23 +112,14 @@
                                 <h:outputText value="Disabled By: "/>
                                 <h:inputText value="#{RetailProductsController.retailProducts.disabledBy}" maxlength="50" p:placeholder="Disabled By"/>
                             </div>
-                            <div class="12u$">
-                                <h:outputText value="PO ID: "/>
-                                 <div class="select-wrapper">
-                                <h:selectOneMenu value="#{RetailProductsController.retailProducts.purchaseOrders}">
-                                    <f:selectItem itemValue="0" itemLabel="Select a PurchaseOrder" noSelectionOption="true"/>
-                                    <f:selectItems value="#{purchaseOrdersController.findAll()}" var="po"
-                                                   itemValue="#{po}" itemLabel="#{po.POId}"/>
-                                </h:selectOneMenu>
-                            </div>
-                            </div>
+
                             <div class="6u">
                                 <h:outputText value="Trade Company Id: "/>
-                                <h:inputText converterMessage="Trade Company Id is a numeric field" value="#{RetailProductsController.retailProducts.tradeCompanyId}"/>
+                                <h:inputText converterMessage="Trade Company Id is a numeric field" value="#{RetailProductsController.retailProducts.tradeCompanyId}" p:placeholder="Trade Company Id"/>
                             </div>
                             <div class="6u">
                                 <h:outputText value="Last Update BI: "/>
-                                <h:inputText converterMessage="Last Update BI has an incorrect date format" id="LastUpdateDatepickerId" onclick="this.readOnly = true;" styleClass="lastUpdateBI_datepicker" value="#{RetailProductsController.retailProducts.lastUpdateBI}" p:placeholder="dd/MM/yyy">
+                                <h:inputText converterMessage="Last Update BI must be in dd/MM/yyyy format" id="LastUpdateDatepickerId" onclick="this.readOnly = true;" styleClass="lastUpdateBI_datepicker" value="#{RetailProductsController.retailProducts.lastUpdateBI}" p:placeholder="dd/MM/yyy">
                                     <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
                                 </h:inputText>
                             </div>
@@ -152,7 +140,7 @@
                 </div>
             </section>
         </div>
-         <!-- Footer -->
+        <!-- Footer -->
         <footer id="footer">
             <div class="copyright">
                 <p>&copy; Untitled. All rights reserved. Design: <a href="http://www.csi.uanl.mx/" target="_blank">CSI</a>.</p>

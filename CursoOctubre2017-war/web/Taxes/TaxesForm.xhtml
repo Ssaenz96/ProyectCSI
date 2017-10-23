@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 
     <!--* TaxesForm 
         * Version 1 
@@ -30,42 +31,47 @@
                         <div class="row uniform">
 
                             <div class="6u 12u$(xsmall)">
-                                <div class="select-wrapper">
-                                    <h:outputText value="TaxCode"></h:outputText>
-                                    <h:inputText required="true" requiredMessage="The field TaxCode is required"
+                                <!--<div class="select-wrapper">-->
+                                    <h:outputText value="Tax Code"></h:outputText>
+                                    <h:inputText required="true" requiredMessage="TaxCode is a required field"
                                                  value="#{taxesController.taxes.taxCode}" maxlength="1"
-                                                 validator="alfanumericoValidator" converterMessage="The field TaxCode must be alphanumeric" validatorMessage="The field TaxCode must be alphanumeric">
+                                                 p:placeholder="Tax Code"
+                                                 validator="alfanumericoValidator" validatorMessage="TaxCode must be an alphanumeric field">
                                     </h:inputText> 
-                                </div>
+                                <!--</div>-->
                             </div>
 
 
                             <div class="6u$ 12u$(xsmall)">
-                                <h:outputText value="TaxPercent"></h:outputText>
-                                <h:inputText required="true" requiredMessage="The field TaxPercent is required"
-                                             value="#{taxesController.taxes.taxPercent}" 
-                                             validator="alfanumericoValidator" converterMessage="The field TaxPercent must be alphanumeric" validatorMessage="The field TaxPercent must be numerical">
+                                <h:outputText value="Tax Percent"></h:outputText>
+                                <h:inputText required="true" requiredMessage="TaxPercent is a required field"
+                                             converterMessage="Tax Percent must be a numeric field"
+                                             p:placeholder="Tax Percent"
+                                             value="#{taxesController.taxes.taxPercent}" >
                                 </h:inputText>
                             </div>
 
                             <div class="6u 12u$(xsmall)">
                                 <h:outputText value="Description"></h:outputText>
-                                <h:inputText value="#{taxesController.taxes.description}" maxlength="35">                             
+                                <h:inputText value="#{taxesController.taxes.description}" 
+                                             p:placeholder="Description" maxlength="35">                             
                                 </h:inputText>
                             </div>
 
 
 
                             <div class="6u$ 12u$(xsmall)">
-                                <h:outputText value="TradeCompanyId"></h:outputText>
+                                <h:outputText value="Trade Company Id"></h:outputText>
                                 <h:inputText value="#{taxesController.taxes.tradeCompanyId}" maxlength="1"
-                                             validator="numerosValidator" converterMessage="TradeCompanyId is a numeric field" validatorMessage="The field TradeCompany must be numerical">
+                                             p:placeholder="Trade Company Id"
+                                             converterMessage="TradeCompanyId is a numeric field">
                                 </h:inputText> 
                             </div>
 
                             <div class="12u$">
-                                <h:outputText value="LastUpdateBI"></h:outputText>
-                                <h:inputText value="#{taxesController.taxes.lastUpdateBI}" converterMessage="LastUpdateBI has an incorrect date format">
+                                <h:outputText value="Last Update BI"></h:outputText>
+                                <h:inputText value="#{taxesController.taxes.lastUpdateBI}" converterMessage="Last Update BI must be in dd/MM/yyyy format"
+                                             p:placeholder="dd/MM/yyyy">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
                                 </h:inputText>
                             </div>

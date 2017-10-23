@@ -1,212 +1,211 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">    
-     <!--* Version 1 
-        * Fecha 10/10/2017
-        * @author Carlos A -->
+<!--* Version 1 
+   * Fecha 10/10/2017
+   * @author Carlos A -->
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
-	<title>Garcomex</title>
-	<meta charset="utf-8" />
+        <title>Garcomex</title>
+        <meta charset="utf-8" />
         <h:outputStylesheet library="css" name="main.css"/>
-	<link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
+        <link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
     </h:head>
-    
+
     <h:body class="subpage">
-    <!-- Header -->
-    <header id="header">
-        <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
-        <h:link value="Log out" outcome="/login"></h:link>
-    </header>
-    <div id="main">
-        <section class="wrapper style1">
-            <div class="inner">
-                <!-- Form -->
-                <h2>Products Form</h2>
-                <h:form>    
-                    <div class="row uniform">
-                        <div class="6u 12u$(xsmall)">
-                            <h:outputText value="Product Structure Id: "/>
-                            <h:inputText converterMessage="ProductStructureId is a numeric field" required="true" requiredMessage="ProductStructureId is a required field" 
-                            value="#{productsController.products.prodStructureId}" maxlength="12" p:placeholder="Product Structure Id"/>
+        <!-- Header -->
+        <header id="header">
+            <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
+            <h:link value="Log out" outcome="/login"></h:link>
+        </header>
+        <div id="main">
+            <section class="wrapper style1">
+                <div class="inner">
+                    <!-- Form -->
+                    <h2>Products Form</h2>
+                    <h:form>    
+                        <div class="row uniform">
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Product Structure Id: "/>
+                                <h:inputText converterMessage="Product Structure Id must be a numeric field" required="true" requiredMessage="Product Structure Id is a required field" 
+                                             value="#{productsController.products.prodStructureId}" maxlength="12" p:placeholder="Product Structure Id"/>
+                            </div>
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Product Code: "/>
+                                <h:inputText required="true" requiredMessage="Product Code is a required field" 
+                                             p:placeholder="Product Code" validator="alfanumericoValidator" validatorMessage="Product Code must be an alphanumeric field"
+                                             converterMessage="Product Code is an alphanumeric field" value="#{productsController.products.productCode}" maxlength="15"/>
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Product Bar Code: "/>
+                                <h:inputText required="true" requiredMessage="Product Bar Code is a required field" 
+                                             p:placeholder="Product Bar Code" validator="alfanumericoValidator" validatorMessage="Product Bar Code must be an alphanumeric field" 
+                                             converterMessage="Product Bar Code is an alphanumeric field" value="#{productsController.products.productBarcode}" maxlength="13"/>
+                            </div>
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Production Cost: "/>
+                                <h:inputText required="true" requiredMessage="Production Cost is a required field"  p:placeholder="Production Cost"
+                                             converterMessage="Production Cost must be a numeric field" value="#{productsController.products.productionCost}" maxlength="10"/>
+                            </div>
+                            <div class="12u$">
+                                <h:outputText value="Description: "/>
+                                <h:inputText required="true" requiredMessage="Description is a required field" 
+                                             p:placeholder="Description" value="#{productsController.products.description}" maxlength="70"/>
+                            </div>
+
+                            <div class="4u 12u$(small)">
+                                <h:outputText value="Product Category: "/>
+                                <h:selectOneMenu value="#{productsController.products.productCategories}">
+                                    <f:selectItem itemValue="0" itemLabel="Select a Product Category" noSelectionOption="true"/>
+                                    <f:selectItems value="#{productCategoriesController.findAll()}" var="ProdCategory"
+                                                   itemValue="#{ProdCategory}" itemLabel="#{ProdCategory.description}"/>
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="4u 12u$(small)">
+                                <h:outputText value="Tax: "/>
+                                <h:selectOneMenu required="true" requiredMessage="Tax is a required field"
+                                                 value="#{productsController.products.taxes}">
+                                    <f:selectItem itemValue="0" itemLabel="Select a Tax" noSelectionOption="true"/>
+                                    <f:selectItems value="#{taxesController.findAll()}" var="Taxes"
+                                                   itemValue="#{Taxes}" itemLabel="#{Taxes.description}"/>
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="4u$ 12u$(small)">
+                                <h:outputText value="Origin: "/>
+                                <h:selectOneMenu required="true" requiredMessage="Origin is a required field"
+                                                 value="#{productsController.products.origin}">
+                                    <f:selectItem itemValue="0" itemLabel="Select a Origin" noSelectionOption="true"/>
+                                    <f:selectItems value="#{originController.findAll()}" var="Origin"
+                                                   itemValue="#{Origin}" itemLabel="#{Origin.description}"/>
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="4u 12u$(small)">
+                                <h:outputText value="Conver Factor: "/>
+                                <h:inputText p:placeholder="Conver Factor" maxlength="18" converterMessage="Conver Factor must be a numeric" 
+                                             value="#{productsController.products.convertFactor}"/>
+                            </div>
+                            <div class="4u 12u$(small)">
+                                <h:outputText value="Conver Factor Unit: "/>
+                                <h:inputText p:placeholder="Conver Factor Unit" maxlength="12" converterMessage="Conver Factor Unit must be a numeric field" 
+                                             validator="numerosValidator" validatorMessage="Conver Factor Unit must be a numeric field"            
+                                             value="#{productsController.products.convertFactorUnit}" />
+                            </div>
+                            <div class="4u$ 12u$(small)">
+                                <h:outputText value="Conver Factor Package: "/>
+                                <h:inputText p:placeholder="Conver Factor Package" maxlength="18" converterMessage="Conver Factor Package must be a numeric field"
+                                             value="#{productsController.products.convertFactorPackage}" />
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Customer SU: "/>
+                                <h:selectOneMenu required="true" requiredMessage="Customer SU is a required field"
+                                                 value="#{productsController.products.finalCustomerSaleUnits}">
+                                    <f:selectItem itemValue="0" itemLabel="Select a Customer SU" noSelectionOption="true"/>
+                                    <f:selectItems value="#{finalCustomerSaleUnitsController.findAll()}" var="CustomerSU"
+                                                   itemValue="#{CustomerSU}" itemLabel="#{CustomerSU.description}"/>
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Retail SU: "/>
+                                <h:selectOneMenu required="true" requiredMessage="Retail SU is a required field"
+                                                 value="#{productsController.products.retailSaleUnits}">
+                                    <f:selectItem itemValue="0" itemLabel="Select a Retail SU" noSelectionOption="true"/>
+                                    <f:selectItems value="#{retailSaleUnitsController.findAll()}" var="RetailSU"
+                                                   itemValue="#{RetailSU}" itemLabel="#{RetailSU.description}"/>
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Product Pack: "/>
+                                <h:selectOneMenu required="true" requiredMessage="Product Pack is a required field"
+                                                 value="#{productsController.products.productPackages}">
+                                    <f:selectItem itemValue="0" itemLabel="Select a Product Pack" noSelectionOption="true"/>
+                                    <f:selectItems value="#{productPackagesController.findAll()}" var="ProductPack"
+                                                   itemValue="#{ProductPack}" itemLabel="#{ProductPack.description}"/>
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Package Quantity: "/>
+                                <h:inputText p:placeholder="Package Quantity" maxlength="4" converterMessage="Package Quantity must be a numeric field" 
+                                             value="#{productsController.products.packageQuantity}"/>
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Enabled By: "/>
+                                <h:inputText value="#{productsController.products.enabledBy}" maxlength="50" p:placeholder="Enabled By"/>
+                            </div>
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Enable Date: "/>
+                                <h:inputText  converterMessage="EnableDate must be in dd/MM/yyyy format" value="#{productsController.products.enableDate}" p:placeholder="dd/MM/yyyy">
+                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>  
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Last Changed By: "/>
+                                <h:inputText  value="#{productsController.products.lastChangedBy}" maxlength="50" p:placeholder="Last Changed By"/>
+                            </div>
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Last Change Date: "/>
+                                <h:inputText  converterMessage="LastChangeDate must be in dd/MM/yyyy format" value="#{productsController.products.lastChangeDate}" p:placeholder="dd/MM/yyyy">
+                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>  
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Disabled By: "/>
+                                <h:inputText  value="#{productsController.products.disabledBy}" maxlength="50" p:placeholder="Disabled By" />
+                            </div>
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Disable Date: "/>
+                                <h:inputText  converterMessage="Disable Date must be in dd/MM/yyyy format" value="#{productsController.products.disableDate}" p:placeholder="dd/MM/yyyy">
+                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>  
+                            </div>
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Trade Mark: "/>
+                                <h:selectOneMenu  value="#{productsController.products.tradeMarks}">
+                                    <f:selectItem itemValue="0" itemLabel="Select a Trade Mark" noSelectionOption="true"/>
+                                    <f:selectItems value="#{tradeMarksController.findAll()}" var="TradeMark"
+                                                   itemValue="#{TradeMark}" itemLabel="#{TradeMark.description}"/>
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Trade Company Id: "/>
+                                <h:inputText  converterMessage="Trade Company Id must be a numeric field" 
+                                              value="#{productsController.products.tradeCompanyId}" maxlength="1"
+                                              p:placeholder="Trade Company Id" />
+                            </div>           
+
+                            <div class="12u$">
+                                <h:outputText value="Last Update BI: "/>
+                                <h:inputText  converterMessage="Last Update BI must be in dd/MM/yyyy format" value="#{productsController.products.lastUpdateBI}" 
+                                              p:placeholder="dd/MM/yyyy">
+                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>  
+                            </div>
+                            <!-- Break -->
+                            <div class="12u$">
+                                <ul class="actions">
+                                    <li><h:commandButton rendered="#{!productsController.flagUpdate}" value="Add" 
+                                                         class="button" action="#{productsController.insert()}"/></li>
+                                    <li><h:commandButton rendered="#{productsController.flagUpdate}" value="Edit"
+                                                         class="button" action="#{productsController.update()}"/></li>
+                                    <li><h:commandButton immediate="true" value="Return" 
+                                                         class="button" action="#{productsController.volver()}"/></li>
+                                </ul>
+                            </div>
+                            <h:messages> </h:messages>
                         </div>
-                        <div class="6u$ 12u$(xsmall)">
-                            <h:outputText value="Product Code: "/>
-                            <h:inputText required="true" requiredMessage="ProductCode is a required field" 
-                             p:placeholder="Product Code" validator="alfanumericoValidator" validatorMessage="ProductCode is an alphanumeric field"
-                             converterMessage="ProductCode is an alphanumeric field" value="#{productsController.products.productCode}" maxlength="15"/>
-                        </div>
-                        <div class="6u 12u$(xsmall)">
-                            <h:outputText value="Product Bar Code: "/>
-                            <h:inputText required="true" requiredMessage="ProductBarCode is a required field" 
-                             p:placeholder="Product Bar Code" validator="alfanumericoValidator" validatorMessage="ProductBarCode is an alphanumeric field" 
-                             converterMessage="ProductBarCode is an alphanumeric field" value="#{productsController.products.productBarcode}" maxlength="13"/>
-                        </div>
-                        <div class="6u$ 12u$(xsmall)">
-                            <h:outputText value="Production Cost: "/>
-                            <h:inputText required="true" requiredMessage="ProductionCost is a required field"  p:placeholder="Production Cost"
-                             converterMessage="ProductionCost is a numeric field" value="#{productsController.products.productionCost}" maxlength="10"/>
-                        </div>
-                        <div class="12u$">
-                            <h:outputText value="Description: "/>
-                            <h:inputText required="true" validatorMessage="Description is a required field" 
-                             p:placeholder="Description" value="#{productsController.products.description}" maxlength="70"/>
-                        </div>
-                        
-                        <div class="4u 12u$(small)">
-                            <h:outputText value="Product Category Id: "/>
-                            <h:selectOneMenu value="#{productsController.products.productCategories}">
-                            <f:selectItem itemValue="0" itemLabel="Select a ProdCategory" noSelectionOption="true"/>
-                            <f:selectItems value="#{productCategoriesController.findAll()}" var="ProdCategory"
-                                           itemValue="#{ProdCategory}" itemLabel="#{ProdCategory.description}"/>
-                            </h:selectOneMenu>
-                        </div>
-                        <div class="4u 12u$(small)">
-                            <h:outputText value="TaxId: "/>
-                            <h:selectOneMenu required="true" requiredMessage="TaxId is a required field"
-                                             value="#{productsController.products.taxes}">
-                                <f:selectItem itemValue="0" itemLabel="Select a TaxId" noSelectionOption="true"/>
-                                <f:selectItems value="#{taxesController.findAll()}" var="Taxes"
-                                               itemValue="#{Taxes}" itemLabel="#{Taxes.description}"/>
-                            </h:selectOneMenu>
-                        </div>
-                        <div class="4u$ 12u$(small)">
-                            <h:outputText value="OriginId: "/>
-                            <h:selectOneMenu required="true" requiredMessage="OriginId is a required field"
-                                             value="#{productsController.products.origin}">
-                                <f:selectItem itemValue="0" itemLabel="Select a OriginId" noSelectionOption="true"/>
-                                <f:selectItems value="#{originController.findAll()}" var="Origin"
-                                               itemValue="#{Origin}" itemLabel="#{Origin.description}"/>
-                            </h:selectOneMenu>
-                        </div>
-                        <div class="4u 12u$(small)">
-                            <h:outputText value="Conver Factor: "/>
-                             <h:inputText p:placeholder="0.0" maxlength="18" converterMessage="The field Conver Factor must be numeric" 
-                              validator="alfanumericoValidator" validatorMessage="The field Conver Factor must be numeric"
-                              value="#{productsController.products.convertFactor}"/>
-                        </div>
-                        <div class="4u 12u$(small)">
-                            <h:outputText value="Conver Factor Unit: "/>
-                            <h:inputText p:placeholder="0" maxlength="12" converterMessage="ConverFactorUnit must be a numeric field" 
-                             validator="numerosValidator" validatorMessage="The field Conver Factor Unit must be numeric"            
-                             value="#{productsController.products.convertFactorUnit}" />
-                        </div>
-                        <div class="4u$ 12u$(small)">
-                            <h:outputText value="Conver Factor Package: "/>
-                            <h:inputText p:placeholder="0.0" maxlength="18" converterMessage="The field Conver Factor Package must be numeric"
-                             validator="alfanumericoValidator" validatorMessage="The field Conver Factor Package must be numeric" 
-                             value="#{productsController.products.convertFactorPackage}" />
-                        </div>
-                        <div class="6u 12u$(xsmall)">
-                            <h:outputText value="CustomerSUId: "/>
-                            <h:selectOneMenu required="true" requiredMessage="CustomerSUId is a required field"
-                                             value="#{productsController.products.finalCustomerSaleUnits}">
-                                <f:selectItem itemValue="0" itemLabel="Select a CustomerSUId" noSelectionOption="true"/>
-                                <f:selectItems value="#{finalCustomerSaleUnitsController.findAll()}" var="CustomerSU"
-                                               itemValue="#{CustomerSU}" itemLabel="#{CustomerSU.description}"/>
-                            </h:selectOneMenu>
-                        </div>
-                        <div class="6u$ 12u$(xsmall)">
-                            <h:outputText value="RetailSUId: "/>
-                            <h:selectOneMenu required="true" requiredMessage="RetailSUId is a required field"
-                                             value="#{productsController.products.retailSaleUnits}">
-                                <f:selectItem itemValue="0" itemLabel="Select a RetailSUId" noSelectionOption="true"/>
-                                <f:selectItems value="#{retailSaleUnitsController.findAll()}" var="RetailSU"
-                                               itemValue="#{RetailSU}" itemLabel="#{RetailSU.description}"/>
-                            </h:selectOneMenu>
-                        </div>
-                        <div class="6u 12u$(xsmall)">
-                            <h:outputText value="Product Pack Id: "/>
-                            <h:selectOneMenu required="true" requiredMessage="ProductPackId must be a required field"
-                                             value="#{productsController.products.productPackages}">
-                                <f:selectItem itemValue="0" itemLabel="Select a ProductPackId" noSelectionOption="true"/>
-                                <f:selectItems value="#{productPackagesController.findAll()}" var="ProductPack"
-                                               itemValue="#{ProductPack}" itemLabel="#{ProductPack.description}"/>
-                            </h:selectOneMenu>
-                        </div>
-                        <div class="6u$ 12u$(xsmall)">
-                            <h:outputText value="Package Quantity: "/>
-                            <h:inputText p:placeholder="0" maxlength="4" converterMessage="The field Package Quantity must be numeric" 
-                             validator="numerosValidator" validatorMessage="The field Package Quantity must be numeric"
-                             value="#{productsController.products.packageQuantity}"/>
-                        </div>
-                        <div class="6u 12u$(xsmall)">
-                            <h:outputText value="Enabled By: "/>
-                            <h:inputText value="#{productsController.products.enabledBy}" maxlength="50" p:placeholder="Enabled By"/>
-                        </div>
-                        <div class="6u$ 12u$(xsmall)">
-                            <h:outputText value="Enable Date: "/>
-                            <h:inputText  converterMessage="EnableDate has an incorrect date format" value="#{productsController.products.enableDate}" p:placeholder="dd/MM/yyyy">
-                                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-                            </h:inputText>  
-                        </div>
-                        <div class="6u 12u$(xsmall)">
-                            <h:outputText value="Last Changed By: "/>
-                            <h:inputText  value="#{productsController.products.lastChangedBy}" maxlength="50" p:placeholder="Last Changed By"/>
-                        </div>
-                        <div class="6u$ 12u$(xsmall)">
-                            <h:outputText value="Last Change Date: "/>
-                            <h:inputText  converterMessage="LastChangeDate has an incorrect date format" value="#{productsController.products.lastChangeDate}" p:placeholder="dd/MM/yyyy">
-                                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-                            </h:inputText>  
-                        </div>
-                        <div class="6u 12u$(xsmall)">
-                            <h:outputText value="Disabled By: "/>
-                            <h:inputText  value="#{productsController.products.disabledBy}" maxlength="50" p:placeholder="Disabled By" />
-                        </div>
-                        <div class="6u$ 12u$(xsmall)">
-                            <h:outputText value="Disable Date: "/>
-                            <h:inputText  converterMessage="Disable Date has an incorrect date format" value="#{productsController.products.disableDate}" p:placeholder="dd/MM/yyyy">
-                                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-                            </h:inputText>  
-                        </div>
-                        <div class="6u 12u$(xsmall)">
-                            <h:outputText value="Trade Mark Id: "/>
-                            <h:selectOneMenu  value="#{productsController.products.tradeMarks}">
-                                <f:selectItem itemValue="0" itemLabel="Select a Trade Mark Id" noSelectionOption="true"/>
-                                <f:selectItems value="#{tradeMarksController.findAll()}" var="TradeMark"
-                                               itemValue="#{TradeMark}" itemLabel="#{TradeMark.description}"/>
-                            </h:selectOneMenu>
-                        </div>
-                        <div class="6u$ 12u$(xsmall)">
-                            <h:outputText value="Trade Company Id: "/>
-                            <h:inputText  converterMessage="The field Trade Company Id must be numeric" value="#{productsController.products.tradeCompanyId}" maxlength="1"
-                                          p:placeholder="0" validator="numerosValidator" validatorMessage="The field Trade Company Id must be numeric" />
-                        </div>           
-                        
-                        <div class="12u$">
-                            <h:outputText value="Last Update BI: "/>
-                            <h:inputText  converterMessage="LastUpdateBI has an incorrect date format" value="#{productsController.products.lastUpdateBI}" p:placeholder="dd/MM/yyyy">
-                                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-                            </h:inputText>  
-                        </div>
-                        <!-- Break -->
-                        <div class="12u$">
-                            <ul class="actions">
-                                <li><h:commandButton rendered="#{!productsController.flagUpdate}" value="Add" 
-                                                     class="button" action="#{productsController.insert()}"/></li>
-                                <li><h:commandButton rendered="#{productsController.flagUpdate}" value="Edit"
-                                                     class="button" action="#{productsController.update()}"/></li>
-                                <li><h:commandButton immediate="true" value="Return" 
-                                                     class="button" action="#{productsController.volver()}"/></li>
-                            </ul>
-                        </div>
-                        <h:messages> </h:messages>
-                    </div>
-                </h:form>
-            </div>
-        </section>
-    </div>
-    <!-- Footer -->
+                    </h:form>
+                </div>
+            </section>
+        </div>
+        <!-- Footer -->
         <footer id="footer">
             <div class="copyright">
                 <p>&copy; Untitled. All rights reserved. Design: <a href="http://www.csi.uanl.mx/" target="_blank">CSI</a>.</p>
             </div>
         </footer>
-    
-    <!-- Scripts -->
+
+        <!-- Scripts -->
         <h:outputScript library="js" name="jquery.min.js" />
         <h:outputScript library="js" name="jquery.scrolly.min.js" />
         <h:outputScript library="js" name="jquery.scrollex.min.js" />
@@ -216,6 +215,5 @@
     </h:body>
 
 </html>            
-                                   
-                
-                
+
+

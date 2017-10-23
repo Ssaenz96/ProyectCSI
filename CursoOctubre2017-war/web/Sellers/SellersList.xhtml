@@ -31,7 +31,7 @@
                         <h:dataTable var="sellers" value="#{sellersController.findAll()}" class="table-fill">
 
                             <h:column class="table-information">
-                                    <f:facet name="header" class="text-header"> PayRollNumber </f:facet>
+                                    <f:facet name="header" class="text-header"> Pay Roll Number </f:facet>
                                     #{sellers.payRollNumber}
                             </h:column>
 
@@ -41,68 +41,68 @@
                             </h:column>
 
                             <h:column class="table-information">
-                                    <f:facet name="header" class="text-header"> PositionId </f:facet>
-                                    #{sellers.positions.positionId}
+                                    <f:facet name="header" class="text-header"> Position </f:facet>
+                                    #{sellers.positions.positionCode}
                             </h:column>
 
                             <h:column class="table-information">
-                                    <f:facet name="header" class="text-header"> EmpTypeId </f:facet>
-                                    #{sellers.employeeTypes.employeeTypeId}
+                                    <f:facet name="header" class="text-header"> EmpType </f:facet>
+                                    #{sellers.employeeTypes.empTypeCode}
                             </h:column>
 
                             <h:column>
-                                    <f:facet name="header"> EnableDate </f:facet>
+                                    <f:facet name="header"> Enable Date </f:facet>
                                     <h:outputText value="#{sellers.enableDate}">
                                         <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                     </h:outputText>
                             </h:column>
 
                             <h:column class="table-information">
-                                    <f:facet name="header" class="text-header"> EnabledBy </f:facet>
+                                    <f:facet name="header" class="text-header"> Enabled By </f:facet>
                                     #{sellers.enableBy}
                             </h:column>
 
                             <h:column>
-                                    <f:facet name="header"> LastChangeDate </f:facet>
+                                    <f:facet name="header"> Last Change Date </f:facet>
                                     <h:outputText value="#{sellers.lastChangeDate}">
                                         <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                     </h:outputText>
                             </h:column>
 
                             <h:column class="table-information">
-                                    <f:facet name="header" class="text-header"> LastChangedBy </f:facet>
+                                    <f:facet name="header" class="text-header"> Last Changed By </f:facet>
                                     #{sellers.lastChangeBy}
                             </h:column>
 
                             <h:column>
-                                    <f:facet name="header"> DisableDate </f:facet>
+                                    <f:facet name="header"> Disable Date </f:facet>
                                     <h:outputText value="#{sellers.disableDate}">
                                         <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                     </h:outputText>
                             </h:column>
 
                             <h:column class="table-information">
-                                    <f:facet name="header" class="text-header"> DisabledBy </f:facet>
+                                    <f:facet name="header" class="text-header"> Disabled By </f:facet>
                                     #{sellers.disabledBy}
                             </h:column>
 
                             <h:column class="table-information">
-                                    <f:facet name="header" class="text-header"> SellerIdUp </f:facet>
+                                    <f:facet name="header" class="text-header"> Seller Id Up </f:facet>
                                     #{sellers.sellerIdUp}
                             </h:column>
 
                             <h:column class="table-information">
-                                    <f:facet name="header" class="text-header"> GsaleStructureId </f:facet>
-                                    #{sellers.GSaleStructures.GSaleStructId}
+                                    <f:facet name="header" class="text-header"> GSale Structure </f:facet>
+                                    #{sellers.GSaleStructures.GSaleStructCode}
                             </h:column>
 
                             <h:column class="table-information">
-                                    <f:facet name="header" class="text-header"> TradeCompanyId </f:facet>
+                                    <f:facet name="header" class="text-header"> Trade Company Id </f:facet>
                                     #{sellers.tradeCompanyId}
                             </h:column>
 
                             <h:column>
-                                <f:facet name="header"> LastUpdateBI </f:facet>
+                                <f:facet name="header"> Last Update BI </f:facet>
                                 <h:outputText value="#{sellers.lastUpdateBI}">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                 </h:outputText>

@@ -32,15 +32,16 @@ Luis Garcia, validator message en last update
                     <h2>Purchase Order Status Form</h2>
                     <h:form>
                         <div class="row uniform">
-                            <div class="6u$ 12u$(xsmall)">
+                            <div class="12u$ 12u$(xsmall)">
                                 <h:outputText value="PO Status Code: "/>
                                 <h:inputText required="true" requiredMessage="PO Status Code is a require field"
                                              value="#{purchaseOrderStatusController.purchaseOrderStatus.POStatusCode}" 
+                                             validator="alfanumericoValidator" validatorMessage="PO Status Code must be an alphanumeric field"
                                              p:placeholder="PO Status Code"
                                              maxlength="2"/>
                             </div>
 
-                            <div class="6u$ 12u$(xsmall)">
+                            <div class="12u$ 12u$(xsmall)">
                                 <h:outputText value="Description: "/>
                                 <h:inputText required="true" requiredMessage="Description is a required field"
                                              value="#{purchaseOrderStatusController.purchaseOrderStatus.description}" 
@@ -48,9 +49,9 @@ Luis Garcia, validator message en last update
                                              maxlength="35"/>
                             </div>
 
-                            <div class="6u$ 12u$(small)">
+                            <div class="12u$ 12u$(small)">
                                 <h:outputText value="Last Update BI: "/>
-                                <h:inputText converterMessage="LastupdateBI has an incorrect date format" 
+                                <h:inputText converterMessage="LastupdateBI must be in dd/MM/yyyy format" 
                                              p:placeholder="dd/MM/yyyy"
                                              value="#{purchaseOrderStatusController.purchaseOrderStatus.lastUpdateBI}">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>

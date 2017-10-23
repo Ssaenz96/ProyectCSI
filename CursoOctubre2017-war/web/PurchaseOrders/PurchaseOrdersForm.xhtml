@@ -31,26 +31,31 @@
                     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
                     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
                     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-                    <script>
-                        $(document).ready(function () {
-                            $(".PODate_datepicker").datepicker({dateFormat: 'dd/mm/yy'});
-                            $(".CommDeliveryDate_datepicker").datepicker({dateFormat: 'dd/mm/yy'});
-                            $(".DeliveryDate_datepicker").datepicker({dateFormat: 'dd/mm/yy'});
-                            $(".ClousureDate_datepicker").datepicker({dateFormat: 'dd/mm/yy'});
-                            $(".CancelDate_datepicker").datepicker({dateFormat: 'dd/mm/yy'});
-                            $(".LastUpdateBI_datepicker").datepicker({dateFormat: 'dd/mm/yy'});
-                        });
-
-                        function ReadAgain() {
-                            document.getElementById('LastUpdateDatepickerId').readOnly = false;
-                            document.getElementById('EnableDateDatepickerId').readOnly = false;
-                            document.getElementById('SalePriceChangeDateDatepickerId').readOnly = false;
-                            document.getElementById('DisableDateDatepickerId').readOnly = false;
-                        }
-                    </script>
+                    
                     <h2>Purchase Orders Form</h2>
                     <h:form>
                         <div class="row uniform">
+                            
+                            <div class="12u$">
+                                <div class="select-wrapper">
+                            <h:outputText value="Purchase Order Status"/>
+                            <h:selectOneMenu required="true" requiredMessage="Purchase Order Status is a required field " value="#{purchaseOrdersController.purchaseOrders.purchaseOrderStatus}">
+                                <f:selectItem itemValue="0" itemLabel="Select a Purchase Order Status" noSelectionOption="true"></f:selectItem>
+                                <f:selectItems value="#{purchaseOrderStatusController.findAll()}" var="purchaseOrderStatus" itemValue="#{purchaseOrderStatus}" itemLabel="#{purchaseOrderStatus.POStatusCode}"/>
+                            </h:selectOneMenu>
+                                </div>
+                            </div>
+                            
+                            <div class="12u$">
+                                <div class="select-wrapper">
+                            <h:outputText value="Store"/>
+                            <h:selectOneMenu required="true" requiredMessage="Store is a required field" value="#{purchaseOrdersController.purchaseOrders.stores}">
+                                <f:selectItem itemValue="0" itemLabel="Select a Store" noSelectionOption="true"></f:selectItem>
+                                <f:selectItems value="#{storesController.findAll()}" var="stores" itemValue="#{stores}" itemLabel="#{stores.name}"/>
+                            </h:selectOneMenu>
+                                </div>
+                            </div>
+                            
                             <div class="6u 12u$(xsmall)">
                                 <h:outputText value="Purchase Order Number:"/>
                                 <h:inputText maxlength="15" required="true" requiredMessage="Purchase Order Number is a required field"
@@ -65,7 +70,7 @@
                             </div>
                             <div class="6u 12u$(xsmall)">
                                 <h:outputText value="Purchase Order Date"/>
-                                <h:inputText converterMessage="Purchase Order Date has an incorrect date format" 
+                                <h:inputText converterMessage="Purchase Order Date must be in dd/MM/yyyy format" 
                                              p:placeholder="dd/MM/yyyy"
                                              value="#{purchaseOrdersController.purchaseOrders.PODate}" required="true"
                                              requiredMessage="Purchase Order Date is a required field">
@@ -75,7 +80,7 @@
 
                             <div class="6u 12u$(xsmall)">
                                 <h:outputText value="Comm Delivery Date"/>
-                                <h:inputText converterMessage="Comm Delivery Date has an incorrect date format" 
+                                <h:inputText converterMessage="Comm Delivery Date must be in dd/MM/yyyy format" 
                                              p:placeholder="dd/MM/yyyy"
                                              value="#{purchaseOrdersController.purchaseOrders.commDeliveryDate}" required="true" 
                                              requiredMessage="Comm Delivery Date is a required field">
@@ -84,7 +89,7 @@
                             </div>
                             <div class="6u 12u$(xsmall)">
                                 <h:outputText value="Delivery Date"/>
-                                <h:inputText converterMessage="Delivery Date has an incorrect date format" 
+                                <h:inputText converterMessage="Delivery Date must be in dd/MM/yyyy format" 
                                              p:placeholder="dd/MM/yyyy"
                                              value="#{purchaseOrdersController.purchaseOrders.deliveryDate}" >
                                     <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
@@ -93,7 +98,7 @@
                             </div>
                             <div class="3u 12u$(xsmall)">
                                 <h:outputText value="Clousure Date"/>
-                                <h:inputText converterMessage="Clousure Date has an incorrect date format" 
+                                <h:inputText converterMessage="Clousure Date must be in dd/MM/yyyy format" 
                                              p:placeholder="dd/MM/yyyy"
                                              value="#{purchaseOrdersController.purchaseOrders.clousureDate}">
                                     <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
@@ -101,7 +106,7 @@
                             </div>
                             <div class="3u 12u$(xsmall)">
                                 <h:outputText value="Cancel Date"/>
-                                <h:inputText converterMessage="Cancel Date has an incorrect date format" 
+                                <h:inputText converterMessage="Cancel Date must be in dd/MM/yyyy format" 
                                              p:placeholder="dd/MM/yyyy"
                                              value="#{purchaseOrdersController.purchaseOrders.cancelDate}">
                                     <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
@@ -139,25 +144,7 @@
                                          p:placeholder="Total Delivered Value"
                                          value="#{purchaseOrdersController.purchaseOrders.totalDeliveredValue}"/>
                             </div>
-                            <div class="12u$">
-                                <div class="select-wrapper">
-                            <h:outputText value="Purchase Order Status Id"/>
-                            <h:selectOneMenu required="true" requiredMessage="Purchase Order Status Id is a required field " value="#{purchaseOrdersController.purchaseOrders.purchaseOrderStatus}">
-                                <f:selectItem itemValue="0" itemLabel="Select a Purchase Order Status Id" noSelectionOption="true"></f:selectItem>
-                                <f:selectItems value="#{purchaseOrderStatusController.findAll()}" var="purchaseOrderStatus" itemValue="#{purchaseOrderStatus}" itemLabel="#{purchaseOrderStatus.getpOStatusId()}"/>
-                            </h:selectOneMenu>
-                                </div>
-                            </div>
                             
-                            <div class="12u$">
-                                <div class="select-wrapper">
-                            <h:outputText value="Store Id"/>
-                            <h:selectOneMenu required="true" requiredMessage="Store Id is a required field" value="#{purchaseOrdersController.purchaseOrders.stores}">
-                                <f:selectItem itemValue="0" itemLabel="Select a Store Id" noSelectionOption="true"></f:selectItem>
-                                <f:selectItems value="#{storesController.findAll()}" var="stores" itemValue="#{stores}" itemLabel="#{stores.storeId}"/>
-                            </h:selectOneMenu>
-                                </div>
-                            </div>
                             <div class="6u 12u$(xsmall)">
                             <h:outputText value="Trade Company Id"/>
                             <h:inputText converterMessage="Trade Company Id must be a numeric field" required="true" requiredMessage="Trade Company Id is a required field" 
@@ -166,7 +153,7 @@
                             </div>
                             <div class="6u 12u$(xsmall)">
                             <h:outputText value="Last Update BI:"/>
-                            <h:inputText converterMessage="Last Update BI has an incorrect date format" 
+                            <h:inputText converterMessage="Last Update BI must be in dd/MM/yyyy format" 
                                          p:placeholder="dd/MM/yyyy"
                                          value="#{purchaseOrdersController.purchaseOrders.lastUpdateBI}" >
                                 <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>

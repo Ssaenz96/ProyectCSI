@@ -25,36 +25,36 @@
 
                         <div class="row uniform">
 
-                            <div class="12u$">
+                            <div class="6u 12u$(xsmall)">
                                 <div class="select-wrapper">
-                            <h:outputText value="Retails ID: "/>
-                            <h:selectOneMenu required="true" requiredMessage="Retails ID is a required field"
-                                             value="#{retailContactsController.retailContacts.retails}">
-                                <f:selectItem itemValue="0" itemLabel="Select a retails" noSelectionOption="true"/>
-                                <f:selectItems value="#{retailsController.findAll()}" var="retails"
-                                               itemValue="#{retails}" itemLabel="#{retails.name}"/>
-                            </h:selectOneMenu>
+                                    <h:outputText value="Retails: "/>
+                                    <h:selectOneMenu required="true" requiredMessage="Retails ID is a required field"
+                                                     value="#{retailContactsController.retailContacts.retails}">
+                                        <f:selectItem itemValue="0" itemLabel="Select a Retails" noSelectionOption="true"/>
+                                        <f:selectItems value="#{retailsController.findAll()}" var="retails"
+                                                       itemValue="#{retails}" itemLabel="#{retails.name}"/>
+                                    </h:selectOneMenu>
+                                </div>
                             </div>
-                            </div>
-                            <div class="12u$">
+                            <div class="6u$ 12u$(xsmall)">
                                 <div class="select-wrapper">
-                            <h:outputText value="ContactID: "/>
-                            <h:selectOneMenu required="true" requiredMessage="ContactID is a required field"
-                                             value="#{retailContactsController.retailContacts.contacts}">
-                                <f:selectItem itemValue="0" itemLabel="Select a contact" noSelectionOption="true"/>
-                                <f:selectItems value="#{contactsController.findAll()}" var="contacts"
-                                               itemValue="#{contacts}" itemLabel="#{contacts.name}"/>
-                            </h:selectOneMenu>
-                            </div>
+                                    <h:outputText value="Contact: "/>
+                                    <h:selectOneMenu required="true" requiredMessage="ContactID is a required field"
+                                                     value="#{retailContactsController.retailContacts.contacts}">
+                                        <f:selectItem itemValue="0" itemLabel="Select a Contact" noSelectionOption="true"/>
+                                        <f:selectItems value="#{contactsController.findAll()}" var="contacts"
+                                                       itemValue="#{contacts}" itemLabel="#{contacts.name}"/>
+                                    </h:selectOneMenu>
+                                </div>
                             </div>
                             <div class="12u$">
-                            <h:outputText value="Last Update BI: "/>
-                            <h:inputText converterMessage="LasT Update BI has an incorrect date format" 
-                                         value="#{retailContactsController.retailContacts.lastUpdateBI}" p:placeholder="dd/MM/yyy">
-                                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-                            </h:inputText>
+                                <h:outputText value="Last Update BI: "/>
+                                <h:inputText converterMessage="Last Update BI must be in dd/MM/yyy format" 
+                                             value="#{retailContactsController.retailContacts.lastUpdateBI}" p:placeholder="dd/MM/yyy">
+                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
                             </div>
-                             <!-- Break -->
+                            <!-- Break -->
                             <div class="12u$">
                                 <ul class="actions">
                                     <li><h:commandButton rendered="#{!retailContactsController.flag}" value="Add" 
@@ -65,8 +65,8 @@
                                                          class="button" action="#{retailContactsController.volver()}"/></li>
                                 </ul>
                             </div>
-                        <h:messages> </h:messages>
-                </div>
+                            <h:messages> </h:messages>
+                        </div>
                     </h:form>
                 </div>
             </section>

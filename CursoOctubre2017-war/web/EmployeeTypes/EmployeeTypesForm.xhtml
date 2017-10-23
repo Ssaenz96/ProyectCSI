@@ -54,7 +54,7 @@ Fecha: 18/10/2017
                             </div>
                             <div class="6u$ 12u$(xsmall)">
                                 <h:outputText value="Last Update BI: "/>
-                                <h:inputText converterMessage="Last Update BI has an incorrect date format" 
+                                <h:inputText converterMessage="Last Update BI must be in dd/MM/yyyy format" 
                                              value="#{employeeTypesController.employeeTypes.lastUpdateBI}" 
                                              p:placeholder="dd/MM/yyyy"> 
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>

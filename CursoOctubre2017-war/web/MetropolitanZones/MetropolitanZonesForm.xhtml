@@ -31,9 +31,10 @@
                         <div class="row uniform">
 
                             <div class="12u$">
-                                <h:outputText value="MetroZoneCode: "/>
+                                <h:outputText value="Metro Zone Code: "/>
                                 <h:inputText maxlength="2" required="true" 
-                                             requiredMessage="MetroZoneCode field is a required field" 
+                                             requiredMessage="Metro Zone Code is a required field" 
+                                             validator="alfanumericoValidator" validatorMessage="Metro Zone Code must be an alphanumeric field"
                                              value="#{metropolitanZonesController.metropolitanZones.metroZoneCode}"
                                              p:placeholder="Metro Zone Code">
                                 </h:inputText>
@@ -42,7 +43,8 @@
                             <div class="12u$">
                                 <h:outputText value="Name: "/>
                                 <h:inputText maxlength="50" required="true" 
-                                             requiredMessage="Name field is a required field" 
+                                             requiredMessage="Name field is a required field"
+                                             validator="alfanumericoValidator" validatorMessage="Name must be an alphanumeric field"
                                              value="#{metropolitanZonesController.metropolitanZones.name}"
                                              p:placeholder="Name">
                                 </h:inputText>
@@ -50,7 +52,7 @@
 
                             <div class="12u$">
                                 <h:outputText value="LastUpdateBI: "/>
-                                <h:inputText  converterMessage="LastUpdateBI has an incorrect date format" 
+                                <h:inputText  converterMessage="LastUpdateBI must be in dd/MM/yyyy format" 
                                               value="#{metropolitanZonesController.metropolitanZones.lastUpdateBI}"
                                               p:placeholder="dd/MM/yyyy">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>

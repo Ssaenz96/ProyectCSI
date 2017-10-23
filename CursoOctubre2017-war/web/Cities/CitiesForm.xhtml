@@ -49,7 +49,9 @@
                     </div>
                     <div class="6u$ 12u$(xsmall)">
                         <h:outputText value="Last Update BI: "/>
-                        <h:inputText value="#{citiesController.cities.lastUpdateBi}" p:placeholder="dd/MM/yyyy">
+                        <h:inputText value="#{citiesController.cities.lastUpdateBi}" 
+                                     converterMessage="Last Update BI must be in dd/MM/yyyy format"
+                                     p:placeholder="dd/MM/yyyy">
                             <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
                         </h:inputText> 
                     </div>
@@ -57,7 +59,7 @@
                         <div class="select-wrapper">
                         <h:outputText value="State: "/>
                         <h:selectOneMenu required="true" requiredMessage="State is a required field" value="#{citiesController.cities.states}">
-                            <f:selectItem itemValue="0" itemLabel="Select one..." noSelectionOption="true"></f:selectItem>
+                            <f:selectItem itemValue="0" itemLabel="Select a State" noSelectionOption="true"></f:selectItem>
                             <f:selectItems value="#{statesController.findAll()}" var="state" itemValue="#{state}" itemLabel="#{state.name}"></f:selectItems>
                         </h:selectOneMenu>
                         </div>
@@ -66,7 +68,7 @@
                         <div class="select-wrapper">
                         <h:outputText value="Metropolitan Zone: "/>
                         <h:selectOneMenu required="true" requiredMessage="Metropolitan Zone is a required message" value="#{citiesController.cities.metropolitanZones}">
-                            <f:selectItem itemValue="0" itemLabel="Select one..." noSelectionOption="true"></f:selectItem>
+                            <f:selectItem itemValue="0" itemLabel="Select a Metropolitan Zone" noSelectionOption="true"></f:selectItem>
                             <f:selectItems value="#{metropolitanZonesController.findAll()}" var="metropolitanZone" itemValue="#{metropolitanZone}" itemLabel="#{metropolitanZone.name}"></f:selectItems>
                         </h:selectOneMenu>
                         </div>

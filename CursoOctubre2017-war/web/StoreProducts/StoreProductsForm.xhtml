@@ -2,171 +2,244 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
-        <title>Store Products Form</title>
+        <title>Garcomex</title>
+        <meta charset="utf-8" />
+        <h:outputStylesheet library="css" name="main.css"/>
+        <link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
     </h:head>
     <h:body>
-        <h:form>
-            
-            <div class="title">
-                <h3 name="title">Store Products</h3>
+        <!-- Header -->
+        <header id="header">
+            <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
+            <h:link value="Log out" outcome="/login"></h:link>
+        </header>
+        <div id="main">
+            <section class="wrapper style1">
+                <div class="inner">
+                    <!-- Form -->
+                    <h2>Store Products Form</h2>
+                    <h:form>
+
+                        <div class="row uniform">
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Product Id "/>
+                                <h:selectOneMenu required="true" requiredMessage="Product Id field is a required field"
+                                                 value="#{storeProductsController.storeProducts.products}">
+                                    <f:selectItem itemValue="0" itemLabel="Select a Product Id" noSelectionOption="true"/>
+                                    <f:selectItems value="#{productsController.findAll()}" var="products"
+                                                   itemValue="#{products}" itemLabel="#{products.productCode}"/>
+                                </h:selectOneMenu>
+                            </div>
+
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Store"/>
+                                <h:selectOneMenu required="true" requiredMessage="Store field is a required field"
+                                                 value="#{storeProductsController.storeProducts.stores}">
+                                    <f:selectItem itemValue="0" itemLabel="Select a Store" noSelectionOption="true"/>
+                                    <f:selectItems value="#{storesController.findAll()}" var="stores"
+                                                   itemValue="#{stores}" itemLabel="#{stores.name}"/>
+                                </h:selectOneMenu>
+                            </div>
+
+                            <div class="12u$ 12u$(xsmall)">
+                                <h:outputText value="Customer Sale Price: "/>
+                                <h:inputText required="true" requiredMessage="Customer Sale Price is a required field" maxlength="10"
+                                             p:placeholder="Customer Sale Price"
+                                             value="#{storeProductsController.storeProducts.customerSalePrice}"
+                                             converterMessage="Customer Sale Price must be a numeric field"/>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Inventory:  "/>
+                                <h:inputText value="#{storeProductsController.storeProducts.inventory}"
+                                             p:placeholder="Inventory"
+                                             converterMessage="Inventory must be a numeric field"/>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Last Inventory Update: "/>
+                                <h:inputText converterMessage="Last Inventory Update must be in dd/MM/yyyy format" 
+                                             p:placeholder="dd/MM/yyyy"
+                                             value="#{storeProductsController.storeProducts.lastInventoryUpdate}">
+                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
+
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Maximum:  "/>
+                                <h:inputText maxlength="5" p:placeholder="Maximum"
+                                             value="#{storeProductsController.storeProducts.maximum}"
+                                             converterMessage="Maximum must be a numeric field"/>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Minimum:  "/>
+                                <h:inputText maxlength="5" p:placeholder="Minimum"
+                                             value="#{storeProductsController.storeProducts.minimum}"
+                                             converterMessage="Minimum must be a numeric field"/>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Offer Price: "/>
+                                <h:inputText maxlength="10" p:placeholder="Offer Price"
+                                             value="#{storeProductsController.storeProducts.offerPrice}"
+                                             converterMessage="Offer Price must be a numeric field"/>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Recorder point:  "/>
+                                <h:inputText required="true" requiredMessage="Reorder Point field is a required field" maxlength="5"
+                                             p:placeholder="Recorder point"
+                                             value="#{storeProductsController.storeProducts.recorderPoint}"
+                                             converterMessage="Recorder point must be a numeric field"/>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Disabled By: "/>
+                                <h:inputText maxlength="50" p:placeholder="Disable By"
+                                             value="#{storeProductsController.storeProducts.disableBy}"
+                                             validator="letrasValidator" validatorMessage="Disable By must only contain letters"/>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Disable Date: "/>
+                                <h:inputText converterMessage="Disable Date must be in dd/MM/yyyy format"
+                                             p:placeholder="dd/MM/yyyy"
+                                             value="#{storeProductsController.storeProducts.disableDate}">
+                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Enable By: "/>
+                                <h:inputText required="true" requiredMessage="Enable By field is a required field" maxlength="50"
+                                             p:placeholder="Enable By"
+                                             value="#{storeProductsController.storeProducts.enableBy}"
+                                             validator="letrasValidator" validatorMessage="Enable By must only contain letters"/>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Enable Date: "/>
+                                <h:inputText required="true" requiredMessage="Enable Date field is a required field" 
+                                             p:placeholder="dd/MM/yyyy" 
+                                             converterMessage="Enable Date must be in dd/MM/yyyy format"
+                                             value="#{storeProductsController.storeProducts.enableDate}">
+                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
+
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Last CSP Changed By: "/>
+                                <h:inputText maxlength="50" p:placeholder="Last Changed By"
+                                             value="#{storeProductsController.storeProducts.lastCSPChangeBy}"
+                                             validator="letrasValidator" validatorMessage="Last CSP Chaned By must only contain letters"/>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Last CSP Change Date: "/>
+                                <h:inputText converterMessage="Last CSP Change Date must be in dd/MM/yyyy" 
+                                             p:placeholder="dd/MM/yyyy"
+                                             value="#{storeProductsController.storeProducts.lastCSPChangeDate}">
+                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Last Changed By: "/>
+                                <h:inputText maxlength="50" p:placeholder="Last Changed By"
+                                             value="#{storeProductsController.storeProducts.lastChangeBy}"
+                                             validator="letrasValidator" validatorMessage="Last Change by must only contain letters"/>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Last Change Date: "/>
+                                <h:inputText converterMessage="Last Change Date must be in dd/MM/yyyy format" 
+                                             p:placeholder="dd/MM/yyyy"
+                                             value="#{storeProductsController.storeProducts.lastChangeDate}">
+                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
+
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Last Offer Changed By: "/>
+                                <h:inputText maxlength="50" p:placeholder="Last Offer Changed By"
+                                             value="#{storeProductsController.storeProducts.lastOfferChangedBy}"
+                                             validator="letrasValidator" validatorMessage="Last Offer Changed By must only contain letters"/>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Last Offer Date: "/>
+                                <h:inputText converterMessage="Last Offer Date must be in dd/MM/yyyy"
+                                             p:placeholder="dd/MM/yyyy"
+                                             value="#{storeProductsController.storeProducts.lastOfferDate}">
+                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
+
+
+                            <div class="12u$ 12u$(xsmall)">
+                                <h:outputText value="Status: "/>
+                                <h:inputText maxlength="2" p:placeholder="Status"
+                                             value="#{storeProductsController.storeProducts.status}"
+                                             converterMessage="Status must be a numeric field"/>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Last Update BI: "/>
+                                <h:inputText converterMessage="Last Update BI" p:placeholder="dd/MM/yyyy"
+                                             value="#{storeProductsController.storeProducts.lastUpdateBI}">
+                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Trade Company Id: "/>
+                                <h:inputText value="#{storeProductsController.storeProducts.tradeCompanyId}"
+                                             p:placeholder="Trade Company Id"
+                                             converterMessage="Trade Company Id must be a numeric field"/>
+                            </div>
+
+                            <!-- Break -->
+                            <div class="12u$">
+                                <ul class="actions">
+                                    <li><h:commandButton rendered="#{!storeProductsController.flag}" value="Add" 
+                                                         class="button"
+                                                         action="#{storeProductsController.insert()}"/></li>
+
+                                    <li><h:commandButton rendered="#{storeProductsController.flag}" value="Edit"
+                                                         class="button"
+                                                         action="#{storeProductsController.update()}"/></li>
+
+                                    <li> <h:commandButton immediate="true" value="Return" 
+                                                          class="button"
+                                                          action="#{storeProductsController.volver()}"/></li>
+                                </ul>
+                            </div>
+                            <h:messages> </h:messages>
+                        </div>
+                    </h:form>
+                </div>
+            </section>
+        </div>
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="copyright">
+                <p>&copy; Untitled. All rights reserved. Design: <a href="http://www.csi.uanl.mx/" target="_blank">CSI</a>.</p>
             </div>
-            
-            <div class="form-style">
-                               
-            <h:outputText value="Customer Sale Price: "/>
-            <h:inputText required="true" requiredMessage="Customer Sale Price field is necessary" maxlength="10"
-                         value="#{storeProductsController.storeProducts.customerSalePrice}"
-                         validator="numerosValidator" validatorMessage="The field 'Customer Sales Price' only accepted numbers"/>
-            <br/>
-            
-            <h:outputText value="Disabled by: "/>
-            <h:inputText maxlength="50"
-                         value="#{storeProductsController.storeProducts.disableBy}"
-                         validator="letrasValidator" validatorMessage="The field 'Disable by' only accepted letters"/>
-            <br/>
-            
-            <h:outputText value="Disable date: "/>
-            <h:inputText value="#{storeProductsController.storeProducts.disableDate}">
-                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-            </h:inputText>
-            <br/>
-            
-            <h:outputText value="Enable by: "/>
-            <h:inputText required="true" requiredMessage="Enable By field is necessary" maxlength="50"
-                         value="#{storeProductsController.storeProducts.enableBy}"
-                         validator="letrasValidator" validatorMessage="The field 'Enable by' only accepted letters"/>
-            <br/>
-            
-            <h:outputText value="Enable date: "/>
-            <h:inputText required="true" requiredMessage="Enable Date field is necessary" value="#{storeProductsController.storeProducts.enableDate}">
-                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-            </h:inputText>
-            <br/>
-            
-            <h:outputText value="Inventory:  "/>
-            <h:inputText value="#{storeProductsController.storeProducts.inventory}"
-                         validator="numerosValidator" validatorMessage="The field 'Inventory' only accepted numbers"/>
-            <br/>
-            
-            <h:outputText value="Last CSP Changed by: "/>
-            <h:inputText maxlength="50"
-                         value="#{storeProductsController.storeProducts.lastCSPChangeBy}"
-                         validator="letrasValidator" validatorMessage="The field 'Last CSP Change by' only accepted letters"/>
-            <br/>
-            
-            <h:outputText value="Last CSP Change date: "/>
-            <h:inputText value="#{storeProductsController.storeProducts.lastCSPChangeDate}">
-                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-            </h:inputText>
-            <br/>
-            
-            <h:outputText value="Last Changed by: "/>
-            <h:inputText maxlength="50"
-                         value="#{storeProductsController.storeProducts.lastChangeBy}"
-                         validator="letrasValidator" validatorMessage="The field 'Last Change by' only accepted letters"/>
-            <br/>
-            
-            <h:outputText value="Last Change date: "/>
-            <h:inputText value="#{storeProductsController.storeProducts.lastChangeDate}">
-                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-            </h:inputText>
-            <br/>
-            
-            <h:outputText value="Last inventory update: "/>
-            <h:inputText value="#{storeProductsController.storeProducts.lastInventoryUpdate}">
-                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-            </h:inputText>
-            <br/>
-            
-            <h:outputText value="Last Offer Changed by: "/>
-            <h:inputText maxlength="50"
-                         value="#{storeProductsController.storeProducts.lastOfferChangedBy}"
-                         validator="letrasValidator" validatorMessage="The field 'Last Offer Changed by' only accepted letters"/>
-            <br/>
-            
-            <h:outputText value="Last Offer date: "/>
-            <h:inputText value="#{storeProductsController.storeProducts.lastOfferDate}">
-                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-            </h:inputText>
-            <br/>
-            
-            <h:outputText value="Last Update BI: "/>
-            <h:inputText value="#{storeProductsController.storeProducts.lastUpdateBI}">
-                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-            </h:inputText>
-            <br/>
-            
-            <h:outputText value="Maximum:  "/>
-            <h:inputText maxlength="5"
-                         value="#{storeProductsController.storeProducts.maximum}"
-                         validator="numerosValidator" validatorMessage="The field 'Maximum' only accepted numbers"/>
-            <br/>
-            
-            <h:outputText value="Minimum:  "/>
-            <h:inputText maxlength="5"
-                         value="#{storeProductsController.storeProducts.minimum}"
-                         validator="numerosValidator" validatorMessage="The field 'Minimum' only accepted numbers"/>
-            <br/>
-            
-            <h:outputText value="Offer Price: "/>
-            <h:inputText maxlength="10"
-                         value="#{storeProductsController.storeProducts.offerPrice}"
-                         validator="numerosValidator" validatorMessage="The field 'Offer Price' only accepted numbers"/>
-            <br/>
-            
-            <h:outputText value="Recorder point:  "/>
-            <h:inputText required="true" requiredMessage="Reorder Point field is necessary" maxlength="5"
-                         value="#{storeProductsController.storeProducts.recorderPoint}"
-                         validator="numerosValidator" validatorMessage="The field 'Recorder point' only accepted numbers"/>
-            <br/>
-            
-            <h:outputText value="Status: "/>
-            <h:inputText maxlength="2"
-                         value="#{storeProductsController.storeProducts.status}"
-                         validator="numerosValidator" validatorMessage="The field 'Status' only accepted numbers"/>
-            <br/>
-            
-            <h:outputText value="Trade Company ID: "/>
-            <h:inputText value="#{storeProductsController.storeProducts.tradeCompanyId}"
-                         validator="numerosValidator" validatorMessage="The field 'Trade company id' only accepted numbers"/>
-            <br/>
-            
-            <h:outputText value="ProductId "/>
-            <h:selectOneMenu required="true" requiredMessage="ProductId field is necessary"
-                             value="#{storeProductsController.storeProducts.products}">
-                <f:selectItem itemValue="0" itemLabel="Select a product" noSelectionOption="true"/>
-                <f:selectItems value="#{productsController.findAll()}" var="products"
-                               itemValue="#{products}" itemLabel="#{products.productCode}"/>
-            </h:selectOneMenu>
-            <br/>
-            
-            <h:outputText value="StoreId"/>
-            <h:selectOneMenu required="true" requiredMessage="StoreID field is necessary"
-                             value="#{storeProductsController.storeProducts.stores}">
-                <f:selectItem itemValue="0" itemLabel="Select a store" noSelectionOption="true"/>
-                <f:selectItems value="#{storesController.findAll()}" var="stores"
-                               itemValue="#{stores}" itemLabel="#{stores.name}"/>
-            </h:selectOneMenu>
-            <br/>
-            
-            <h:commandButton rendered="#{!storeProductsController.flag}" value="Add" 
-                             class="button"
-                             action="#{storeProductsController.insert()}"/>
-            
-            <h:commandButton rendered="#{storeProductsController.flag}" value="Edit"
-                             class="button"
-                             action="#{storeProductsController.update()}"/>
-            
-            <h:commandButton immediate="true" value="Return" 
-                             class="button"
-                             action="#{storeProductsController.volver()}"/>
-            
-            </div>
-            <h:messages> </h:messages>
-            
-        </h:form>
+        </footer>
+        <!-- Scripts -->
+        <h:outputScript library="js" name="jquery.min.js" />
+        <h:outputScript library="js" name="jquery.scrolly.min.js" />
+        <h:outputScript library="js" name="jquery.scrollex.min.js" />
+        <h:outputScript library="js" name="skel.min.js" />
+        <h:outputScript library="js" name="util.js" />
+        <h:outputScript library="js" name="main.js" />
     </h:body>
 </html>
 

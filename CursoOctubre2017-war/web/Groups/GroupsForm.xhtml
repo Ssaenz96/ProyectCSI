@@ -56,12 +56,13 @@
                                 <h:outputText value="Download File"/>
                                 <h:inputText value="#{groupsController.groups.download}"
                                              maxlength="1" p:placeholder="Download File"
+                                             converterMessage="Download File must be a numeric field"
                                              validator="numerosValidator"
-                                             validatorMessage="The field Download File muste be numeric"/>
+                                             validatorMessage="Download File muste be a numeric field"/>
                             </div>
                             <div class="6u 12u$(xsmall)">
                                 <h:outputText value="Last Update BI"/>
-                                <h:inputText converterMessage="Last Update BI has an incorrect date format"
+                                <h:inputText converterMessage="Last Update BI must be in dd/MM/yyyy format"
                                              value="#{groupsController.groups.lastUpdateBI}"
                                              p:placeholder="dd/MM/yyyy">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>

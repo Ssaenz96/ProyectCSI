@@ -26,22 +26,23 @@
 
                             <div class="12u$">
                                 <h:outputText value="GSale Struct Id Level: "/>
-                                <h:selectOneMenu required="true" requiredMessage="GSaleStructIdLevel is a required field" value="#{gSaleStructuresController.GSaleStructures.GSaleStructureLevels}">
-                                    <f:selectItem itemValue="0" itemLabel="Select a GSaleStructIdLevel" noSelectionOption="true"/>
+                                <h:selectOneMenu required="true" requiredMessage="GSale Struct Id Level is a required field" value="#{gSaleStructuresController.GSaleStructures.GSaleStructureLevels}">
+                                    <f:selectItem itemValue="0" itemLabel="Select a GSale Struct Id Level" noSelectionOption="true"/>
                                     <f:selectItems value="#{gSaleStructureLevelsController.findAll()}" var="GSaleStructIdLevels" itemValue="#{GSaleStructIdLevels}" itemLabel="#{GSaleStructIdLevels.GSaleStructLevelId}"/>
                                 </h:selectOneMenu>
                             </div>
 
                             <div class="6u">
                                 <h:outputText value="GSale Struct Code: "/>
-                                <h:inputText required="true" validator="alfanumericoValidator" p:placeholder="GSale Struct Code"
-                                             requiredMessage="GSaleStructCode is a required field" maxlength="3" 
+                                <h:inputText required="true" validator="alfanumericoValidator" validatorMessage="GSale Struct Code must be an alphanumeric field"
+                                             p:placeholder="GSale Struct Code"
+                                             requiredMessage="GSale Struct Code is a required field" maxlength="3" 
                                              value="#{gSaleStructuresController.GSaleStructures.GSaleStructCode}"/>
                             </div>
 
                             <div class="6u">
                                 <h:outputText value="Own Code: "/>
-                                <h:inputText maxlength="10" validator="alfanumericoValidator" 
+                                <h:inputText maxlength="10" validator="alfanumericoValidator" validatorMessage="Own Code must be an alphanumeric field"
                                              value="#{gSaleStructuresController.GSaleStructures.ownCode}"
                                              p:placeholder="Own Code"/>
                             </div>
@@ -56,13 +57,14 @@
                             <div class="12u$">
                                 <h:outputText value="Sale Geo Struct Id Up: "/>
                                 <h:inputText value="#{gSaleStructuresController.GSaleStructures.saleGeoStructIdUp}"
+                                             converterMessage="Sale Geo Struct Id Up must be a numeric field"
                                              p:placeholder="Sale Geo Struct Id Up"/>
                             </div>
 
                             <div class="6u 12u$(xsmall)">
                                 <h:outputText value="Enable Date:"/>
                                 <h:inputText value="#{gSaleStructuresController.GSaleStructures.enableDate}"
-                                             p:placeholder="dd/MM/yyyy" converterMessage="Enable Date has an incorrect date format">
+                                             p:placeholder="dd/MM/yyyy" converterMessage="Enable Date must be in dd/MM/yyyy format">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
                                 </h:inputText>
                             </div>
@@ -76,7 +78,7 @@
                             <div class="6u 12u$(xsmall)">
                                 <h:outputText value="Disable Date:"/>
                                 <h:inputText p:placeholder="dd/MM/yyyy" value="#{gSaleStructuresController.GSaleStructures.disableDate}"
-                                             converterMessage="Disable Date has an incorrect format">
+                                             converterMessage="Disable Date must be in dd/MM/yyyy format">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
                                 </h:inputText>
                             </div>
@@ -89,7 +91,7 @@
 
                             <div class="6u 12u$(xsmall)">
                                 <h:outputText value="Trade Company Id: "/>
-                                <h:inputText converterMessage="Trade Company Id must be a numeric field" p:placeholder="Trade Company Id" 
+                                <h:inputText converterMessage="Trade Company Id must be in dd/MM/yyyy format" p:placeholder="Trade Company Id" 
                                              value="#{gSaleStructuresController.GSaleStructures.tradeCompanyId}"/>
                             </div>
 
@@ -97,7 +99,7 @@
                                 <h:outputText value="Last Update BI:"/>
                                 <h:inputText p:placeholder="dd/MM/yyyy" 
                                              value="#{gSaleStructuresController.GSaleStructures.lastUpdateBi}"
-                                             converterMessage="Last Update BI has an incorrect date format">
+                                             converterMessage="Last Update BI must be in dd/MM/yyyy format">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
                                 </h:inputText>
                             </div>

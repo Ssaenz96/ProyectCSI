@@ -44,7 +44,7 @@
                             </div>
                             <div class="6u 12u$(xsmall)">
                             <h:outputText value="Last Update BI: "/>
-                            <h:inputText  converterMessage="Last Update BI has an incorrect date format" value="#{retailSaleUnitsController.retailSaleUnits.lastUpdateBI}" p:placeholder="dd/MM/yyy"> }
+                            <h:inputText  converterMessage="Last Update BI must be in dd/MM/yyy format" value="#{retailSaleUnitsController.retailSaleUnits.lastUpdateBI}" p:placeholder="dd/MM/yyy"> }
                                 <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
                             </h:inputText>
                             </div>

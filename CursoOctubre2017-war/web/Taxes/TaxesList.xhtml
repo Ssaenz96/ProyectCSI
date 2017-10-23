@@ -24,12 +24,12 @@
                         <h:dataTable var="taxes" value="#{taxesController.findAll()}" class="table-fill">
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header">TaxCode</f:facet>
+                                <f:facet name="header" class="text-header">Tax Code</f:facet>
                                 #{taxes.taxCode}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header">TaxPercent</f:facet>
+                                <f:facet name="header" class="text-header">Tax Percent</f:facet>
                                 #{taxes.taxPercent}
                             </h:column>
 
@@ -39,12 +39,12 @@
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header">TradeCompanyId</f:facet>
+                                <f:facet name="header" class="text-header">Trade Company Id</f:facet>
                                 #{taxes.tradeCompanyId}
                             </h:column>
 
                              <h:column class="table-information">
-                                <f:facet name="header" class="text-header">LastUpdateBI</f:facet>
+                                <f:facet name="header" class="text-header">Last Update BI</f:facet>
                                 <h:outputText value="#{taxes.lastUpdateBI}">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy"></f:convertDateTime>
                                 </h:outputText>

@@ -12,65 +12,171 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
-        <title>Sellers Form</title>
+        <title>Garcomex</title>
+        <meta charset="utf-8" />
+        <h:outputStylesheet library="css" name="main.css"/>
+        <link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
     </h:head>
-    <h:body>
-        <h:form>
-            <div class="form-style">
-                <h:outputText value="PayRollNumber: "/>
-                <h:inputText value="#{sellersController.sellers.payRollNumber}" maxlength="10" validator="alfanumericoValidator" validatorMessage="PayRollNumber is an alphanumeric field"
-                             required="true" requiredMessage="PayRollNumber is a required field"/><br/>
-                <h:outputText value="Name"/>
-                <h:inputText value="#{sellersController.sellers.name}" maxlength="35" validator="letrasValidator" validatorMessage="Name must contain only letters"
-                             required="true" requiredMessage="Name is a required field"/><br/>
-                <h:outputText value="PositionId: "/>
-                <h:selectOneMenu required="true" requiredMessage="Position ID is a required field" value="#{sellersController.sellers.positions}">
-                    <f:selectItem itemValue="0" itemLabel="Select one position" noSelectionOption="true"></f:selectItem>
-                    <f:selectItems value="#{positionsController.findAll()}" var="position" itemValue="#{position}" itemLabel="#{position.positionId}"/>
-                </h:selectOneMenu><br/>
-                <h:outputText value="EmpTypeId: "/>
-                <h:selectOneMenu value="#{sellersController.sellers.employeeTypes}" required="true" requiredMessage="EmpTypeId is a required field">
-                    <f:selectItem itemValue="0" itemLabel="Select one EmpType" noSelectionOption="true"></f:selectItem>
-                    <f:selectItems value="#{employeeTypesController.findAll()}" var="emp" itemValue="#{emp}" itemLabel="#{emp.employeeTypeId}"/>
-                </h:selectOneMenu><br/>
-                <h:outputText value="EnableDate: "/>
-                <h:inputText converterMessage="EnableDate has an incorrect date format" value="#{sellersController.sellers.enableDate}">
-                    <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-                </h:inputText><br/>
-                <h:outputText value="EnabledBy: "/>
-                <h:inputText validator="letrasValidator" validatorMessage="EnableBy must contain only letters" value="#{sellersController.sellers.enableBy}" maxlength="50"/><br/>
-                <h:outputText value="LastChangeDate: "/>
-                <h:inputText converterMessage="LastChange has an incorrect date format" value="#{sellersController.sellers.lastChangeDate}"><br/>
-                    <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-                </h:inputText>
-                <h:outputText value="LastChangeBy "/>
-                <h:inputText validator="letrasValidator" validatorMessage="LastChangeBy must contain only letters" value="#{sellersController.sellers.lastChangeBy}" maxlength="50"/><br/>
-                <h:outputText value="DisableDate: "/>
-                <h:inputText converterMessage="DisableDate has an incorrect date format" value="#{sellersController.sellers.disableDate}">
-                    <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-                </h:inputText><br/>
-                <h:outputText value="DisabledBy: "/>
-                <h:inputText validator="letrasValidator" validatorMessage="DisableBy must contain only letters" value="#{sellersController.sellers.enableBy}" maxlength="50"/><br/>
-                <h:outputText value="SellerIdUp: "/>
-                <h:inputText value="#{sellersController.sellers.sellerIdUp}" validator="numerosValidator" validatorMessage="SellerIdUp only contains numbers"/><br/>
-                <h:outputText value="GSaleStructId: "/>
-                <h:selectOneMenu value="#{sellersController.sellers.GSaleStructures}" required="true" requiredMessage="GSaleStructId is a required field">
-                    <f:selectItem itemValue="0" itemLabel="Select one GSaleStructId" noSelectionOption="true"></f:selectItem>
-                    <f:selectItems value="#{gSaleStructuresController.findAll()}" var="g" itemValue="#{g}" itemLabel="#{g.GSaleStructId}"/>
-                </h:selectOneMenu><br/>
-                <h:outputText value="TradeCompanyId: "/>
-                <h:inputText converterMessage="TradeCompanyId must be a numeric field" value="#{sellersController.sellers.tradeCompanyId}" validator="numerosValidator" validatorMessage="TradeCompanyId only contains numbers"/><br/>
-                <h:outputText value="LastUpdateBI"/>
-                <h:inputText converterMessage="LastUpdateBI has an incorrect date format" value="#{sellersController.sellers.lastUpdateBI}">
-                    <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-                </h:inputText><br/>
-                <h:commandButton rendered="#{!sellersController.flagUpdate}" value="Add" action="#{sellersController.insert()}" class="button"/>
-                <h:commandButton rendered="#{sellersController.flagUpdate}" value="Edit" action="#{sellersController.update()}" class="button"/>
-                <h:commandButton immediate="true" value="Return" class="button" action="#{sellersController.volver()}"/>
+    <h:body class="subpage">
+        <!-- Header -->
+        <header id="header">
+            <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
+            <h:link value="Log out" outcome="/login"></h:link>
+        </header>
+        <div id="main">
+            <section class="wrapper style1">
+                <div class="inner">
+                    <!-- Form -->
+                    <h2>Sellers Form</h2>
+                    <h:form>
+                        <div class="row uniform">
+                            <div class="12u$ 12u$(xsmall)">
+                                <h:outputText value="Pay Roll Number: "/>
+                                <h:inputText value="#{sellersController.sellers.payRollNumber}" maxlength="10" validator="alfanumericoValidator" validatorMessage="PayRollNumber must be an alphanumeric field"
+                                             p:placeholder="Pay Roll Number"
+                                             required="true" requiredMessage="PayRollNumber is a required field"/>
+                            </div>
+
+                            <div class="12u$ 12u$(xsmall)">
+                                <h:outputText value="Name"/>
+                                <h:inputText value="#{sellersController.sellers.name}" maxlength="35" validator="letrasValidator" validatorMessage="Name must only contain letters"
+                                             p:placeholder="Name"
+                                             required="true" requiredMessage="Name is a required field"/>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Position: "/>
+                                <h:selectOneMenu required="true" requiredMessage="Position is a required field" value="#{sellersController.sellers.positions}">
+                                    <f:selectItem itemValue="0" itemLabel="Select a Position" noSelectionOption="true"></f:selectItem>
+                                    <f:selectItems value="#{positionsController.findAll()}" var="position" itemValue="#{position}" itemLabel="#{position.positionCode}"/>
+                                </h:selectOneMenu>
+                            </div>
+
+
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="EmpType: "/>
+                                <h:selectOneMenu value="#{sellersController.sellers.employeeTypes}" required="true" requiredMessage="EmpType is a required field">
+                                    <f:selectItem itemValue="0" itemLabel="Select a EmpType" noSelectionOption="true"></f:selectItem>
+                                    <f:selectItems value="#{employeeTypesController.findAll()}" var="emp" itemValue="#{emp}" itemLabel="#{emp.empTypeCode}"/>
+                                </h:selectOneMenu>
+                            </div>
+                            
+                            <div class="12u$ 12u$(xsmall)">
+                                <h:outputText value="GSale Struct: "/>
+                                <h:selectOneMenu value="#{sellersController.sellers.GSaleStructures}" required="true" requiredMessage="GSaleStruct is a required field">
+                                    <f:selectItem itemValue="0" itemLabel="Select a GSale Struct" noSelectionOption="true"></f:selectItem>
+                                    <f:selectItems value="#{gSaleStructuresController.findAll()}" var="g" itemValue="#{g}" itemLabel="#{g.GSaleStructCode}"/>
+                                </h:selectOneMenu>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Enable Date: "/>
+                                <h:inputText converterMessage="Enable Date must be in dd/MM/yyyy format" 
+                                             p:placeholder="dd/MM/yyyy"
+                                             value="#{sellersController.sellers.enableDate}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Enabled By: "/>
+                                <h:inputText validator="letrasValidator" validatorMessage="EnableBy must only contain letters"
+                                             p:placeholder="Enable By"
+                                             value="#{sellersController.sellers.enableBy}" maxlength="50"/>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Last Change Date: "/>
+                                <h:inputText converterMessage="Last Change must be in dd/MM/yyyy format" 
+                                             p:placeholder="dd/MM/yyyy"
+                                             value="#{sellersController.sellers.lastChangeDate}"><br/>
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Last Change By "/>
+                                <h:inputText validator="letrasValidator" 
+                                             p:placeholder="Last Change By"
+                                             validatorMessage="LastChangeBy must only contain letters" 
+                                             value="#{sellersController.sellers.lastChangeBy}" maxlength="50"/>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Disable Date: "/>
+                                <h:inputText converterMessage="Disable Date must be in dd/MM/yyyy format" 
+                                             p:placeholder="dd/MM/yyyy"
+                                             value="#{sellersController.sellers.disableDate}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Disabled By: "/>
+                                <h:inputText validator="letrasValidator" validatorMessage="DisableBy must contain only letters" 
+                                             p:placeholder="Disable By"
+                                             value="#{sellersController.sellers.enableBy}" maxlength="50"/>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">    
+                                <h:outputText value="Seller Id Up: "/>
+                                <h:inputText value="#{sellersController.sellers.sellerIdUp}" 
+                                             p:placeholder="Seller Id Up"
+                                             converterMessage="Seller Id Up must be a numeric field"/>
+                            </div>
+
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Trade Company Id: "/>
+                                <h:inputText converterMessage="Trade Company Id must be a numeric field" 
+                                             p:placeholder="Trade Company Id"
+                                             value="#{sellersController.sellers.tradeCompanyId}"/>
+                            </div>
+
+                            <div class="12u$ 12u$(xsmall)">
+                                <h:outputText value="Last Update BI"/>
+                                <h:inputText converterMessage="Last Update BI must be in dd/MM/yyyy format"
+                                             p:placeholder="Last Update BI"
+                                             value="#{sellersController.sellers.lastUpdateBI}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
+
+                            <!-- Break -->
+                            <div class="12u$">
+                                <ul class="actions">
+                                    <li><h:commandButton rendered="#{!sellersController.flagUpdate}" value="Add" 
+                                                         action="#{sellersController.insert()}" class="button"/></li>
+
+                                    <li> <h:commandButton rendered="#{sellersController.flagUpdate}" value="Edit" 
+                                                          action="#{sellersController.update()}" class="button"/></li>
+
+                                    <li><h:commandButton immediate="true" value="Return" 
+                                                         class="button" action="#{sellersController.volver()}"/></li>
+                                </ul>
+                            </div>
+                            <h:messages></h:messages>
+                        </div>
+                    </h:form>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="copyright">
+                <p>&copy; Untitled. All rights reserved. Design: <a href="http://www.csi.uanl.mx/" target="_blank">CSI</a>.</p>
             </div>
-        </h:form>
+        </footer>
+        <!-- Scripts -->
+        <h:outputScript library="js" name="jquery.min.js" />
+        <h:outputScript library="js" name="jquery.scrolly.min.js" />
+        <h:outputScript library="js" name="jquery.scrollex.min.js" />
+        <h:outputScript library="js" name="skel.min.js" />
+        <h:outputScript library="js" name="util.js" />
+        <h:outputScript library="js" name="main.js" />
     </h:body>
 </html>
 

@@ -12,7 +12,8 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>Garcomex</title>
         <meta charset="utf-8" />
@@ -33,26 +34,35 @@
                     <h:form>
                         <div class="row uniform">
 
-                            <div class="6u 12u$(xsmall)">
-                                <h:outputText value="TrademarkCode: "/>
-                                <h:inputText value="#{tradeMarksController.tradeMarks.tradeMarkCode}" maxlength="6"/>
+                            <div class="12u$ 12u$(xsmall)">
+                                <h:outputText value="Trademark Code: "/>
+                                <h:inputText value="#{tradeMarksController.tradeMarks.tradeMarkCode}" 
+                                             p:placeholder="Trademark Code" 
+                                             validator="alfanumericoValidator" validatorMessage="Trademark Code must be an alphanumeric field"
+                                             maxlength="6"/>
                             </div>
 
 
-                            <div class="6u$ 12u$(xsmall)">
+                            <div class="12u$ 12u$(xsmall)">
                                 <h:outputText value="Description: "/>
-                                <h:inputText value="#{tradeMarksController.tradeMarks.description}" maxlength="35"/>
+                                <h:inputText value="#{tradeMarksController.tradeMarks.description}" 
+                                             p:placeholder="Description"
+                                             maxlength="35"/>
                             </div>
 
                             <div class="6u 12u$(xsmall)">
-                                <h:outputText value="Trade Company ID: "/>
-                                <h:inputText converterMessage="TradeCompanyId is a numeric field" value="#{tradeMarksController.tradeMarks.tradeCompanyId}"/>
+                                <h:outputText value="Trade Company Id: "/>
+                                <h:inputText converterMessage="Trade Company Id is a numeric field" 
+                                             p:placeholder="Trade Company Id"
+                                             value="#{tradeMarksController.tradeMarks.tradeCompanyId}"/>
                             </div>
 
 
                             <div class="6u$ 12u$(xsmall)">
                                 <h:outputText value="Last update BI: "/>
-                                <h:inputText converterMessage="LastUpdateBI has an incorrect date format" value="#{tradeMarksController.tradeMarks.lastUpdateBI}">
+                                <h:inputText converterMessage="LastUpdateBI has an incorrect date format" 
+                                             p:placeholder="dd/MM/yyyy"
+                                             value="#{tradeMarksController.tradeMarks.lastUpdateBI}">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
                                 </h:inputText>
                             </div>

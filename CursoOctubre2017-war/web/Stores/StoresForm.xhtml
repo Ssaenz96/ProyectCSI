@@ -8,7 +8,8 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>Garcomex</title>
         <meta charset="utf-8" />
@@ -28,171 +29,197 @@
                     <h2>Stores Form</h2>
                     <h:form>
                         <div class="row uniform">
-                            
+
                             <div class="6u 12u$(xsmall)">
-                                <div class="select-wrapper">
-                                <h:outputText value="Retail ID: "/>
-                                <h:selectOneMenu required="true" requiredMessage="Retail Id is a required field"
-                                                 value="#{storesController.stores.retails}">
-                                    <f:selectItem itemValue="0" itemLabel="Select a Retail" noSelectionOption="true"/>
-                                    <f:selectItems value="#{retailsController.findAll()}" var="retails"
-                                                   itemValue="#{retails}" itemLabel="#{retails.retailId}"/>
-                                </h:selectOneMenu>
-                                
+                                <!--<div class="select-wrapper">-->
+                                    <h:outputText value="Retail: "/>
+                                    <h:selectOneMenu required="true" requiredMessage="Retail is a required field"
+                                                     value="#{storesController.stores.retails}">
+                                        <f:selectItem itemValue="0" itemLabel="Select a Retail" noSelectionOption="true"/>
+                                        <f:selectItems value="#{retailsController.findAll()}" var="retails"
+                                                       itemValue="#{retails}" itemLabel="#{retails.retailCode}"/>
+                                    </h:selectOneMenu>
+
+                                <!--</div>-->
                             </div>
-                            </div>
-                                
+
 
                             <div class="6u$ 12u$(xsmall)">
-                                <h:outputText value="StoreCode "/>
-                                <h:inputText required="true" requiredMessage="StoreCode is a required field"
+                                <h:outputText value="Store Code "/>
+                                <h:inputText required="true" requiredMessage="Store Code is a required field"
+                                             p:placeholder="Store Code"
                                              value="#{storesController.stores.storeCode}" maxlength="4"/>
                             </div>
 
                             <div class="12u$">
                                 <h:outputText value="Name: "/>
                                 <h:inputText validator="letrasValidator" required="true" requiredMessage="Name is a required field"
+                                             p:placeholder="Name"
                                              value="#{storesController.stores.name}" maxlength="35"/>
                             </div>
 
                             <div class="12u$">
                                 <h:outputText value="Street: "/>
                                 <h:inputText required="true" requiredMessage="Street is a required field"
+                                             p:placeholder="Street"
                                              value="#{storesController.stores.street}" maxlength="70"/>
                             </div>
 
                             <div class="6u 12u$(xsmall)">
-                                <h:outputText value="OutSideNumber: "/>
-                                <h:inputText validator="numerosValidator" required="true" requiredMessage="OutSideNumber is a required field"
+                                <h:outputText value="Outside Number: "/>
+                                <h:inputText required="true" requiredMessage="Outside Number is a required field"
+                                             p:placeholder="Outside Number"
+                                             converterMessage="Outside Number must be a numeric field"
                                              value="#{storesController.stores.outsideNumber}" maxlength="6"/> 
                             </div>
 
                             <div class="6u$ 12u$(xsmall)">
-                                <h:outputText value="InsideNumber: "/>
-                                <h:inputText validator="numerosValidator" value="#{storesController.stores.insideNumber}" maxlength="6"/>
+                                <h:outputText value="Inside Number: "/>
+                                <h:inputText converterMessage="Inside Number must be a numeric field" 
+                                             p:placeholder="Inside Number"
+                                             value="#{storesController.stores.insideNumber}" maxlength="6"/>
                             </div>
 
                             <div class="12u$">
                                 <h:outputText value="Neighborhood: "/>
                                 <h:inputText required="true" requiredMessage="Neighborhood is a required field"
+                                             p:placeholder="Neighborhood"
                                              value="#{storesController.stores.neighborhood}" maxlength="30"/>
                             </div>
 
                             <div class="6u 12u$(xsmall)">
-                                <div class="select-wrapper">
-                                <h:outputText value="City ID: "/>
-                                <h:selectOneMenu required="true" requiredMessage="City Id field is a required field"
-                                                 value="#{storesController.stores.cities}">
-                                    <f:selectItem itemValue="0" itemLabel="Select a City" noSelectionOption="true"/>
-                                    <f:selectItems value="#{citiesController.findAll()}" var="city"
-                                                   itemValue="#{city}" itemLabel="#{city.cityId}"/>
-                                </h:selectOneMenu>
-                            </div>
+                                <!--<div class="select-wrapper">-->
+                                    <h:outputText value="City: "/>
+                                    <h:selectOneMenu required="true" requiredMessage="City field is a required field"
+                                                     value="#{storesController.stores.cities}">
+                                        <f:selectItem itemValue="0" itemLabel="Select a City" noSelectionOption="true"/>
+                                        <f:selectItems value="#{citiesController.findAll()}" var="city"
+                                                       itemValue="#{city}" itemLabel="#{city.name}"/>
+                                    </h:selectOneMenu>
+                                <!--</div>-->
                             </div>
 
                             <div class="6u$ 12u$(xsmall)">
-                                <h:outputText value="PostalCode: "/>
+                                <h:outputText value="Postal Code: "/>
                                 <h:inputText required="true" requiredMessage="PostalCode is a required field"
+                                             p:placeholder="Postal Code"
                                              value="#{storesController.stores.postalCode}" maxlength="8" validator="numerosValidator"/>
                             </div>
 
                             <div class="6u 12u$(xsmall)">
-                                <div class="select-wrapper">
-                                <h:outputText value="StoreRank ID: "/>
-                                <h:selectOneMenu required="true" requiredMessage="StoreRank Id is a required field"
-                                                 value="#{storesController.stores.storeRanks}">
-                                    <f:selectItem itemValue="0" itemLabel="Select a StoreRank" noSelectionOption="true"/>
-                                    <f:selectItems value="#{storeRanksController.findAll()}" var="storeRank"
-                                                   itemValue="#{storeRank}" itemLabel="#{storeRank.storeRankId}"/>
-                                </h:selectOneMenu>
-                            </div>
+                                <!--<div class="select-wrapper">-->
+                                    <h:outputText value="Store Rank: "/>
+                                    <h:selectOneMenu required="true" requiredMessage="StoreRank is a required field"
+                                                     value="#{storesController.stores.storeRanks}">
+                                        <f:selectItem itemValue="0" itemLabel="Select a StoreRank" noSelectionOption="true"/>
+                                        <f:selectItems value="#{storeRanksController.findAll()}" var="storeRank"
+                                                       itemValue="#{storeRank}" itemLabel="#{storeRank.storeRankCode}"/>
+                                    </h:selectOneMenu>
+                                <!--</div>-->
                             </div>
 
                             <div class="6u$ 12u$(xsmall)">
-                                <div class="select-wrapper">
-                                <h:outputText value="Seller ID: "/>
-                                <h:selectOneMenu required="true" requiredMessage="Seller Id is a required field"
-                                                 value="#{storesController.stores.sellers}">
-                                    <f:selectItem itemValue="0" itemLabel="Select a Seller" noSelectionOption="true"/>
-                                    <f:selectItems value="#{sellersController.findAll()}" var="sellers"
-                                                   itemValue="#{sellers}" itemLabel="#{sellers.sellerId}"/>
-                                </h:selectOneMenu>
-                            </div>
+                                <!--<div class="select-wrapper">-->
+                                    <h:outputText value="Seller: "/>
+                                    <h:selectOneMenu required="true" requiredMessage="Seller is a required field"
+                                                     value="#{storesController.stores.sellers}">
+                                        <f:selectItem itemValue="0" itemLabel="Select a Seller" noSelectionOption="true"/>
+                                        <f:selectItems value="#{sellersController.findAll()}" var="sellers"
+                                                       itemValue="#{sellers}" itemLabel="#{sellers.name}"/>
+                                    </h:selectOneMenu>
+                               <!-- </div>-->
                             </div>
 
                             <div class="6u 12u$(xsmall)">
-                                <h:outputText value="Demostrator ID: "/>
-                                <h:inputText converterMessage="DemostratorId ia s numeric field" value="#{storesController.stores.demostratorId}"/>
+                                <h:outputText value="Demostrator Id: "/>
+                                <h:inputText converterMessage="DemostratorId ia s numeric field" 
+                                             p:placeholder="Demostrator Id"
+                                             value="#{storesController.stores.demostratorId}"/>
                             </div>
 
                             <div class="6u$ 12u$(xsmall)">
-                                <div class="select-wrapper">
-                                <h:outputText value="ProgVisit ID: "/>
-                                <h:selectOneMenu required="true" requiredMessage="ProgVisit Id is a required field"
-                                                 value="#{storesController.stores.programVisits}">
-                                    <f:selectItem itemValue="0" itemLabel="Select a ProgVisit" noSelectionOption="true"/>
-                                    <f:selectItems value="#{programVisitsController.findAll()}" var="pv"
-                                                   itemValue="#{pv}" itemLabel="#{pv.progVisitId}"/>
-                                </h:selectOneMenu>
-                            </div>
+                                <!--<div class="select-wrapper">-->
+                                    <h:outputText value="Prog Visit: "/>
+                                    <h:selectOneMenu required="true" requiredMessage="Prog Visit is a required field"
+                                                     value="#{storesController.stores.programVisits}">
+                                        <f:selectItem itemValue="0" itemLabel="Select a Prog Visit" noSelectionOption="true"/>
+                                        <f:selectItems value="#{programVisitsController.findAll()}" var="pv"
+                                                       itemValue="#{pv}" itemLabel="#{pv.profVisitCode}"/>
+                                    </h:selectOneMenu>
+                               <!-- </div>-->
                             </div>
 
                             <div class="12u$">
-                                <div class="select-wrapper">
-                                <h:outputText value="GSaleStruct ID: "/>
-                                <h:selectOneMenu required="true" requiredMessage="GSaleStruct Id is a required field"
-                                                 value="#{storesController.stores.GSaleStructures}">
-                                    <f:selectItem itemValue="0" itemLabel="Select a GSaleStruct" noSelectionOption="true"/>
-                                    <f:selectItems value="#{gSaleStructuresController.findAll()}" var="gss"
-                                                   itemValue="#{gss}" itemLabel="#{gss.GSaleStructId}"/>
-                                </h:selectOneMenu>
-                            </div>
+                                <!--<div class="select-wrapper">-->
+                                    <h:outputText value="GSale Struct: "/>
+                                    <h:selectOneMenu required="true" requiredMessage="G Sale Struct is a required field"
+                                                     value="#{storesController.stores.GSaleStructures}">
+                                        <f:selectItem itemValue="0" itemLabel="Select a GSale Struct" noSelectionOption="true"/>
+                                        <f:selectItems value="#{gSaleStructuresController.findAll()}" var="gss"
+                                                       itemValue="#{gss}" itemLabel="#{gss.GSaleStructCode}"/>
+                                    </h:selectOneMenu>
+                               <!-- </div>-->
                             </div>
 
                             <div class="6u 12u$(xsmall)">
-                                <h:outputText value="EnableDate: "/>
-                                <h:inputText converterMessage="Enable Date has an incorrect date format" value="#{storesController.stores.enableDate}">
+                                <h:outputText value="Enable Date: "/>
+                                <h:inputText converterMessage="Enable Date must be in dd/MM/yyyy format" 
+                                             p:placeholder="dd/MM/yyyy"
+                                             value="#{storesController.stores.enableDate}">
                                     <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
                                 </h:inputText>
                             </div>
 
                             <div class="6u$ 12u$(xsmall)">
                                 <h:outputText value="Enabled By: "/>
-                                <h:inputText validator="letrasValidator" value="#{storesController.stores.enabledBy}" maxlength="17"/>
+                                <h:inputText validator="letrasValidator" p:placeholder="Enable By"
+                                             value="#{storesController.stores.enabledBy}" maxlength="17"/>
                             </div>
 
                             <div class="6u 12u$(xsmall)">
-                                <h:outputText value="DisableDate: "/>
-                                <h:inputText converterMessage="Disable Date has an incorrect date format" value="#{storesController.stores.disableDate}">
+                                <h:outputText value="Disable Date: "/>
+                                <h:inputText converterMessage="Disable Date must be in dd/MM/yyyy" p:placeholder="dd/MM/yyyy"
+                                             value="#{storesController.stores.disableDate}">
                                     <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
                                 </h:inputText>
                             </div>
 
                             <div class="6u$ 12u$(xsmall)">
                                 <h:outputText value="Disabled By: "/>
-                                <h:inputText validator="letrasValidator" value="#{storesController.stores.disabledBy}" maxlength="50"/>
+                                <h:inputText validator="letrasValidator"  validatorMessage="Disable By must only contain letters"
+                                             p:placeholder="Disable By"
+                                             value="#{storesController.stores.disabledBy}" maxlength="50"/>
                             </div>
 
                             <div class="6u 12u$(xsmall)">
-                                <h:outputText value="LastChangeDate "/>
-                                <h:inputText converterMessage="Last Change Date has an incorrect date format" value="#{storesController.stores.lastChangeDate}">
+                                <h:outputText value="Last Change Date "/>
+                                <h:inputText converterMessage="Last Change Date must be in dd/MM/yyyy format" 
+                                             p:placeholder="dd/MM/yyyy"
+                                             value="#{storesController.stores.lastChangeDate}">
                                     <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
                                 </h:inputText>
                             </div>
-
+                            
                             <div class="6u$ 12u$(xsmall)">
-                                <h:outputText value="ChangedBy "/>
-                                <h:inputText validator="letrasValidator" value="#{storesController.stores.changedBy}" maxlength="50"/>
+                                <h:outputText value="Changed By "/>
+                                <h:inputText validator="letrasValidator" validatorMessage="Chaged By must only contain letters" 
+                                             p:placeholder="Changeb By"
+                                             value="#{storesController.stores.changedBy}" maxlength="50"/>
                             </div>
-
+                            
                             <div class="6u 12u$(xsmall)">
-                                <h:outputText value="TradeCompanyId: "/>
-                                <h:inputText converterMessage="TradeCompanyId is a numeric field" value="#{storesController.stores.tradeCompanyId}" maxlength="15"/>
+                                <h:outputText value="Trade Company Id: "/>
+                                <h:inputText converterMessage="TradeCompanyId is a numeric field" 
+                                             p:placeholder="Trade Company Id"
+                                             value="#{storesController.stores.tradeCompanyId}" maxlength="15"/>
                             </div>
+ 
 
                             <div class="6u$ 12u$(xsmall)">
-                                <h:outputText value="LastUpdateBi "/>
-                                <h:inputText converterMessage="LastUpdateBi has an incorrect date format" value="#{storesController.stores.lastUpdateBI}">
+                                <h:outputText value="Last Update BI "/>
+                                <h:inputText converterMessage="Last Update Bi must be in dd/MM/yyyy format" 
+                                             p:placeholder="dd/MM/yyyy"
+                                             value="#{storesController.stores.lastUpdateBI}">
                                     <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
                                 </h:inputText>
                             </div>

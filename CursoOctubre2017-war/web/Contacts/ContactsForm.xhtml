@@ -43,9 +43,9 @@ Fecha: 18/10/2017
                                              value="#{contactsController.contacts.position}" p:placeholder="Position"/>
                             </div>
                             <div class="6u 12u$(xsmall)">
-                                <h:outputText value="Phone number: "/>
-                                <h:inputText required="true" requiredMessage="PhoneNumber is a required field" 
-                                             validator="numerosValidator" validatorMessage="PhoneNumber must contain only numbers"
+                                <h:outputText value="Phone Number: "/>
+                                <h:inputText required="true" requiredMessage="Phone Number is a required field" 
+                                             validator="numerosValidator" validatorMessage="Phone Number must be a numeric field"
                                              maxlength="15" value="#{contactsController.contacts.phoneNumber}" p:placeholder="Phone Number"/>
                             </div>
                             <div class="6u$ 12u$(xsmall)">
@@ -54,7 +54,7 @@ Fecha: 18/10/2017
                             </div>
                             <div class="6u 12u$(xsmall)">
                                 <h:outputText value="Cellphone: "/>
-                                <h:inputText  validator="numerosValidator" validatorMessage="CellPhone must contain only numbers" 
+                                <h:inputText  validator="numerosValidator" validatorMessage="Cellphone must be a numeric field" 
                                               maxlength="15" value="#{contactsController.contacts.cellphone}" p:placeholder="Cellphone"/>
                             </div>
                             <div class="6u$ 12u$(xsmall)">
@@ -76,7 +76,7 @@ Fecha: 18/10/2017
                             </div>
                             <div class="12u$">
                                 <h:outputText value="Last Update BI:"/>
-                                <h:inputText converterMessage="LastUpdateBI has an incorrect date format" 
+                                <h:inputText converterMessage="Last Update BI must be in dd/MM/yyy format" 
                                              value="#{contactsController.contacts.lastUpdateBI}" 
                                              p:placeholder="dd/MM/yyyy">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>

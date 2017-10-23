@@ -30,12 +30,12 @@
                         <h:dataTable var="store" value="#{storesController.findAll()}" class="table-fill" border="2">
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> RetailId </f:facet>
-                                #{store.retails.retailId}
+                                <f:facet name="header" class="text-header"> Retail </f:facet>
+                                #{store.retails.name}
                             </h:column>
 
                              <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> StoreCode </f:facet>
+                                <f:facet name="header" class="text-header"> Store Code </f:facet>
                                 #{store.storeCode}
                             </h:column>
 
@@ -50,12 +50,12 @@
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> OutsideNumber </f:facet>
+                                <f:facet name="header" class="text-header"> Outside Number </f:facet>
                                 #{store.outsideNumber}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> InsideNumber </f:facet>
+                                <f:facet name="header" class="text-header"> Inside Number </f:facet>
                                 #{store.insideNumber}
                             </h:column>
 
@@ -65,83 +65,83 @@
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> CityId </f:facet>
-                                #{store.cities.cityId}
+                                <f:facet name="header" class="text-header"> City </f:facet>
+                                #{store.cities.name}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> PostalCode </f:facet>
+                                <f:facet name="header" class="text-header"> Postal Code </f:facet>
                                 #{store.postalCode}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> StoreRankId </f:facet>
-                                #{store.storeRanks.storeRankId}
+                                <f:facet name="header" class="text-header"> Store Rank </f:facet>
+                                #{store.storeRanks.storeRankCode}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> SellerId </f:facet>
-                                #{store.sellers.sellerId}
+                                <f:facet name="header" class="text-header"> Seller </f:facet>
+                                #{store.sellers.name}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> DemostratorId </f:facet>
+                                <f:facet name="header" class="text-header"> Demostrator Id </f:facet>
                                 #{store.demostratorId}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> ProgVisitId </f:facet>
-                                #{store.programVisits.progVisitId}
+                                <f:facet name="header" class="text-header"> Prog Visit </f:facet>
+                                #{store.programVisits.profVisitCode}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> SaleStructId </f:facet>
-                               #{store.GSaleStructures.GSaleStructId}
+                                <f:facet name="header" class="text-header"> Sale Struct </f:facet>
+                               #{store.GSaleStructures.GSaleStructCode}
                             </h:column>
 
                            <h:column>
-                                <f:facet name="header"> EnableDate </f:facet>
+                                <f:facet name="header"> Enable Date </f:facet>
                                 <h:outputText value="#{store.enableDate}">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                 </h:outputText>
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> EnabledBy </f:facet>
+                                <f:facet name="header" class="text-header"> Enabled By </f:facet>
                                 #{store.enabledBy}
                             </h:column>
 
                             <h:column>
-                                <f:facet name="header"> DisableData </f:facet>
+                                <f:facet name="header"> Disable Date </f:facet>
                                 <h:outputText value="#{store.disableDate}">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                 </h:outputText>
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> DisabledBy </f:facet>
+                                <f:facet name="header" class="text-header"> Disabled By </f:facet>
                                 #{store.disabledBy}
                             </h:column>
 
                             <h:column>
-                                <f:facet name="header"> LastChangeDate </f:facet>
+                                <f:facet name="header"> Last Change Date </f:facet>
                                 <h:outputText value="#{store.lastChangeDate}">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                 </h:outputText>
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> ChangedBy </f:facet>
+                                <f:facet name="header" class="text-header"> Changed By </f:facet>
                                 #{store.changedBy}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> TradeCompanyId </f:facet>
+                                <f:facet name="header" class="text-header"> Trade Company Id </f:facet>
                                 #{store.tradeCompanyId}
                             </h:column>
 
                             <h:column>
-                                <f:facet name="header"> LastUpdateBi </f:facet>
+                                <f:facet name="header"> Last Update BI </f:facet>
                                 <h:outputText value="#{store.lastUpdateBI}">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                 </h:outputText>

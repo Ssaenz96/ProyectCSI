@@ -11,42 +11,82 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
-        <title>Positions</title>
-        <h1>Positions</h1>
+        <title>Garcomex</title>
+        <meta charset="utf-8" />
+        <h:outputStylesheet library="css" name="main.css"/>
+        <link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
     </h:head>
-    <h:body>
-         <h:form>
-        <h:outputText value="Position Code: "/>
-        <h:inputText maxlength="2" required="true" requiredMessage="PositionCode is a required field" 
-                     validator="alfanumericoValidator" validatorMessage="PositionCode is an alphanumeric field" 
-                     p:placeholder="Position Code"
-                     value="#{positionsController.positions.positionCode}"></h:inputText>
-        <br/>
-        <h:outputText value="Description: "/>
-        <h:inputText maxlength="35" required="true" requiredMessage="Description is a required field" 
-                     p:placeholder="Description"
-                     value="#{positionsController.positions.description}"></h:inputText>
-        <br/>
-        <h:outputText value="Trade Company Id: "/>
-        <h:inputText  converterMessage="TradeCompanyId must be a numeric field" 
-                      p:placeholder="Trade Company Id"
-                      value="#{positionsController.positions.tradeCompanyId}"></h:inputText>
-        <br/>
-        <h:outputText value="Last Update BI: "/>
-        <h:inputText  converterMessage="LastUpdateBI has an incorrect date format" 
-                      p:placeholder="dd/MM/yyyy"
-                      value="#{positionsController.positions.lastUpdateBI}"> }
-            <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-        </h:inputText>
-        <br/>
-        
-        <h:commandButton  rendered="#{!positionsController.flagUpdate}" value="Add" action="#{positionsController.insert()}"/>
-        <h:commandButton  rendered="#{positionsController.flagUpdate}" value="Edit" action="#{positionsController.update()}"/>
-        <h:commandButton  immediate="true" value="Return" action="#{positionsController.volver()}"/>
-            <h:messages>
 
-            </h:messages>
-        </h:form>
+    <h:body class="subpage">
+        <!-- Header -->
+        <header id="header">
+            <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
+            <h:link value="Log out" outcome="/login"></h:link>
+        </header>
+        <div id="main">
+            <section class="wrapper style1">
+                <div class="inner">
+                    <!-- Form -->
+                    <h2>Positions Form</h2>
+                    <h:form>
+                        <div class="row uniform">
+                            <div class="12u$ 12u$(xsmall)">
+                                <h:outputText value="Position Code: "/>
+                                <h:inputText maxlength="2" required="true" requiredMessage="Position Code is a required field" 
+                                             validator="alfanumericoValidator" validatorMessage="Position Code must be an alphanumeric field" 
+                                             p:placeholder="Position Code"
+                                             value="#{positionsController.positions.positionCode}"></h:inputText>
+                            </div>
+
+                            <div class="12u$ 12u$(xsmall)">
+                                <h:outputText value="Description: "/>
+                                <h:inputText maxlength="35" required="true" requiredMessage="Description is a required field" 
+                                             p:placeholder="Description"
+                                             value="#{positionsController.positions.description}"></h:inputText>
+                            </div>
+
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Trade Company Id: "/>
+                                <h:inputText  converterMessage="TradeCompanyId must be a numeric field" 
+                                              p:placeholder="Trade Company Id"
+                                              value="#{positionsController.positions.tradeCompanyId}"></h:inputText>
+                            </div>
+
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Last Update BI: "/>
+                                <h:inputText  converterMessage="LastUpdateBI must be in dd/MM/yyyy format" 
+                                              p:placeholder="dd/MM/yyyy"
+                                              value="#{positionsController.positions.lastUpdateBI}"> }
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
+
+                            <div class="12u$">
+                                <ul class="actions">
+                                    <li><h:commandButton  rendered="#{!positionsController.flagUpdate}" value="Add" action="#{positionsController.insert()}"/></li>
+                                    <li><h:commandButton  rendered="#{positionsController.flagUpdate}" value="Edit" action="#{positionsController.update()}"/></li>
+                                    <li><h:commandButton  immediate="true" value="Return" action="#{positionsController.volver()}"/></li>
+                                </ul>
+                            </div>
+                            <h:messages></h:messages>
+                        </div>
+                    </h:form>
+                </div>
+            </section>
+        </div>
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="copyright">
+                <p>&copy; Untitled. All rights reserved. Design: <a href="http://www.csi.uanl.mx/" target="_blank">CSI</a>.</p>
+            </div>
+        </footer>
+        <!-- Scripts -->
+        <h:outputScript library="js" name="jquery.min.js" />
+        <h:outputScript library="js" name="jquery.scrolly.min.js" />
+        <h:outputScript library="js" name="jquery.scrollex.min.js" />
+        <h:outputScript library="js" name="skel.min.js" />
+        <h:outputScript library="js" name="util.js" />
+        <h:outputScript library="js" name="main.js" />
     </h:body>
 </html>
 

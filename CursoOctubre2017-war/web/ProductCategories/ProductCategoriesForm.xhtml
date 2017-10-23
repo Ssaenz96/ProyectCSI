@@ -31,32 +31,30 @@ Luis Amaury Urbina Molina
                     <h:form>
 
                         <div class="row uniform">
-                            <div class="6u$ 12u$(xsmall)">
+                            <div class="12u$ 12u$(xsmall)">
                                 <h:outputText value="Product Category Code: "/>
                                 <h:inputText required="true" requiredMessage="Product Category Code is a required field"
                                              p:placeholder="Product Category Code"
                                              value="#{productCategoriesController.productCategories.prodCategoryCode}" maxlength="3"/>
                             </div>
 
-                            <div class="6u$ 12u$(xsmall)">
+                            <div class="12u$ 12u$(xsmall)">
                                 <h:outputText value="Description: "/>
                                 <h:inputText required="true" requiredMessage="Description is a required field"
                                              p:placeholder="Description"
                                              value="#{productCategoriesController.productCategories.description}" maxlength="35"/>
                             </div>
 
-                            <div class="6u$ 12u$(xsmall)">
+                            <div class="6u 12u$(xsmall)">
                                 <h:outputText value="Trade Company Id: "/>
-                                <h:inputText converterMessage="TradeCompanyId must be a numeric field" 
-                                             requiredMessage="Trade Company ID is a required field"
+                                <h:inputText converterMessage="Trade Company Id must be a numeric field" 
                                              p:placeholder="Trade Company Id"
-                                             value="#{productCategoriesController.productCategories.tradeCompanyId}" 
-                                             validator="numerosValidator" validatorMessage="The field Trade Company Id only accept numbers..."/>
+                                             value="#{productCategoriesController.productCategories.tradeCompanyId}"/>
                             </div>
 
                             <div class="6u$ 12u$(xsmall)">
                                 <h:outputText value =" Last Update BI: "/>
-                                <h:inputText converterMessage="LastUpdateBI has an incorrect date format" 
+                                <h:inputText converterMessage="Last Update BI must be in dd/MM/yyyy format" 
                                              p:placeholder="dd/MM/yyyy"
                                              value="#{productCategoriesController.productCategories.lastUpdateBI}">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy" />
@@ -76,7 +74,7 @@ Luis Amaury Urbina Molina
 
                                     <li><h:commandButton immediate="true" value="Return" 
                                                          class="button"
-                                                         action="ProductCategoriesList"/></li>
+                                                         action="#{productCategoriesController.volver()}"/></li>
                                 </ul>
                             </div>
                             <h:messages> </h:messages>

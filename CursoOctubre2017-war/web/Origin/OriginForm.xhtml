@@ -37,7 +37,8 @@ Luis Garcia
                                 <div class="12u$">
                                     <h:outputText value="Origin Code: "/>
                                     <h:inputText required="true" requiredMessage="Origin Code is a required field"
-                                                 value="#{originController.origin.originCode}" maxlength="1"
+                                                 validator="alfanumericoValidator" validatorMessage="Origin Code must be an alphanumeric field"
+                                                 value="#{originController.origin.originCode}" maxlength="2"
                                                  p:placeholder="Origin Code"/>
                                 </div>
 
@@ -58,7 +59,7 @@ Luis Garcia
                                 
                                 <div class="6u$">
                                 <h:outputText value ="Last Update BI"/>
-                                <h:inputText converterMessage="Last Update BI has an incorrect date format" 
+                                <h:inputText converterMessage="Last Update BI must be in dd/MM/yyy format" 
                                              value="#{originController.origin.lastUpdateBI}"
                                              p:placeholder="dd/MM/yyyy">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy" />

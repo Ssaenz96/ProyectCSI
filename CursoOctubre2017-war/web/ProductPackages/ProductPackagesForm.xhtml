@@ -29,30 +29,30 @@
                 <h2>Product Packages Form</h2>
                 <h:form>    
                     <div class="row uniform">
-                        <div class="6u 12u$(xsmall)">
+                        <div class="12u$ 12u$(xsmall)">
                             <h:outputText value="Product Package Code: "/>
-                            <h:inputText required="true" requiredMessage="ProductPackCode is a required field" p:placeholder="Product Package Code"
+                            <h:inputText required="true" requiredMessage="Product Pack Code is a required field" p:placeholder="Product Package Code"
                              value="#{productPackagesController.productPackages.productPackCode}" maxlength="2"
-                             validator="alfanumericoValidator" validatorMessage="TaxCode must be an alphanumeric field"/>
+                             validator="alfanumericoValidator" validatorMessage="Product Pack Code must be an alphanumeric field"/>
                         </div>
                         <div class="12u$">
                             <h:outputText value="Description: "/>
                             <h:inputText value="#{productPackagesController.productPackages.description}" maxlength="35"  p:placeholder="Description"/> 
                         </div>
-                        <div class="6u$ 12u$(xsmall)">
+                        <div class="12u$ 12u$(xsmall)">
                             <h:outputText value="Quantity: "/>
                             <h:inputText value="#{productPackagesController.productPackages.quantity}" maxlength="11" p:placeholder="Quantity"
                              converterMessage="Quantity must be a numeric field"/> 
                         </div>
-                        <div class="6u$ 12u$(xsmall)">
+                        <div class="6u 12u$(xsmall)">
                             <h:outputText value="Trade Company Id: "/>
                             <h:inputText value="#{productPackagesController.productPackages.tradeCompanyId}" maxlength="1" p:placeholder="Trade Company Id"
-                             converterMessage="TradeCompany must be a numeric field"/>
+                             converterMessage="Trade Company Id must be a numeric field"/>
                         </div>
                         
                         <div class="6u$ 12u$(xsmall)">
                             <h:outputText value="Last Update BI: "/>
-                            <h:inputText converterMessage="LastUpdateBI has an incorrect date format" value="#{productPackagesController.productPackages.lastUpdateBI}" p:placeholder="dd/MM/yyyy">
+                            <h:inputText converterMessage="Last Update BI must be in dd/MM/yyyy format" value="#{productPackagesController.productPackages.lastUpdateBI}" p:placeholder="dd/MM/yyyy">
                                 <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
                             </h:inputText> 
                         </div>

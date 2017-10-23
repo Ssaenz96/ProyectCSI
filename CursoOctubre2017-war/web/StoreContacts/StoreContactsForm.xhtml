@@ -2,60 +2,91 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
-        <title>Store Contacts Form</title>
+        <title>Garcomex</title>
+        <meta charset="utf-8" />
+        <h:outputStylesheet library="css" name="main.css"/>
+        <link rel="icon" type="/image/x-icon" href="/images/logo.ico"/>
     </h:head>
-    <h:body>
-        <h:form>
-            
-            <div class="title">
-                <h3 name="title">Store Contacts</h3>
+    <h:body class="subpage">
+        <!-- Header -->
+        <header id="header">
+            <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
+            <h:link value="Log out" outcome="/login"></h:link>
+        </header>
+        <div id="main">
+            <section class="wrapper style1">
+                <div class="inner">
+                    <!-- Form -->
+                    <h2>Store Contacts Form</h2>
+                    <h:form>
+                        <div class="row uniform">
+                            <div class="6u 12u$(xsmall)">
+                                <h:outputText value="Store: "/>
+                                <h:selectOneMenu required="true" requiredMessage="Store is a required field"
+                                                 value="#{storeContactsController.storeContacts.stores}">
+                                    <f:selectItem itemValue="0" itemLabel="Select a Store" noSelectionOption="true"/>
+                                    <f:selectItems value="#{storesController.findAll()}" var="stores"
+                                                   itemValue="#{stores}" itemLabel="#{stores.name}"/>
+                                </h:selectOneMenu>
+                            </div>
+
+                            <div class="6u$ 12u$(xsmall)">
+                                <h:outputText value="Contact: "/>
+                                <h:selectOneMenu required="true" requiredMessage="Contact is a required field"
+                                                 value="#{storeContactsController.storeContacts.contacts}">
+                                    <f:selectItem itemValue="0" itemLabel="Select a Contact " noSelectionOption="true"/>
+                                    <f:selectItems value="#{contactsController.findAll()}" var="contacts"
+                                                   itemValue="#{contacts}" itemLabel="#{contacts.name}"/>
+                                </h:selectOneMenu>
+                            </div>
+
+                            <div class="12u$ 12u$(xsmall)">
+                                <h:outputText value="Last Update BI: "/>
+                                <h:inputText converterMessage="LastUpdateBI must be in dd/MM/yyyy format"
+                                             p:placeholder="dd/MM/yyyy"
+                                             value="#{storeContactsController.storeContacts.lastUpdateBI}">
+                                    <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
+                                </h:inputText>
+                            </div>
+
+                            <!-- Break -->
+                            <div class="12u$">
+                                <ul class="actions">
+                                    <li><h:commandButton rendered="#{!storeContactsController.flag}" value="Add" 
+                                                         class="button"
+                                                         action="#{storeContactsController.insert()}"/></li>
+
+                                    <li> <h:commandButton rendered="#{storeContactsController.flag}" value="Edit"
+                                                          class="button"
+                                                          action="#{storeContactsController.update()}"/></li>
+
+                                    <li><h:commandButton immediate="true" value="Return" 
+                                                         class="button"
+                                                         action="#{storeContactsController.volver()}"/></li>
+                                </ul>
+                            </div>
+                            <h:messages> </h:messages>
+                        </div>
+                    </h:form>
+                </div>
+            </section>
+        </div>
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="copyright">
+                <p>&copy; Untitled. All rights reserved. Design: <a href="http://www.csi.uanl.mx/" target="_blank">CSI</a>.</p>
             </div>
-            
-            <div class="form-style">
-                               
-            <h:outputText value="Last Update BI: "/>
-            <h:inputText converterMessage="LastUpdateBI has an incorrect date format" 
-                         value="#{storeContactsController.storeContacts.lastUpdateBI}">
-                <f:convertDateTime  type="date" pattern="dd/MM/yyyy" timeZone="UTC"/>
-            </h:inputText>
-            <br/>
-            
-            <h:outputText value="ContactID: "/>
-            <h:selectOneMenu required="true" requiredMessage="ContactId field is necessary"
-                             value="#{storeContactsController.storeContacts.contacts}">
-                <f:selectItem itemValue="0" itemLabel="Select a contact" noSelectionOption="true"/>
-                <f:selectItems value="#{contactsController.findAll()}" var="contacts"
-                               itemValue="#{contacts}" itemLabel="#{contacts.name}"/>
-            </h:selectOneMenu>
-            <br/>
-            
-            <h:outputText value="Store ID: "/>
-            <h:selectOneMenu required="true" requiredMessage="StoreId field is necessary"
-                             value="#{storeContactsController.storeContacts.stores}">
-                <f:selectItem itemValue="0" itemLabel="Select a store" noSelectionOption="true"/>
-                <f:selectItems value="#{storesController.findAll()}" var="stores"
-                               itemValue="#{stores}" itemLabel="#{stores.name}"/>
-            </h:selectOneMenu>
-            <br/>
-            
-            <h:commandButton rendered="#{!storeContactsController.flag}" value="Add" 
-                             class="button"
-                             action="#{storeContactsController.insert()}"/>
-            
-            <h:commandButton rendered="#{storeContactsController.flag}" value="Edit"
-                             class="button"
-                             action="#{storeContactsController.update()}"/>
-            
-            <h:commandButton immediate="true" value="Return" 
-                             class="button"
-                             action="#{storeContactsController.volver()}"/>
-            
-            </div>
-            <h:messages> </h:messages>
-            
-        </h:form>
+        </footer>
+        <!-- Scripts -->
+        <h:outputScript library="js" name="jquery.min.js" />
+        <h:outputScript library="js" name="jquery.scrolly.min.js" />
+        <h:outputScript library="js" name="jquery.scrollex.min.js" />
+        <h:outputScript library="js" name="skel.min.js" />
+        <h:outputScript library="js" name="util.js" />
+        <h:outputScript library="js" name="main.js" />
     </h:body>
 </html>
 

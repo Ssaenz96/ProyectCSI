@@ -27,13 +27,13 @@
     <div id="main">
         <section class="wrapper style1">
             <div class="inner">
-                <h2 name="title">Purchase Order Status List</h2>
+                <h2 name="title">Purchase Order List</h2>
                 <h:form>
                     <div class="table-scroll">
                         <h:dataTable var="x" value="#{purchaseOrdersController.findAll()}" class="table-fill">
                             
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> PONumber </f:facet>
+                                <f:facet name="header" class="text-header"> PO Number </f:facet>
                                 #{x.PONumber}
                             </h:column>
 
@@ -43,21 +43,21 @@
                             </h:column>
 
                             <h:column>
-                                <f:facet name="header"> PODate </f:facet>
+                                <f:facet name="header"> PO Date </f:facet>
                                 <h:outputText value="#{x.PODate}">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                 </h:outputText>
                             </h:column>
 
                             <h:column>
-                                <f:facet name="header"> CommDeliveryDate </f:facet>
+                                <f:facet name="header"> CommDelivery Date </f:facet>
                                 <h:outputText value="#{x.commDeliveryDate}">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                 </h:outputText>
                             </h:column>
 
                             <h:column>
-                                <f:facet name="header"> ClousureDate </f:facet>
+                                <f:facet name="header"> Clousure Date </f:facet>
                                 <h:outputText value="#{x.clousureDate}">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                 </h:outputText>
@@ -96,8 +96,8 @@
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> POStatus Id </f:facet>
-                                #{x.purchaseOrderStatus.getpOStatusId()}
+                                <f:facet name="header" class="text-header"> PO Status </f:facet>
+                                #{x.purchaseOrderStatus.POStatusCode}
                             </h:column>
 
                             <h:column class="table-information">
@@ -113,8 +113,8 @@
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> Store Id </f:facet>
-                                #{x.stores.storeId}
+                                <f:facet name="header" class="text-header"> Store  </f:facet>
+                                #{x.stores.name}
                             </h:column>
 
                             <h:column>

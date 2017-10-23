@@ -31,17 +31,17 @@
                         <h:dataTable var="pod" value="#{purchaseOrderDetailsController.findAll()}" class="table-fill" border="2">
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> PO DetailId </f:facet>
+                                <f:facet name="header" class="text-header"> PO Detail </f:facet>
                                     #{pod.getpODetailId()}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> PO Id </f:facet>
+                                <f:facet name="header" class="text-header"> PO </f:facet>
                                     #{pod.purchaseOrders.POId}
                             </h:column>
 
                             <h:column class="table-information">
-                                <f:facet name="header" class="text-header"> Product Id </f:facet>
+                                <f:facet name="header" class="text-header"> Product </f:facet>
                                     #{pod.products.productId}
                             </h:column>
 
@@ -83,7 +83,7 @@
                             </h:column>
 
                             <h:column>
-                                <f:facet name="header"> Last Update Bi </f:facet>
+                                <f:facet name="header"> Last Update BI </f:facet>
                                 <h:outputText value="#{pod.lastUpdateBI}">
                                     <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
                                 </h:outputText>
