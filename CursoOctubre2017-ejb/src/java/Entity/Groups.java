@@ -71,9 +71,12 @@ public class Groups implements Serializable {
     @OneToMany(mappedBy = "Groups", cascade = CascadeType.REMOVE)
     private List<Retails> listRetails;
     
-    @JoinColumn(name = "TablasId", referencedColumnName = "tablasId")
-    @ManyToOne(optional = false)
-    private Tablas tablas;
+    @OneToMany(mappedBy = "Groups", cascade = CascadeType.REMOVE)
+    private List<Tablas> listTablas;
+    
+    //@JoinColumn(name = "TablasId", referencedColumnName = "tablasId")
+    //@ManyToOne(optional = false)
+    //private Tablas tablas;
     
     
     public Groups(){
@@ -268,12 +271,14 @@ public class Groups implements Serializable {
         this.status = status;
     }
 
-    public Tablas getTablas() {
-        return tablas;
+    public List<Tablas> getListTablas() {
+        return listTablas;
     }
 
-    public void setTablas(Tablas tablas) {
-        this.tablas = tablas;
+    public void setListTablas(List<Tablas> listTablas) {
+        this.listTablas = listTablas;
     }
+
+    
     
 }
