@@ -24,7 +24,7 @@
         <!-- Header -->
         <header id="header">
             <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
-            <h:link value="Log out" outcome="/login"></h:link>
+            <h:link value="Log out" outcome="/login" onclick="if (!confirm('Are you sure want exit?')) return false;"></h:link>
         </header>
         <div id="main">
             <section class="wrapper style1">
