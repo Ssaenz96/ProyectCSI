@@ -43,6 +43,7 @@ public class GroupsController implements Serializable {
     private static Groups groups = new Groups();
     private boolean flagUpdate;
     private Groups code;
+    private boolean flagAdmin;
 
     private LoginTest login1 = new LoginTest();
     //--------------------------------------------------------------------------
@@ -60,8 +61,22 @@ public class GroupsController implements Serializable {
     }
     
     public String login(){
-        login1.setUsuario(groups.getUserName());
-        return groupsFacade.login(groups.getUserName(), groups.getPassword());
+        try{
+            login1.setUsuario(groups.getUserName());
+            Groups devolver = groupsFacade.login(groups.getUserName(), groups.getPassword());
+            if(devolver == null){
+                return "login";
+            }
+            if(devolver.getStatus() == 1){
+                setFlagAdmin(true);
+            }
+            else{
+                setFlagAdmin(false);
+            }
+            return "index";
+        }catch(Exception ex){
+            return "login";
+        }
     }
 
             
@@ -291,6 +306,20 @@ public class GroupsController implements Serializable {
     public String prepareLogin(){
         setGroups(new Groups());
         return "login";
+    }
+
+    /**
+     * @return the flagAdmin
+     */
+    public boolean isFlagAdmin() {
+        return flagAdmin;
+    }
+
+    /**
+     * @param flagAdmin the flagAdmin to set
+     */
+    public void setFlagAdmin(boolean flagAdmin) {
+        this.flagAdmin = flagAdmin;
     }
 }
 

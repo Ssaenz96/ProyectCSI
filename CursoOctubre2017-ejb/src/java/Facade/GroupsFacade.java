@@ -52,19 +52,19 @@ public class GroupsFacade {
         }
     }
     
-    public String login(String usuario, String contraseña){
+    public Groups login(String usuario, String contraseña){
         try{
             TypedQuery query;
             query = em.createQuery("SELECT g from Groups g Where g.userName =:usuarioParam AND g.password =:contraseñaParam", Groups.class);
             query.setParameter("usuarioParam", usuario);
             query.setParameter("contraseñaParam", contraseña);
             if((Groups) query.getSingleResult() != null){
-                return "index";
+                return (Groups) query.getSingleResult();
             }else{
-                return "login";
+                return (Groups) query.getSingleResult();
             } 
         }catch (Exception e){
-            return "login";
+            return null;
         }
     }
     

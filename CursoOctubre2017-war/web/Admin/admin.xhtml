@@ -21,8 +21,8 @@
                     <h:form>
                     <div class="12u$">
                         <h:outputText value="User"/>
-                        <h:selectOneMenu required="true" requiredMessage="Metropolitan Zone is a required message" value="#{tablasController.tablas.groups}">
-                            <f:selectItem itemValue="0" itemLabel="Select a Metropolitan Zone" noSelectionOption="true"></f:selectItem>
+                        <h:selectOneMenu required="true" requiredMessage="User is a required message" value="#{tablasController.tablas.groups}">
+                            <f:selectItem itemValue="0" itemLabel="Select a User" noSelectionOption="true"></f:selectItem>
                             <f:selectItems value="#{groupsController.findAll()}" var="groups" itemValue="#{groups}" itemLabel="#{groups.userName}"></f:selectItems>
                         </h:selectOneMenu>
                     </div>

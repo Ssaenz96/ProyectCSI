@@ -55,7 +55,7 @@ public class Groups implements Serializable {
     private String password;
     
     @Column(name = "Status")
-    private String status;
+    private int status;
     
     @Column(name = "LastUpdateBI")
     @Temporal(TemporalType.DATE)
@@ -257,26 +257,26 @@ public class Groups implements Serializable {
         this.alternatePassword = alternatePassword;
     }
 
-    /**
-     * @return the status
-     */
-    public String isStatus() {
-        return status;
-    }
-
-    /**
-     * @param status the status to set
-     */
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public List<Tablas> getListTablas() {
         return listTablas;
     }
 
     public void setListTablas(List<Tablas> listTablas) {
         this.listTablas = listTablas;
+    }
+
+    /**
+     * @return the status
+     */
+    public int getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     
