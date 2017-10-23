@@ -13,42 +13,167 @@
     <!-- Header -->
     <header id="header">
         <div class="logo"><h:link outcome="/index">Garcomex</h:link></div>
-        <h:link value="Log out" outcome="/login"></h:link>
+        <h:link value="Log out" outcome="/login" onclick="if (!confirm('Are you sure want exit?')) return false;"></h:link>
     </header>
         <div id="main">
             <section class="wrapper style1">
                 <div class="inner">
-                    <h2 name="title">Form </h2>
                     <h:form>
-                        <div class="row uniform">
-                            <div class="12u$">
-                                <h:outputText value="User"/>
-                                <h:inputText id="name" value="#{groupsController.groups.userName}" readonly="true"/>
+                    <div class="12u$">
+                        <h:outputText value="User"/>
+                        <h:inputText id="name" value="#{groupsController.groups.userName}" readonly="true"/>
+                    </div>
+                    </h:form>
+                    <h:form>
+                        <div class="table-scroll">
+                            <div class="table-wrapper">
+                                <table class="table-fill">
+                                    <thead>
+                                        <tr>
+                                            <th class="checkb">Select</th>
+                                            <th>Table</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td ><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.channels}"/></td>
+                                            <td>Channels</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.cities}"/></td>
+                                            <td>Cities</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.contacts}"/></td>
+                                            <td>Contacts</td>
+                                        </tr>
+                                        <tr>
+                                            <td ><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.employeeTypes}"/></td>
+                                            <td>Employee Types</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.finalCustomerSaleUnits}"/></td>
+                                            <td>Final Customer Sale Units</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.groups}"/></td>
+                                            <td>Groups</td>
+                                        </tr>
+                                        <tr>
+                                            <td ><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.isgSaleStructure}"/></td>
+                                            <td>GSale Structures</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.isgSaleStructureLeveles}"/></td>
+                                            <td>GSale Strutcture Levels</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.metropolitanZones}"/></td>
+                                            <td>Metropolitan Zones</td>
+                                        </tr>
+                                        <tr>
+                                            <td ><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.origin}"/></td>
+                                            <td>Origin</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.positions}"/></td>
+                                            <td>Positions</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.productCategories}"/></td>
+                                            <td>Product Categories</td>
+                                        </tr>
+                                        <tr>
+                                            <td ><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.productPackages}"/></td>
+                                            <td>Product Packages</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.products}"/></td>
+                                            <td>Products</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.programVisits}"/></td>
+                                            <td>Program Visits</td>
+                                        </tr>
+                                        <tr>
+                                            <td ><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.purchaseOrderDetails}"/></td>
+                                            <td>Purchase Order Details</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.purchaseOrderStatus}"/></td>
+                                            <td>Purchase Order Status</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.purchaseOrders}"/></td>
+                                            <td>Purchase Order</td>
+                                        </tr>
+                                        <tr>
+                                            <td ><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.regions}"/></td>
+                                            <td>Regions</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.retailContacts}"/></td>
+                                            <td>Retail Contacts</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.retailProducts}"/></td>
+                                            <td>Retail Products</td>
+                                        </tr>
+                                        <tr>
+                                            <td ><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.retailSaleUnits}"/></td>
+                                            <td>Retail Sale Units</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.retails}"/></td>
+                                            <td>Retails</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.sellers}"/></td>
+                                            <td>Sellers</td>
+                                        </tr>
+                                        <tr>
+                                            <td ><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.states}"/></td>
+                                            <td>States</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.storeContacts}"/></td>
+                                            <td>Store Contacts</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.storeProducts}"/></td>
+                                            <td>Store Products</td>
+                                        </tr>
+                                        <tr>
+                                            <td ><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.storeRanks}"/></td>
+                                            <td>Store Ranks</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.stores}"/></td>
+                                            <td>Stores</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.taxes}"/></td>
+                                            <td>Taxes</td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:selectBooleanCheckbox value="#{groupsController.groups.tablas.tradeMarks}"/></td>
+                                            <td>Trade Marks</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                            <!-- Break -->
-                            <div class="4u 12u$(small)">
-                                <h:selectBooleanCheckbox value="#{groupsController.groups.tablas.channels}" id="channels" />
-                                <label for="channels">Channels</label>
-                            </div>
-                            <div class="4u 12u$(small)">
-                                <h:selectBooleanCheckbox value="#{groupsController.groups.tablas.cities}" id="cities"/>
-                                <label for="cities">Cities</label>
-                            </div>
-                            <div class="4u$ 12u$(small)">
-                                <h:selectBooleanCheckbox value="#{groupsController.groups.tablas.contacts}" id="contacts"/>
-                                <label for="contacts">Contacts</label>
-                            </div>
-                            <!-- Break -->
-                            <div class="12u$">
-                                <ul class="actions">
+                        </div>
+                        <div class="12u$">
+                            <ul class="actions">
+                                <div class="container">
                                     <li><h:commandButton class="button" value="Edit"
                                                          action="#"/></li>
                                     <li><h:commandButton class="button" value="Return" 
                                                          action="#{groupsController.volverHome()}" immediate="true"/></li>
-                                    <li><input type="reset" value="Reset" class="alt" /></li>
-                                </ul>
-                            </div>
+                                </div>
+                            </ul>
                         </div>
+                        <h:messages></h:messages>
                     </h:form>
                 </div>
             </section>
