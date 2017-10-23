@@ -55,7 +55,7 @@ public class Groups implements Serializable {
     private String password;
     
     @Column(name = "Status")
-    private boolean status;
+    private String status;
     
     @Column(name = "LastUpdateBI")
     @Temporal(TemporalType.DATE)
@@ -260,14 +260,14 @@ public class Groups implements Serializable {
     /**
      * @return the status
      */
-    public boolean isStatus() {
+    public String isStatus() {
         return status;
     }
 
     /**
      * @param status the status to set
      */
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
