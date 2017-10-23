@@ -26,7 +26,7 @@ public class TablasController implements Serializable {
     private TablasFacade tablasFacade;
     private final String pageList = "TablasList";
     private final String pageForm = "TablasForm";
-    private Tablas tablas;
+    private Tablas tablas = new Tablas();
     private boolean flagUpdate;
     
     public String prepareInsert() {
