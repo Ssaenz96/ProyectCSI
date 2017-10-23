@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -45,13 +47,13 @@ public class Tablas implements Serializable {
     private boolean finalCustomerSaleUnits;
     
     @Column(name = "GSaleStructureLevels")
-    private boolean gSaleStructureLeveles;
+    private boolean funcionalGSaleStructureLevels;
     
     @Column(name = "GSaleStructure")
-    private boolean gSaleStructure;
+    private boolean funcionalGSaleStructure;
     
-    @Column(name = "Groups")
-    private boolean groups;
+    @Column(name = "GroupsColumn")
+    private boolean groupsColumn;
     
     @Column(name = "MetropolitanZones")
     private boolean metropolitanZones;
@@ -122,9 +124,12 @@ public class Tablas implements Serializable {
     @Column(name = "TradeMarks")
     private boolean tradeMarks;
     
-    @OneToMany(mappedBy = "Tablas", cascade = CascadeType.REMOVE)
-    private List<Groups> listGroups;
+    //@OneToMany(mappedBy = "Tablas", cascade = CascadeType.REMOVE)
+    //private List<Groups> listGroups;
     
+    @JoinColumn(name = "GroupId", referencedColumnName = "groupId")
+    @ManyToOne(optional = false)
+    private Groups groups;
 
     public Long getTablasId() {
         return tablasId;
@@ -199,20 +204,30 @@ public class Tablas implements Serializable {
         this.finalCustomerSaleUnits = finalCustomerSaleUnits;
     }
 
-    public boolean isgSaleStructureLeveles() {
-        return gSaleStructureLeveles;
+    public boolean isFuncionalGSaleStructureLevels() {
+        return funcionalGSaleStructureLevels;
     }
 
-    public void setgSaleStructureLeveles(boolean gSaleStructureLeveles) {
-        this.gSaleStructureLeveles = gSaleStructureLeveles;
+    public void setFuncionalGSaleStructureLevels(boolean funcionalGSaleStructureLevels) {
+        this.funcionalGSaleStructureLevels = funcionalGSaleStructureLevels;
     }
 
-    public boolean isGroups() {
-        return groups;
+    public boolean isFuncionalGSaleStructure() {
+        return funcionalGSaleStructure;
     }
 
-    public void setGroups(boolean groups) {
-        this.groups = groups;
+    public void setFuncionalGSaleStructure(boolean funcionalGSaleStructure) {
+        this.funcionalGSaleStructure = funcionalGSaleStructure;
+    }
+
+    
+
+    public boolean isGroupsColumn() {
+        return groupsColumn;
+    }
+
+    public void setGroupsColumn(boolean groupsColumn) {
+        this.groupsColumn = groupsColumn;
     }
 
     public boolean isMetropolitanZones() {
@@ -399,21 +414,12 @@ public class Tablas implements Serializable {
         this.tradeMarks = tradeMarks;
     }
 
-    public List<Groups> getListGroups() {
-        return listGroups;
+    public Groups getGroups() {
+        return groups;
     }
 
-    public void setListGroups(List<Groups> listGroups) {
-        this.listGroups = listGroups;
-    }
-
-    public boolean isgSaleStructure() {
-        return gSaleStructure;
-    }
-
-    public void setgSaleStructure(boolean gSaleStructure) {
-        this.gSaleStructure = gSaleStructure;
-    }
-    
+    public void setGroups(Groups groups) {
+        this.groups = groups;
+    }  
     
 }
